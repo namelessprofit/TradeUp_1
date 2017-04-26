@@ -1,24 +1,34 @@
-# README
+# TradeUP
+## A Ruby on Rails Trading App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TradeUP is based on the story of a Canadian blogger named [Kyle MacDonald](https://en.wikipedia.org/wiki/One_red_paperclip) who bartered his way from a single red paperclip to a house in a series of fourteen online trades over the course of a year. This story inspired our group to build a Craigslist-style trading app that encourages users to continue trading up to see the limitless possibilities that they can get.
 
-Things you may want to cover:
+## Technologies
+- Ruby
+- Rails
+- Turbolinks
+- Javascript
+- HTML
+- CSS
 
-* Ruby version
+##  Cool features
 
-* System dependencies
+## Tricky code
 
-* Configuration
+## Model ERD
+![TradeUP wireframes] - coming soon
 
-* Database creation
+## User Story
 
-* Database initialization
+## Features to be added later
 
-* How to run the test suite
+## Contributors
 
-* Services (job queues, cache servers, search engines, etc.)
+- [Megan Wiley](https://www.linkedin.com/in/meganrwiley)
+- [Jesse Rosenbloom](https://www.linkedin.com/in/jesse-rosenbloom-4a25996a/)
+- [Roman Lavrenov](https://www.linkedin.com/in/roman-lavrenov-4878304b/)
+- [Archy Posada](https://www.linkedin.com/in/archyposada/)
 
-* Deployment instructions
-
-* ...
+## Links
+- [Trello Board](https://trello.com/b/54uvVjTg/tradeup)
+- [Heroku] - coming soon
