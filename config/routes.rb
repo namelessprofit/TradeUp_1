@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
-  get "/favorites", to: "favorites#index", as: "favorites_path"
   post "/favorites", to: "favorites#create"
   delete "/favorites/:id", to: "favorites#destroy"
 
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show', as: 'user_path'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user_path'
-  patch '/users/:id', to: 'users#update'
+  patch '/users/update/:id', to: 'users#update', as:'update_user_path'
   delete '/users/:id', to: 'users#destroy'
 
   get '/users/:id/favorites', to: 'favorites#index', as: 'favorites_path'

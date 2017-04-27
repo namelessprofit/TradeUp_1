@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426233444) do
+ActiveRecord::Schema.define(version: 20170427025346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 20170426233444) do
     t.integer  "location"
     t.integer  "rating"
     t.integer  "rating_count"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "image"
+    t.string   "background_color"
   end
 
   add_foreign_key "favorites", "items"
