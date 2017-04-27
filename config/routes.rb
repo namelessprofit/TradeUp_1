@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'site#index'
+  root to: 'pages#home'
 
   get '/items', to: 'items#index', as: 'items_path'
   get '/items/:category', to: 'items#by_category'
@@ -11,5 +11,11 @@ Rails.application.routes.draw do
   get '/items/:id/edit', to: 'items#edit', as: 'edit_item_path'
   patch '/items/:id', to: 'items#update'
   delete '/items/:id', to: 'items#destroy'
+
+  get '/signup' => 'users#new'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+  post '/signup' => 'users#create'
 
 end
