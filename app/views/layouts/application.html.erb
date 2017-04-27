@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TradeUP: A barter</title>
+    <title>TradeUP: Barter your way up!</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Anaheim|Arimo" rel="stylesheet">
 
   </head>
 
-  <div class="main">
-    <ul class="nav navbar-nav navbar-right">
-  <li><%= link_to "Home",'/'%></li>
-    <% if logged_in? %>
-    <li><%= link_to 'Log out', logout_path, method: :delete %></li>
-    <li><%=link_to 'Profile', user_path_url(@user), method: :get%></li>
-    <% else %>
-    <li><%= link_to 'Log in', login_path %></li>
-    <li><%= link_to 'Sign up', signup_path %></li>
-    <% end %>
-    </ul>
-  </div>
 
 
   <body>
+    <%= render 'partials/navbar' %>
     <% flash.each do |name, msg| %>
       <div class="alert <% if name=="error" %> alert-danger <% elsif name=="success" %> alert-success <% else %> alert-info <% end %>">
         <%= msg %>
