@@ -2,10 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h2, h3, p, a {
+  font-family: 'Arimo', sans-serif !important;
+}
+
 #upperFooter {
   background-color: #e6e6e6;
   height: 30px;
 }
+
 
 #lowerFooter {
   background-color: #f5cc7b;
@@ -30,10 +35,6 @@
 }
 
 h1 {
-  font-family: 'Anaheim', sans-serif !important;
   font-size: 3.5em !important;
-}
-
-h2, h3 {
-  font-family: 'Arimo', sans-serif !important;
+  font-family: 'Anaheim', sans-serif !important;
 }
