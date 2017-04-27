@@ -1,23 +1,9 @@
 Rails.application.routes.draw do
-  root to: "favorites#index"
-
-  get "/favorites", to: "favorites#index", as: "favorites"
-  get "/favorites/new", to: "favorites#new", as: "new_favorite"
-  post "/favorites", to: "favorites#create"
-  get "/favorites/:id", to: "favorites#show", as: "favorite"
-  get "/favorites/:id/edit", to: "favorites#edit", as: "edit_favorite"
-  patch "/favorites/:id", to: "favorites#update"
-  delete "/favorites/:id", to: "favorites#destroy"
-
-  get "/offers", to: "offers#index", as: "offers"
-  get "/offers/new", to: "offers#new", as: "new_offer"
-  post "/offers", to: "offers#create"
-  get "/offers/:id", to: "offers#show", as: "offer"
-  get "/offers/:id/edit", to: "offers#edit", as: "edit_offer"
-  patch "/offers/:id", to: "offers#update"
-  delete "/offers/:id", to: "offers#destroy"
-
   root to: 'pages#home'
+
+  get "/favorites", to: "favorites#index", as: "favorites_path"
+  post "/favorites", to: "favorites#create"
+  delete "/favorites/:id", to: "favorites#destroy"
 
   get '/items', to: 'items#index', as: 'items_path'
   get '/items/:category', to: 'items#by_category'
@@ -25,6 +11,8 @@ Rails.application.routes.draw do
   get '/items/new', to: 'items#new', as: 'new_item_path'
   post '/items', to: 'items#create'
   get '/items/:id/edit', to: 'items#edit', as: 'edit_item_path'
+  get '/items/:id/offers/new', to: 'offers#new', as: 'new_offer_path'
+  post '/items/:id/offers', to: 'offers#create'
   patch '/items/:id', to: 'items#update'
   delete '/items/:id', to: 'items#destroy'
 
@@ -37,9 +25,6 @@ Rails.application.routes.draw do
   post '/users/:id/favorites', to: 'favorites#create'
   get '/users/:id/offers', to: 'offers#index', as: 'offers_path'
   get '/users/:id/offers/:id', to: 'offers#show', as: 'offer_path'
-  delete '/users/:id/offers/:id', to: 'offers#destroy'
-  
-
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
