@@ -10,6 +10,16 @@
 #lowerFooter {
   background-color: #f5cc7b;
   height: 80px;
+  color: #5d5b5b;
+}
+
+#lowerFooter a {
+  color: #5d5b5b;
+}
+
+#learnBtnPosition {
+  margin-left: 2.3vw;
+  margin-top: 30px;
 }
 
 .myAlert {
@@ -21,9 +31,9 @@
 
 h1 {
   font-family: 'Anaheim', sans-serif !important;
-  font-size: 3.1em !important;
+  font-size: 3.5em !important;
 }
 
-h3 {
+h2, h3 {
   font-family: 'Arimo', sans-serif !important;
 }
