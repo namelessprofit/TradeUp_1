@@ -19,6 +19,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def group
+    puts"WERE IN GROUP METHOD"
+    @group = params[:group]
+    @category = params[:category]
+    puts @category
+    puts @group
+    @items = Item.where(group: @group).
+                  where(category: @category)
+  end
+
   def show
     @item = Item.find_by_id(params[:id])
   end
@@ -46,7 +56,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description,:condition,:image,:category)
+    params.require(:item).permit(:title, :description,:condition,:image,:category, :group)
+  end
+
+  def item_params_group
+    params.require(:id)
   end
 
 end
