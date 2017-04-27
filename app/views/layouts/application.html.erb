@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TradeUpApp</title>
+    <title>TradeUP: A barter</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   </head>
 
+  <div class="main">
+    <ul class="nav navbar-nav navbar-right">
+    <% if logged_in? %>
+    <li><%= link_to 'Log out', logout_path, method: :delete %></li>
+    </li>
+    <% else %>
+    <li><%= link_to 'Log in', login_path %></li>
+    <li><%= link_to 'Sign up', signup_path %></li>
+    <% end %>
+    </ul>
+  </div>
+
+
   <body>
+    <% flash.each do |name, msg| %>
+      <div class="alert <% if name=="error" %> alert-danger <% elsif name=="success" %> alert-success <% else %> alert-info <% end %>">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
