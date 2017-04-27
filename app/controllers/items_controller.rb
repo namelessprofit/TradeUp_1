@@ -28,21 +28,25 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
     @item.update_attributes(item_params)
-    redirect_to item_path(@item)
+    redirect_to user_path_url(@user)
+    flash[:success]=@item.title + " was updated"
   end
 
   def destroy
+    @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to user_path_url(@user)
+    flash[:success]=@item.title + " was deleted"
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:title, :description)
+    params.require(:item).permit(:title, :description,:condition,:image,:category)
   end
 
 end

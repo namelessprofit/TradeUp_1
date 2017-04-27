@@ -1,5 +1,5 @@
-<h1>Create a new item for trade!</h1>
-<%= form_for(@item) do |f|%>
+<h1>Edit your item trade!</h1>
+<%=form_for @item, :url => "/items/update/"+(@item.id.to_s) do |f| %>
 <%=f.label :title%>
 <%= f.text_area :title%>
 <br />
