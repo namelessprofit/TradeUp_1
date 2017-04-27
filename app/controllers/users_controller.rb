@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
 
     def create
-      @user = User.new(user_params)
+      @user = User.new(user_params_create)
       puts"HEYYYYY"
       puts @user
       if @user.save
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         redirect_to '/'
         session[:user_id] = @user.id
       else
-        flash[:error] = "Error!"
+        flash[:error] = @user.errors.full_messages
         render 'new'
       end
     end
@@ -28,9 +28,18 @@ class UsersController < ApplicationController
 
     def update
       @user = User.find_by_id(params[:id])
-      @user.update_attributes(user_params)
-      redirect_to user_path(@user)
+      puts "USER PARAMS"
+      puts user_params_edit[:location]
+      puts @user.location
+       if (@user.update(user_params_edit))
+        flash[:success] = "Profile Updated"
+        redirect_to user_path_url(@user)
+      else
+        flash[:error] = @user.errors.full_messages
+        redirect_to edit_user_path_url(@user)
+
     end
+  end
 
     def destroy
       @user = User.find_by_id(params[:id])
@@ -39,8 +48,11 @@ class UsersController < ApplicationController
     end
 
     private
-    def user_params
-      params.require(:user).permit(:email,:password, :username, :password_confirmation, :location)
+    def user_params_create
+      params.require(:user).permit(:location,:username,:email,:password,:password_confirmation)
     end
 
+    def user_params_edit
+      params.require(:user).permit(:location, :image, :background_color, :email, :username)
+    end
 end

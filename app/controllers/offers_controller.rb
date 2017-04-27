@@ -22,4 +22,8 @@ class OffersController < ApplicationController
       end
     end
 
+    private
+    def offer_params
+      params.require(:offer).permit(:requested_item_id, :offered_item_id, :reciever_id, :initiator_id)
+    end
 end

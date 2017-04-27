@@ -9,7 +9,7 @@
         flash[:success]="You have logged in!"
         redirect_to '/'
       else
-        flash.now[:danger]= "Incorrect Info"
+        flash.now[:danger]= @user.errors.full_messages
         render 'new'
       end
     end
