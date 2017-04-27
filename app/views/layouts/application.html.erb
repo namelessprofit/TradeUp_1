@@ -16,11 +16,11 @@
   <body>
     <%= render 'partials/navbar' %>
     <% flash.each do |name, msg| %>
-      <div class="alert <% if name=="error" %> alert-danger <% elsif name=="success" %> alert-success <% else %> alert-info <% end %>">
+      <div class="myAlert<% if name=="error" %> alert-danger <% elsif name=="success" %> alert-success <% else %> alert-info <% end %>">
         <%= msg %>
       </div>
     <% end %>
-    <div style="margin-top: 30px">
+    <div style="margin-top: 50px">
       <%= yield %>
     </div>
   </body>
