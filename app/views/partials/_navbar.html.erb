@@ -1,18 +1,62 @@
 <nav class="nav" id="mainNav">
-  <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/4qJAGxd.png"></a>
-  <ul class="navbar-right">
-    <% if logged_in? %>
-      <li><%= link_to 'Log out', logout_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'Log in', login_path %></li>
-      <li><%= link_to 'Sign up', signup_path %></li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-lg-3">
+      <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/4qJAGxd.png"></a>
+      <% if logged_in? %>
+        <h2 class="welcome_message">Hello, <%= @user.email %>!</h2>
+      <% end %>
+    </div>
+    <div class="col-lg-9">
+      <ul class="nav_padding_right">
+        <% if logged_in? %>
+          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Log In', login_path %></li>
+          <li><%= link_to 'Sign Up', signup_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
   <div id="lowerNav">
-    <ul class="navbar-right">
-      <a href="#"><li>Items</li></a>
-      <a href="#"><li>Services</li></a>
-      <a href="#"><li>Experiences</li></a>
-    </ul>
+    <li class="dropdown nav_padding_left">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+      <ul class="dropdown-menu pull-right">
+        <li><a href="#">General Labor</a></li>
+        <li><a href="#">Construction</a></li>
+        <li><a href="#">Web</a></li>
+        <li><a href="#">Childcare</a></li>
+        <li><a href="#">Food</a></li>
+        <li><a href="#">Health</a></li>
+        <li><a href="#">Miscellaneous</a></li>
+      </ul>
+    </li>
+    <li class="dropdown nav_padding_left">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Experiences <span class="caret"></span></a>
+      <ul class="dropdown-menu pull-right">
+        <li><a href="#">Music</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Outdoors</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Miscellaneous</a></li>
+      </ul>
+    </li>
+    <li class="dropdown nav_padding_left">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Items <span class="caret"></span></a>
+      <ul class="dropdown-menu pull-right">
+        <li><a href="#">Electronics</a></li>
+        <li><a href="#">Furniture</a></li>
+        <li><a href="#">Fashion</a></li>
+        <li><a href="#">Auto</a></li>
+        <li><a href="#">Real Estate</a></li>
+        <li><a href="#">Collectibles</a></li>
+        <li><a href="#">Sporting Goods</a></li>
+        <li><a href="#">Toys</a></li>
+        <li><a href="#">Music</a></li>
+        <li><a href="#">Business &amp; Industrial</a></li>
+        <li><a href="#">Home &amp; Garden</a></li>
+        <li><a href="#">Miscellaneous</a></li>
+      </ul>
+    </li>
+
   </div>
 </nav>

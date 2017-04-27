@@ -7,6 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Anaheim|Arimo" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   </head>
 
@@ -17,7 +18,9 @@
         <%= msg %>
       </div>
     <% end %>
-    <%= yield %>
-
+    <div style="margin-top: 30px">
+      <%= yield %>
+    </div>
+>>>>>>> 5eef54c5e886ffaa85a44e7c168f0df4e56e1e0a
   </body>
 </html>
