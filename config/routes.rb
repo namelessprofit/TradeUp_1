@@ -12,6 +12,19 @@ Rails.application.routes.draw do
   patch '/items/:id', to: 'items#update'
   delete '/items/:id', to: 'items#destroy'
 
+  get '/users/:id', to: 'users#show', as: 'user_path'
+  get '/users/:id/edit', to: 'users#edit', as: 'edit_user_path'
+  patch '/users/:id', to: 'users#update'
+  delete '/users/:id', to: 'users#destroy'
+
+  get '/users/:id/favorites', to: 'favorites#index', as: 'favorites_path'
+  post '/users/:id/favorites', to: 'favorites#create'
+  get '/users/:id/offers', to: 'offers#index', as: 'offers_path'
+  get '/users/:id/offers/:id', to: 'offers#show', as: 'offer_path'
+  delete '/users/:id/offers/:id', to: 'offers#destroy'
+  
+
+
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
