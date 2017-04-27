@@ -18,6 +18,10 @@ class UsersController < ApplicationController
       end
     end
 
+    def edit
+      @user = current_user
+
+
     private
     def user_params
       params.require(:user).permit(:email,:password, :username, :password_confirmation, :location)
