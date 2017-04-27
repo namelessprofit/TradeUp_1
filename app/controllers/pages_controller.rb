@@ -5,8 +5,12 @@ class PagesController < ApplicationController
     else
       @user = nil
     end
-    @items = Item.all
-    @itemcount = Item.count
+    @services = Item.where(:group => 1)
+    @servicescount = @services.count
+    @experiences = Item.where(:group => 2)
+    @experiencescount = @experiences.count
+    @items = Item.where(:group => 3)
+    @itemscount = @items.count
   end
 
   def learnmore

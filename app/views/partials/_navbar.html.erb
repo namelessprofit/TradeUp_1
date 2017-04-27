@@ -3,7 +3,7 @@
     <div class="col-lg-3">
       <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/4qJAGxd.png"></a>
       <% if logged_in? %>
-        <h2 class="welcome_message">Hello, <%= @user.email.first.upcase + @user.email.last(@user.email.length-1) %>!</h2>
+        <h2 class="welcome_message">Hello, <%= @user.username.first.upcase + @user.username.last(@user.username.length-1) %>!</h2>
       <% end %>
     </div>
     <div class="col-lg-9">
