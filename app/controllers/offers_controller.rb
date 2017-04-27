@@ -1,61 +1,25 @@
 class OffersController < ApplicationController
+
     def index
-      @offers = Offers.all
+      @offers = Offer.all
     end
 
     def new
       @offer = Offer.new
     end
 
-    def create
-      offer.new(offer_params)
+    def show
+      @offer = Offer.find_by_id(params[:id])
+    end
 
-      if offer.save
-        redirect_to offer_path(offer)
+    def create
+      @offer = Offer.new(offer_params)
+      if @offer.save
+        redirect_to offer_path(@offer)
       else
-        flash[:error] = offer.errors.full_messages.join(", ")
-        redirect_to newoffere_path
+        flash[:error] = @offer.errors.full_messages.join(", ")
+        redirect_to new_offer_path
       end
     end
-
-    def show
-      offer_id = params[:id]
-
-      @offer = Offer.find_by_id(offer_idoffer
-
-    def edit
-      offer_id = params[:id]
-
-      @offer = Offer.find_by_id(offer_id)
-
-    end
-
-    def update
-      offer_id = params[:id]
-
-      offer = Offer.find_by_id(offer_id)
-
-      offer.update_attributes(offer_params)
-
-      redirect_to offer_path(offer)
-    end
-
-    def destroy
-      offer_id = params[:id]
-
-      offer = Offer.find_by_id(offer_id)
-
-      offer.destroy
-
-      redirect_to offer_path
-    end
-
-    private
-
-    def offer_params
-      params.require(:offer).permit(:name, :description)
-    end
-
-  end
 
 end
