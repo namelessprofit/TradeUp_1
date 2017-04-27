@@ -18,17 +18,24 @@ body {
   font-family: 'Arimo', sans-serif;
 }
 
+a {
+  text-decoration: none !important;
+}
+
  #mainNav {
    background-color: #e6e6e6;
-   height: 120px;
+   height: 100px;
    position: relative;
  }
 
  #lowerNav {
    background-color: #2dcc36;
    height: 40px;
-   margin-top: 80px;
    position: relative;
+   text-align: right;
+   margin-top: 2.3vw;
+   padding: 8px;
+   padding-right: 2vw;
  }
 
  #logo {
@@ -41,9 +48,8 @@ body {
    filter: drop-shadow(3px 3px 3px #222);
  }
 
- #lowerNav li {
-   font-size: 14px;
-   padding-right: 40px;
+ .caret {
+   color: white;
  }
 
  nav ul {
@@ -54,13 +60,26 @@ body {
    display: inline;
  }
 
+ .welcome_message {
+   text-align: right;
+   position: absolute;
+   margin-left: 150px;;
+ }
+
+.nav_padding_left {
+  padding-left: 3vw;
+}
+
+.nav_padding_right {
+  padding-right: 2.3vw;
+  text-align: right;
+}
 
  nav a {
   color: black;
-
+  font-size: 16px;
  }
 
  a :hover {
    color: white;
-   text-decoration: none;
  }
