@@ -9,11 +9,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @user = User.find_by_id(current_user.id.to_s)
+    @item.user = @user
     if @item.save
-      redirect_to item_path(@item)
+      redirect_to user_path_url(@user)
     else
       flash[:error] = @item.errors.full_messages.join(", ")
-      redirect_to new_item_path
+      redirect_to new_item_path_url
     end
   end
 

@@ -1,0 +1,18 @@
+<nav class="nav" id="mainNav">
+  <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/4qJAGxd.png"></a>
+  <ul class="navbar-right">
+    <% if logged_in? %>
+      <li><%= link_to 'Log out', logout_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'Log in', login_path %></li>
+      <li><%= link_to 'Sign up', signup_path %></li>
+    <% end %>
+  </ul>
+  <div id="lowerNav">
+    <ul class="navbar-right">
+      <a href="#"><li>Items</li></a>
+      <a href="#"><li>Services</li></a>
+      <a href="#"><li>Experiences</li></a>
+    </ul>
+  </div>
+</nav>
