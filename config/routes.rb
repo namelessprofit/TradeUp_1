@@ -5,15 +5,15 @@ Rails.application.routes.draw do
   delete "/favorites/:id", to: "favorites#destroy"
 
   get '/items', to: 'items#index', as: 'items_path'
-  get '/items/:category', to: 'items#by_category'
-  get '/items/:id', to: 'items#show', as: 'item_path'
+  get '/items/edit/:id', to: 'items#edit', as: 'edit_item_path'
+  get '/items/:id/:category', to: 'items#by_category'
   get '/items/new', to: 'items#new', as: 'new_item_path'
+  get '/items/:id', to: 'items#show', as: 'item_path'
   post '/items', to: 'items#create'
-  get '/items/:id/edit', to: 'items#edit', as: 'edit_item_path'
   get '/items/:id/offers/new', to: 'offers#new', as: 'new_offer_path'
   post '/items/:id/offers', to: 'offers#create'
-  patch '/items/:id', to: 'items#update'
-  delete '/items/:id', to: 'items#destroy'
+  patch '/items/update/:id', to: 'items#update'
+  delete '/items/destroy/:id', to: 'items#destroy'
 
   get '/users/:id', to: 'users#show', as: 'user_path'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user_path'

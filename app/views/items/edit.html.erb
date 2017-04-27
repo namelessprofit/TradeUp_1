@@ -1,0 +1,22 @@
+<h1>Edit your item trade!</h1>
+<%=form_for @item, :url => "/items/update/"+(@item.id.to_s) do |f| %>
+<%=f.label :title%>
+<%= f.text_area :title%>
+<br />
+<%=f.label :description%>
+<%= f.text_area :description%>
+<br />
+<%=f.label :condition%>
+<%= f.number_field :condition%>
+<br />
+<%=f.label :image%>
+<%= f.text_area :image%>
+<br />
+<%=f.label :group%>
+<%= f.number_field :group%>
+<br />
+<%=f.label :category%>
+<%= f.number_field :category%>
+<br />
+<%= f.submit "Create" %>
+<%end%>
