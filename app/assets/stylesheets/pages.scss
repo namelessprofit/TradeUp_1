@@ -1,3 +1,40 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2, h3, p, a {
+  font-family: 'Arimo', sans-serif !important;
+}
+
+#upperFooter {
+  background-color: #e6e6e6;
+  height: 30px;
+}
+
+
+#lowerFooter {
+  background-color: #f5cc7b;
+  height: 80px;
+  color: #5d5b5b;
+}
+
+#lowerFooter a {
+  color: #5d5b5b;
+}
+
+#learnBtnPosition {
+  margin-left: 2.3vw;
+  margin-top: 30px;
+}
+
+.myAlert {
+  padding: 15px;
+  margin-top:19px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+h1 {
+  font-size: 3.5em !important;
+  font-family: 'Anaheim', sans-serif !important;
+}

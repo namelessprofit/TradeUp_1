@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get '/learnmore', to: "pages#learnmore", as: 'learnmore_path'
 
   post "/favorites", to: "favorites#create"
   delete "/favorites/:id", to: "favorites#destroy"

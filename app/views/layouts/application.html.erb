@@ -3,10 +3,10 @@
   <head>
     <title>TradeUP: Barter your way up!</title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Anaheim|Arimo" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Anaheim|Arimo" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   </head>
@@ -14,11 +14,11 @@
   <body>
     <%= render 'partials/navbar' %>
     <% flash.each do |name, msg| %>
-      <div class="alert <% if name=="error" %> alert-danger <% elsif name=="success" %> alert-success <% else %> alert-info <% end %>">
+      <div class="myAlert<% if name=="error" %> alert-danger <% elsif name=="success" %> alert-success <% else %> alert-info <% end %>">
         <%= msg %>
       </div>
     <% end %>
-    <div style="margin-top: 30px">
+    <div style="margin-top: 50px">
       <%= yield %>
     </div>
   </body>

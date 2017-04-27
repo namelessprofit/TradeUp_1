@@ -12,14 +12,22 @@
  *
  *= require_tree .
  *= require_self
+ *= require pages
  */
 
-body {
-  font-family: 'Arimo', sans-serif;
+div {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 a {
   text-decoration: none !important;
+}
+
+ul {
+  list-style-type: none;
 }
 
  #mainNav {
@@ -33,7 +41,7 @@ a {
    height: 40px;
    position: relative;
    text-align: right;
-   margin-top: 2.3vw;
+   margin-top: 2.9vw;
    padding: 8px;
    padding-right: 2vw;
  }
@@ -52,9 +60,10 @@ a {
    color: white;
  }
 
- nav ul {
-   list-style-type: none;
- }
+.smallImage {
+  width: 215px;
+  padding-bottom: 20px
+}
 
  #mainNav li {
    display: inline;
