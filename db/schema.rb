@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427180725) do
+ActiveRecord::Schema.define(version: 20170428021237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,13 @@ ActiveRecord::Schema.define(version: 20170427180725) do
     t.boolean  "is_available"
     t.integer  "category"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "group"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -62,10 +66,14 @@ ActiveRecord::Schema.define(version: 20170427180725) do
     t.integer  "location"
     t.integer  "rating"
     t.integer  "rating_count"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "image"
     t.string   "background_color"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_foreign_key "favorites", "items"
