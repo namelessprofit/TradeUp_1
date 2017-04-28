@@ -1,6 +1,8 @@
 <%= render 'partials/userBanner' %>
 <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
-<h3><%= link_to 'View my Trades', offers_path_url(@user)%></h3>
+<h3><%= link_to 'View my Requested Trades', offers_path_url(@user)%></h3>
+<h3><%= link_to 'View my Incoming Trades', incoming_offers_path_url(@user)%></h3>
+
 <br /><br />
 <h4><%=link_to edit_user_path_url(@user) do%>
   <span class="cart glyphicon glyphicon-pencil"</span>
