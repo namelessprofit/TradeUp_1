@@ -1,7 +1,9 @@
-<h1>Welcome to your profile!</h1>
-<%  if(@user.image)%>
-<h4>Image:<%=image_tag(@user.image)%></h4>
-<%end%>
+<%= render 'partials/userBanner' %>
+
+
+
+
+
 <h4>Username:<%=@user.username%></h4>
 <h4>Email:<%=@user.email%></h4>
 <h4>Location:<%=@user.location%></h4>
