@@ -1,0 +1,27 @@
+<h1>Welcome to groupie page</h1>
+<%@items.each do |item| %>
+<%=link_to '/items/show/'+(item.id.to_s) do%>
+<img class="item-image" src="<%= item.image%>" alt="item image">
+<%end%>
+<br />
+<%@found = Item.find_by_id(item.id)%>
+<%if logged_in?%>
+  <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
+  <h3><%=link_to post_favorites_path_url(item_id: item.id), :method=>'post' do%>
+    <span class="cart glyphicon glyphicon-heart-empty "</span>
+      <%end%></h3>
+  <%else%>
+  <h3><%=link_to delete_favorites_path_url(item_id: item.id), :method=>'delete' do%>
+    <span class="cart glyphicon glyphicon-heart"</span>
+      <%end%></h3>
+  <%end%>
+<%end%>
+<br /><%=item.title%>
+<br />
+<%=item.description%>
+<br />
+<p>condition:<%=item.condition%></p>
+<p>User:<%=item.user.username%></p>
+<br />
+<hr />
+<%end%>

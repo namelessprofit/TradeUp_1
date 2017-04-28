@@ -53,6 +53,7 @@ class OffersController < ApplicationController
             @myItem.user = @temp
             @myItem.save
             @theirItem.save
+            @offer.save
             flash[:success] = "Trade success,checkout your new item"
             redirect_to user_path_url(@user)
           else

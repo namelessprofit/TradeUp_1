@@ -19,5 +19,8 @@
 <h5>cateogry:<%=@item.category%> </h5>
 <h5>group:<%=@item.group%> </h5>
 <h5>User: <%=@item.user.username%></h5>
-
-<%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%>
+<%if (@offers.where(:initiator_id => @user.id.to_s).where(:requested_item_id => @item.id.to_s).empty?)%>
+<h3><%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%></h3>
+<%else%>
+<h4>You have already requested a trade for this item</h4>
+<%end%>

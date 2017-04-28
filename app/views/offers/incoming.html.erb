@@ -6,10 +6,14 @@
     <% @item = Item.find_by_id(offer.offered_item_id)%>
     <% @user = User.find_by_id(offer.initiator_id.to_s)%>
     <h4>Person that asked you: <%= @user.username%></h4>
+    <img class="item-image" src="<%= @user.image%>" alt="item image">
     <h4>Item they are offering: <%= @item.title %></h4>
+    <img class="item-image" src="<%= @item.image%>" alt="item image">
     <h4>Item of yours that they want: <%= @myitem.title%></h4>
+    <img class="item-image" src="<%= @myitem.image%>" alt="item image"><br />
     <%=link_to 'Accept', update_offer_path_url(offer, :is_accepted => true, :is_completed => true), :method => 'patch'%>
     <br /><br />
     <%=link_to 'Decline', update_offer_path_url(offer), :method => 'patch', params: {:is_accepted => false, :is_completed => true}%>
   <%end%>
+  <hr />
 <%end%>
