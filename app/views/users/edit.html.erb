@@ -1,5 +1,5 @@
 <div class="container">
-      <%=form_for @user, :url => "/users/update/"+(@user.id.to_s), :method => 'patch' do |f| %>
+      <%=form_for @user, html: { multipart: true }, :url => "/users/update/"+(@user.id.to_s), :method => 'patch' do |f| %>
       <%= f.label :username%>
       <%= f.text_field :username%>
       <br />
@@ -10,10 +10,10 @@
       <%= f.text_field :location%>
       <br />
       <%= f.label :Background_Color%>
-      <%= f.text_field :background_color%>
+      <%= f.color_field :background_color%>
       <br />
       <%= f.label :image%>
-      <%= f.text_field :image%>
+      <%= f.file_field :image%>
       <%= f.submit "Submit"%>
     <%end %>
   </div>
