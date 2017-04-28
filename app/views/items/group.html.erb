@@ -1,0 +1,16 @@
+<h1>group page</h1>
+<%@items.each do |item| %>
+<img class="item-image" src="<%= item.image%>" alt="item image">
+<br />
+<%=item.title%>
+<br />
+<%=item.description%>
+<br />
+<%=item.condition%>
+<br />
+<%=item.image%>
+<br />
+<%=item.user.username%>
+<br />
+<hr />
+<%end%>

@@ -41,7 +41,7 @@ User.create(users_data = [
     {:title => "clean your deck", :description =>"so clean", :is_available=> true,:group => 1, :category => 1, :condition => 1,:user_id => 6, :image => "http://i.imgur.com/WjGeU27.jpg"},
     {:title => "Build an ofice", :description =>"out of concrete", :is_available=> true,:group => 1, :category => 2, :condition => 1,:user_id => 8, :image => "http://i.imgur.com/WjGeU27.jpg"},
     {:title => "write a website", :description =>"im a nerd", :is_available=> true,:group => 1, :category => 3, :condition => 1,:user_id => 1, :image => "http://i.imgur.com/WjGeU27.jpg"},
-    {:title => "babysit your child", :description =>"i love barney", :is_available=> true,:group => 1, :category => 3, :condition => 1,:user_id => 4, :image => "http://i.imgur.com/WjGeU27.jpg"},
+    {:title => "babysit your child", :description =>"i love barney", :is_available=> true,:group => 1, :category => 4, :condition => 1,:user_id => 4, :image => "http://i.imgur.com/WjGeU27.jpg"},
     {:title => "Cook you mac and cheese", :description =>"super cheesy", :is_available=> true,:group => 1, :category => 5, :condition => 1,:user_id => 9, :image => "http://i.imgur.com/WjGeU27.jpg"},
     {:title => "serenade you with a mariachi band", :description =>"es loco", :is_available=> true,:group => 1, :category => 7, :condition => 1,:user_id => 1, :image => "http://i.imgur.com/WjGeU27.jpg"},
     {:title => "My comfy chair", :description =>"so comfy its crazy", :is_available=> true,:group => 3, :category => 2, :condition => 3,:user_id => 2, :image => "http://i.imgur.com/WjGeU27.jpg"},
