@@ -1,44 +1,44 @@
 <%= render 'partials/userBanner' %>
-<div class="col-xs-12" id="profileNav">
-</div>
-  <div class="row">
-    <div class="col-xs-6">
-      <h2><%= @user.username %></h2>
-      <h3><%= @user.location.to_s.to_region %> </h2>
-    </div>
-  <div class="col-xs-6">
-  </div>
-  </div>
-</div>
+<%if @user.id == current_user.id%>
+  <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
+  <h3><%= link_to 'View my Requested Trades', offers_path_url(@user)%></h3>
+  <h3><%= link_to 'View my Incoming Trades', incoming_offers_path_url(@user)%></h3>
 
-
-
-
-
-
-<h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
-<h3><%= link_to 'View my Requested Trades', offers_path_url(@user)%></h3>
-<h3><%= link_to 'View my Incoming Trades', incoming_offers_path_url(@user)%></h3>
-
-<br /><br />
-<h4><%=link_to edit_user_path_url(@user) do%>
-  <span class="cart glyphicon glyphicon-pencil"</span>
-<%end%></h4>
-
-
-<br />
-<h2>My items <%=link_to new_item_path_url, :method=> 'get' do%>
-  <span class="cart glyphicon glyphicon-plus"</span>
-    <%end%></h4>
-
-
-<%@items.each do |item|%>
-  <img class="item-image" src="<%= item.image%>" alt="item image">
-  <h5>title:<%=item.title%></h5>
-  <h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%>
-    <span class="cart glyphicon glyphicon-trash"</span>
-  <%end%></h4>
-  <h4 class = "link"><%=link_to edit_item_path_url(item),:method=>'get' do%>
+  <br /><br />
+  <h4><%=link_to edit_user_path_url(@user) do%>
     <span class="cart glyphicon glyphicon-pencil"</span>
   <%end%></h4>
 <%end%>
+<img class="item-image" src="<%= @user.image%>" alt="item image">
+<h4>Username:<%=@user.username%></h4>
+<h4>Email:<%=@user.email%></h4>
+<h4>Location:<%= @user.location.to_s.to_region %></h4>
+<h4>Rating:<%=@user.rating%></h4>
+
+
+<br />
+<%if @user.id == current_user.id%>
+<h2>My items<%=link_to new_item_path_url, :method=> 'get' do%>
+  <span class="cart glyphicon glyphicon-plus"</span>
+    <%end%></h4>
+  <%else%>
+  <h2><%=@user.username%>s items</h2>
+  <%end%>
+<%@items.each do |item|%>
+<img class="item-image" src="<%= item.image%>" alt="item image">
+<h5>title:<%=item.title%></h5>
+<h5>descrip:<%=item.description%></h5>
+<h5>condition:<%=item.condition%> </h5>
+<h5>cateogry:<%=item.category%> </h5>
+<h5>group:<%=item.group%> </h5>
+<%if @user.id == current_user.id%>
+<h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%>
+  <span class="cart glyphicon glyphicon-trash"</span>
+<%end%></h4>
+<h4 class = "link"><%=link_to edit_item_path_url(item),:method=>'get' do%>
+  <span class="cart glyphicon glyphicon-pencil"</span>
+<%end%></h4>
+<br /><br />
+<%end%>
+<%end%>
+<br /><br /><br /><br />
