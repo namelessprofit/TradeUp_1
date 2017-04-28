@@ -20,6 +20,10 @@ class ItemsController < ApplicationController
   end
 
   def group
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+    end
+    @favorites = Favorite.all
     puts"WERE IN GROUP METHOD"
     @group = params[:group]
     @category = params[:category]
@@ -30,6 +34,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @favorites = Favorite.all
+    @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
   end
 

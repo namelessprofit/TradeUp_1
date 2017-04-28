@@ -2,14 +2,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/learnmore', to: "pages#learnmore", as: 'learnmore_path'
 
-  post "/favorites", to: "favorites#create"
-  delete "/favorites/:id", to: "favorites#destroy"
+
 
   get '/items', to: 'items#index', as: 'items_path'
   get '/items/edit/:id', to: 'items#edit', as: 'edit_item_path'
   get '/items/group/:group/:category', to: 'items#group', as:'group_item_path'
   get '/items/new', to: 'items#new', as: 'new_item_path'
-  get '/items/:id', to: 'items#show', as: 'item_path'
+  get '/items/show/:id', to: 'items#show', as: 'item_path'
   post '/items', to: 'items#create'
   get '/items/:id/offers/new', to: 'offers#new', as: 'new_offer_path'
   post '/items/:id/offers', to: 'offers#create'
@@ -21,6 +20,8 @@ Rails.application.routes.draw do
   patch '/users/update/:id', to: 'users#update', as:'update_user_path'
   delete '/users/:id', to: 'users#destroy'
 
+  post "/favorites", to: "favorites#create", as:'post_favorites_path'
+  delete "/favorites", to: "favorites#destroy", as:'delete_favorites_path'
   get '/users/:id/favorites', to: 'favorites#index', as: 'favorites_path'
   post '/users/:id/favorites', to: 'favorites#create'
   get '/users/:id/offers', to: 'offers#index', as: 'offers_path'
