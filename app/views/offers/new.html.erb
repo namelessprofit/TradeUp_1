@@ -1,0 +1,23 @@
+<h1>Item you want</h1>
+<img class="item-image" src="<%= @item.image%>" alt="item image">
+<h5>title:<%=@item.title%></h5>
+<h5>descrip:<%=@item.description%></h5>
+<h5>condition:<%=@item.condition%> </h5>
+<h5>User: <%=@item.user.username%></h5>
+<br />
+<h1>Choose an item to trade</h1>
+<%if @items.empty?%>
+  <h3>No items, go to your profile and create some!</h3>
+  <h3><%= link_to 'Profile', user_path_url(current_user.id.to_s)%></h3>
+<%else%>
+  <%@items.each do |mitem|%>
+      <%=link_to create_offer_path_url(:requested_item_id => @item.id.to_s, :offered_item_id => mitem.id.to_s, :receiver_id => @item.user.id.to_s, :initiator_id => mitem.user.id.to_s), :method => 'post' do %>
+      <img class="item-image" src="<%= mitem.image%>" alt="item image">
+      <%end%>
+  <h5>title:<%=mitem.title%></h5>
+  <h5>descrip:<%=mitem.description%></h5>
+  <h5>condition:<%=mitem.condition%> </h5>
+  <h5>User: <%=mitem.user.username%></h5>
+  <%end%>
+<%end%>
+<br /><br />

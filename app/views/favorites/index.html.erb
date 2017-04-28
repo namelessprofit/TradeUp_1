@@ -1,6 +1,13 @@
 <h1>Welcome to your favorites page</h1>
 <% @favorites.each do |fav|%>
+<%=link_to '/items/show/'+(fav.item.id.to_s) do%>
 <%=image_tag(fav.item.image)%>
+<%end%>
+<h3><%=link_to delete_favorites_path_url(item_id: fav.item.id), :method=>'delete' do%>
+  <span class="cart glyphicon glyphicon-remove"</span>
+<%end%>
+
+
 <br />
 <%=fav.item.title%>
 <br />
