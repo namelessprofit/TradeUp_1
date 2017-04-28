@@ -1,13 +1,12 @@
 <%= render 'partials/userBanner' %>
 
+<h2><%= @user.username %></h2>
+<h3><%= @user.location.to_s.to_region %> </h2>
 <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
 <br /><br />
 <h4><%=link_to edit_user_path_url(@user) do%>
   <span class="cart glyphicon glyphicon-pencil"</span>
 <%end%></h4>
-<h4>Username:<%=@user.username%></h4>
-<h4>Location:<%=@user.location%></h4>
-<h4>Rating:<%=@user.rating%></h4>
 
 
 <br />
