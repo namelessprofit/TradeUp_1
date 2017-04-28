@@ -82,6 +82,9 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    minitest-rails (3.0.0)
+      minitest (~> 5.8)
+      railties (~> 5.0)
     multi_json (1.12.1)
     nio4r (2.0.0)
     nokogiri (1.7.1)
@@ -173,7 +176,10 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+
+  minitest-rails
   paperclip (~> 5.0.0)
+
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.2)
