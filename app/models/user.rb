@@ -23,7 +23,7 @@ class User < ApplicationRecord
   before_save :default_values
   def default_values
     self.background_color ||= '#e6e6e6'
-    self.image ||= 'http://www.revera.co.nz/media/1044/placeholder-person.jpg'
+    self.image.file.name ||= 'http://www.revera.co.nz/media/1044/placeholder-person.jpg'
   end
 
   has_secure_password
