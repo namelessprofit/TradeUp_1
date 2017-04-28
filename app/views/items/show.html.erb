@@ -20,4 +20,4 @@
 <h5>group:<%=@item.group%> </h5>
 <h5>User: <%=@item.user.username%></h5>
 
-<%=button_to "Make A Trade"%>
+<%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%>
