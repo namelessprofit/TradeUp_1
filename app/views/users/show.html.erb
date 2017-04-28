@@ -3,6 +3,7 @@
   <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
   <h3><%= link_to 'View my Requested Trades', offers_path_url(@user)%></h3>
   <h3><%= link_to 'View my Incoming Trades', incoming_offers_path_url(@user)%></h3>
+  <h3><%= link_to 'View my Trade History', history_offers_path_url(@user)%></h3>
 
   <br /><br />
   <h4><%=link_to edit_user_path_url(@user) do%>
@@ -31,6 +32,16 @@
 <h5>condition:<%=item.condition%> </h5>
 <h5>cateogry:<%=item.category%> </h5>
 <h5>group:<%=item.group%> </h5>
+
+
+<%if logged_in? && @user.id != current_user.id%>
+  <%if (@offers.where(:initiator_id => @currUser.id.to_s).where(:requested_item_id => item.id.to_s).empty?)%>
+  <h3><%=link_to "Make A Trade", new_offer_path_url(item_id: item.id), :controller => 'offers', :method =>'get'%></h3>
+  <%else%>
+  <h4>You have already requested a trade for this item</h4>
+  <%end%>
+<%end%>
+
 <%if @user.id == current_user.id%>
 <h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%>
   <span class="cart glyphicon glyphicon-trash"</span>

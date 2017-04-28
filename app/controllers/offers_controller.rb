@@ -12,6 +12,13 @@ class OffersController < ApplicationController
       @offers = Offer.where(:receiver_id => @user)
     end
 
+    def history
+      @user = current_user.id
+      puts "WERE IN INCOMING!"
+      @recOffers = Offer.where(:receiver_id => @user).where(:is_completed => true)
+      @sentOffers = Offer.where(:initiator_id => @user).where(:is_completed => true)
+    end
+
     def new
       puts "WERE IN NEW"
       puts params[:item_id.to_s]
