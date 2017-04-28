@@ -2,15 +2,22 @@
 <%@items.each do |item| %>
 <img class="item-image" src="<%= item.image%>" alt="item image">
 <br />
-<%=item.title%>
+<%@found = Item.find_by_id(item.id)%>
+<%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
+<p><%=link_to post_favorites_path_url(item_id: item.id), :method=>'post' do%>
+  <span class="cart glyphicon glyphicon-heart-empty "</span>
+    <%end%></p>
+<%else%>
+<p><%=link_to delete_favorites_path_url(item_id: item.id), :method=>'delete' do%>
+  <span class="cart glyphicon glyphicon-heart"</span>
+    <%end%></p>
+<%end%>
+<br /><%=item.title%>
 <br />
 <%=item.description%>
 <br />
-<%=item.condition%>
-<br />
-<%=item.image%>
-<br />
-<%=item.user.username%>
+<p>condition:<%=item.condition%></p>
+<p>User:<%=item.user.username%></p>
 <br />
 <hr />
 <%end%>
