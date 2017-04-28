@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @services = Item.servicecategories.map { |key, value| [key.humanize, key] }
+    @experiences = Item.experiencecategories.map { |key, value| [key.humanize, key] }
+    @items = Item.itemcategories.map { |key, value| [key.humanize, key] }
   end
 
   def create

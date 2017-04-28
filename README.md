@@ -12,6 +12,7 @@ TradeUP is based on the story of a Canadian blogger named [Kyle MacDonald](https
 - CSS
 
 ##  Cool features
+- Paperclip
 
 ## Tricky code
 

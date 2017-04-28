@@ -12,7 +12,7 @@
 <img class="item-image" src="<%= @user.image%>" alt="item image">
 <h4>Username:<%=@user.username%></h4>
 <h4>Email:<%=@user.email%></h4>
-<h4>Location:<%=@user.location%></h4>
+<h4>Location:<%= @user.location.to_s.to_region %></h4>
 <h4>Rating:<%=@user.rating%></h4>
 
 

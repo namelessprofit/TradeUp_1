@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new(user_params_create)
-      puts"HEYYYYY"
       puts @user
       if @user.save
         flash[:success] = "Welcome!"

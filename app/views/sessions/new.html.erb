@@ -1,12 +1,12 @@
 
-<div class="container" align="center">
+<div class="container" align="center" id="signInForm">
 
   <h1>Welcome Back!</h1>
     <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: '/login') do |f| %>
 
   <div class="form-group">
     <div class="col align-self-center">
-      <%= f.text_field :email, class: "form-control", placeholder: "Username", autofocus: true %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
     </div>
   </div>
 
@@ -18,7 +18,7 @@
 
   <a href="/signup">Don't have an account?</a><br/>
 
-  <%= f.submit "Log in", class: 'btn btn-primary btn-md' %>
+  <%= f.submit "Log In", class: 'btn btn-primary btn-md' %>
 
   <% end %>
 
