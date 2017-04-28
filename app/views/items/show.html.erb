@@ -1,0 +1,23 @@
+<h1>Welcome to show page</h1>
+<img class="item-image" src="<%= @item.image%>" alt="item image">
+
+<%@found = Item.find_by_id(@item.id)%>
+<%if logged_in?%>
+  <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
+  <h3><%=link_to post_favorites_path_url(item_id: @item.id), :method=>'post' do%>
+    <span class="cart glyphicon glyphicon-heart-empty "</span>
+      <%end%></h3>
+  <%else%>
+  <h3><%=link_to delete_favorites_path_url(item_id: @item.id), :method=>'delete' do%>
+    <span class="cart glyphicon glyphicon-heart"</span>
+      <%end%></h3>
+  <%end%>
+<%end%>
+<h5>title:<%=@item.title%></h5>
+<h5>descrip:<%=@item.description%></h5>
+<h5>condition:<%=@item.condition%> </h5>
+<h5>cateogry:<%=@item.category%> </h5>
+<h5>group:<%=@item.group%> </h5>
+<h5>User: <%=@item.user.username%></h5>
+
+<%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%>
