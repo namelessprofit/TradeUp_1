@@ -1,0 +1,13 @@
+<h1>Welcome to your favorites page</h1>
+<% @favorites.each do |fav|%>
+<%=image_tag(fav.item.image)%>
+<br />
+<%=fav.item.title%>
+<br />
+<%=fav.item.description%>
+<br />
+<%=fav.item.condition%>
+<br />
+<%=fav.user.username%>
+<br /><hr />
+<%end%>
