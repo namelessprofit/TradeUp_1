@@ -6,10 +6,10 @@
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        flash[:success]="You have logged in!"
+        flash[:success]= "Welcome!"
         redirect_to '/'
       else
-        flash.now[:danger]= @user.errors.full_messages
+        flash[:error]= "An error has occurred. Please try again."
         render 'new'
       end
     end

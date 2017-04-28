@@ -1,5 +1,5 @@
 <div class="col-xs-12 text-center" id="profileBanner" style="background-color: <%=@user.background_color%>">
   <% if (@user.image) %>
-    <%= image_tag @user.image, :id => "profilePic" %>
+    <%= image_tag @user.image.url(:medium), :id => "profilePic" %>
   <% end %>
 </div>
