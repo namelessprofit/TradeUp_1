@@ -1,22 +1,21 @@
 <h1>Create a new item for trade!</h1>
 <%= form_for(@item) do |f|%>
-<%=f.label :title%>
-<%= f.text_area :title%>
-<br />
+<%= f.text_field :title%>
+<br/>
 <%=f.label :description%>
 <%= f.text_area :description%>
-<br />
+<br/>
 <%=f.label :condition%>
 <%= f.number_field :condition%>
-<br />
+<br/>
 <%=f.label :image%>
 <%= f.text_area :image%>
-<br />
+<br/>
 <%=f.label :group%>
 <%= f.number_field :group%>
-<br />
+<br/>
 <%=f.label :category%>
 <%= f.number_field :category%>
-<br />
+<br/>
 <%= f.submit "Create" %>
 <%end%>
