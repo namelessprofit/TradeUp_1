@@ -1,7 +1,8 @@
 class OffersController < ApplicationController
 
     def index
-      @offers = Offer.all
+      @user = current_user.id.to_s
+      @offers = Offer.where(initiator_id: @user).where(receiver_id: @user)
     end
 
     def new
