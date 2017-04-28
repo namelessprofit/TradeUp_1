@@ -33,10 +33,20 @@ class ItemsController < ApplicationController
                   where(category: @category)
   end
 
+  def groupie
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+    end
+    @favorites = Favorite.all
+    @group = params[:group]
+    @items = Item.where(group: @group)
+  end
+
   def show
     @favorites = Favorite.all
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
+    @offers = Offer.all
   end
 
   def edit
