@@ -2,11 +2,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/learnmore', to: "pages#learnmore", as: 'learnmore_path'
 
-
-
   get '/items', to: 'items#index', as: 'items_path'
   get '/items/edit/:id', to: 'items#edit', as: 'edit_item_path'
   get '/items/group/:group/:category', to: 'items#group', as:'group_item_path'
+  get '/items/groupie/:group', to: 'items#groupie', as:'groupie_item_path'
   get '/items/new', to: 'items#new', as: 'new_item_path'
   get '/items/show/:id', to: 'items#show', as: 'item_path'
   post '/items', to: 'items#create'
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user_path'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user_path'
   patch '/users/update/:id', to: 'users#update', as:'update_user_path'
+  patch '/users/updateRating/:id', to: 'users#updateRating', as:'update_user_rating_path'
+
   delete '/users/:id', to: 'users#destroy'
 
   post "/favorites", to: "favorites#create", as:'post_favorites_path'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   post '/offers', to: 'offers#create', as:'create_offer_path'
   get '/offers/users/:id', to: 'offers#index', as: 'offers_path'
   get '/incomingoffers/users/:id', to: 'offers#incoming', as: 'incoming_offers_path'
+  get '/historyoffers/users/:id', to: "offers#history", as: 'history_offers_path'
   get '/users/:id/offers/:id', to: 'offers#show', as: 'offer_path'
   patch '/offers/:id', to: 'offers#update', as: 'update_offer_path'
 

@@ -1,9 +1,12 @@
 /*
  *= require_tree .
  *= require_self
+ *= require slick
+ *= require slick-theme
  *= require pages
  *= require users
  *= require sessions
+ *= require favorites
  */
 
 div {
@@ -34,6 +37,10 @@ input:-webkit-autofill:active {
    position: relative;
  }
 
+.blue {
+  background-color: #6196c2;
+  margin-left: .5vw;
+}
  #lowerNav {
    background-color: #2dcc36;
    height: 40px;
@@ -42,6 +49,20 @@ input:-webkit-autofill:active {
    margin-top: 2.9vw;
    padding: 8px;
    padding-right: 2vw;
+ }
+
+#lowerNav a:hover {
+  color: #f1f1f1;
+}
+
+ .tradeBtn {
+   float: left;
+   margin-left: 6vw;
+   font-weight: bold;
+ }
+ .profileBtn {
+   float: left;
+   margin-left: 2vw;
  }
 
  #logo {
@@ -88,5 +109,5 @@ input:-webkit-autofill:active {
  }
 
  a :hover {
-   color: white;
+   color: grey;
  }
