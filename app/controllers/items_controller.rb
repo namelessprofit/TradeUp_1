@@ -46,10 +46,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @favorites = Favorite.all
-    @user = User.find_by_id(current_user.id.to_s)
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+      @offers = Offer.all
+      @favorites = Favorite.all
+    end
     @item = Item.find_by_id(params[:id])
-    @offers = Offer.all
   end
 
   def edit

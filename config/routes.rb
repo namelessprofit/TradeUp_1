@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post '/offers', to: 'offers#create', as:'create_offer_path'
   get '/offers/users/:id', to: 'offers#index', as: 'offers_path'
   get '/incomingoffers/users/:id', to: 'offers#incoming', as: 'incoming_offers_path'
+  get '/historyoffers/users/:id', to: "offers#history", as: 'history_offers_path'
   get '/users/:id/offers/:id', to: 'offers#show', as: 'offer_path'
   patch '/offers/:id', to: 'offers#update', as: 'update_offer_path'
 

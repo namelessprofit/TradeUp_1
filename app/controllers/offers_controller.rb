@@ -12,6 +12,13 @@ class OffersController < ApplicationController
       @offers = Offer.where(:receiver_id => @user)
     end
 
+    def history
+      @user = current_user.id
+      puts "WERE IN INCOMING!"
+      @recOffers = Offer.where(:receiver_id => @user).where(:is_completed => true)
+      @sentOffers = Offer.where(:initiator_id => @user).where(:is_completed => true)
+    end
+
     def new
       puts "WERE IN NEW"
       puts params[:item_id.to_s]
@@ -53,6 +60,8 @@ class OffersController < ApplicationController
             @myItem.user = @temp
             @myItem.save
             @theirItem.save
+        @old = Offer.where(initiator_id: current_user.id.to_s).where(offered_item_id: @offer.requested_item_id)
+        @old.delete_all
             @offer.save
             flash[:success] = "Trade success,checkout your new item"
             redirect_to user_path_url(@user)

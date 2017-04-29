@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     end
 
     def show
+      @offers = Offer.all
+      @currUser = User.find_by_id(current_user.id.to_s)
       @user = User.find_by_id(params[:id])
       @items = @user.items
     end

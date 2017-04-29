@@ -21,7 +21,7 @@
 <%=item.description%>
 <br />
 <p>condition:<%=item.condition%></p>
-<p>User:<%=item.user.username%></p>
+<p>User:<%=link_to item.user.username, user_path_url(item.user)%></p>
 <br />
 <hr />
 <%end%>
