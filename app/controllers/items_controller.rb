@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
     puts @category
     puts @group
     @items = Item.where(group: @group).
-                  where(category: @category)
+    where(category: @category)
   end
 
   def groupie
@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
       @user = User.find_by_id(current_user.id.to_s)
     end
     @favorites = Favorite.all
+
     @group = params[:group]
     @items = Item.where(group: @group)
   end
@@ -51,6 +52,7 @@ class ItemsController < ApplicationController
       @offers = Offer.all
       @favorites = Favorite.all
     end
+    
     @item = Item.find_by_id(params[:id])
   end
 
