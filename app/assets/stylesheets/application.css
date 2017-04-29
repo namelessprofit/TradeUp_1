@@ -1,6 +1,8 @@
 /*
  *= require_tree .
  *= require_self
+ *= require slick
+ *= require slick-theme
  *= require pages
  *= require users
  *= require sessions
@@ -44,6 +46,20 @@ input:-webkit-autofill:active {
    padding-right: 2vw;
  }
 
+#lowerNav a:hover {
+  color: #f1f1f1;
+}
+
+ .tradeBtn {
+   float: left;
+   margin-left: 6vw;
+   font-weight: bold;
+ }
+ .profileBtn {
+   float: left;
+   margin-left: 2vw;
+ }
+
  #logo {
    height: 130px;
    position: absolute;
@@ -85,8 +101,4 @@ input:-webkit-autofill:active {
  nav a {
   color: black;
   font-size: 16px;
- }
-
- a :hover {
-   color: white;
  }
