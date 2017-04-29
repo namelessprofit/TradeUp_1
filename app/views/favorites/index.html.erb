@@ -1,20 +1,26 @@
-<h1>Welcome to your favorites page</h1>
-<% @favorites.each do |fav|%>
-<%=link_to '/items/show/'+(fav.item.id.to_s) do%>
-<%=image_tag(fav.item.image)%>
-<%end%>
-<h3><%=link_to delete_favorites_path_url(item_id: fav.item.id), :method=>'delete' do%>
-  <span class="cart glyphicon glyphicon-remove"</span>
-<%end%>
+<%= render 'partials/userBanner' %>
 
+<div class="col-xs-12" align="center">
+ <div class="row" id="favContainer">
+     <% @favorites.each do |fav|%>
+     <div class="col-xs-4">
+      <%=link_to '/items/show/'+(fav.item.id.to_s) do %>
+      <img class="item-image" src="<%= fav.item.image%>" alt="item image">
+      <%end%>
+      <h3><%=link_to delete_favorites_path_url(item_id: fav.item.id), :method=>'delete' do%>
+        <span class="cart glyphicon glyphicon-heart"</span>
+      <%end%>
 
-<br />
-<%=fav.item.title%>
-<br />
-<%=fav.item.description%>
-<br />
-<%=fav.item.condition%>
-<br />
-<%=fav.user.username%>
-<br /><hr />
-<%end%>
+      <br />
+      <%=fav.item.title%>
+      <br />
+      <%=fav.item.description%>
+      <br />
+      <%=fav.item.condition%>
+      <br />
+      <%=fav.user.username%>
+      <br /><hr />
+        </div>
+      <%end%>
+   </div>
+</div>
