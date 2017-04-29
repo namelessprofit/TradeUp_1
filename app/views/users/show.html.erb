@@ -16,27 +16,21 @@
 </div>
 
 <div class="col-xs-12 text-center">
-  <h2>My Trade History</h2>
+  <h2>My Items</h2>
   <div class="slick">
     <% @items.each do |item| %>
       <div>
-        <%= image_tag item.image.url(:thumbnail) %>
-        <h5>title:<%=item.title%></h5>
-        <h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%><span class="cart glyphicon glyphicon-trash"</span><%end%></h4>
-        <h4 class="link"><%=link_to edit_item_path_url(item),:method=>'get' do%><span class="cart glyphicon glyphicon-pencil"</span><% end %></h4>
+        <h4><%= item.title %></h4>
+        <img class="item-image" src="<%= item.image %>" alt="<%= item.title %>">
+        <h5><%= item.description %></h5>
+        <h4 class = "item-trash-link"><%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="cart glyphicon glyphicon-trash"</span><%end%></h4>
+        <h4 class="link"><%= link_to edit_item_path_url(item), :method=>'get' do %><span class="cart glyphicon glyphicon-pencil"</span><% end %></h4>
       </div>
     <%end%>
   </div>
 </div>
 <br />
 
-<%@items.each do |item|%>
-<img class="item-image" src="<%= item.image%>" alt="item image">
-<h5>title:<%=item.title%></h5>
-<h5>descrip:<%=item.description%></h5>
-<h5>condition:<%=item.condition%> </h5>
-<h5>cateogry:<%=item.category%> </h5>
-<h5>group:<%=item.group%> </h5>
 
 
 <%if logged_in? && @user.id != current_user.id%>
@@ -45,7 +39,6 @@
   <%else%>
   <h4>You have already requested a trade for this item</h4>
   <%end%>
-<%end%>
 
 <%if @user.id == current_user.id%>
 <h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%>
