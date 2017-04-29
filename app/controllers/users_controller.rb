@@ -28,11 +28,7 @@ class UsersController < ApplicationController
 
     def update
       @user = User.find_by_id(params[:id])
-      puts "USER PARAMS"
-      puts user_params_edit[:location]
-      puts @user.location
        if (@user.update(user_params_edit))
-        flash[:success] = "Profile Updated"
         redirect_to user_path_url(@user)
       else
         flash[:error] = @user.errors.full_messages
