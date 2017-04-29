@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
       @offers = Offer.all
       @favorites = Favorite.all
     end
-    
+
     @item = Item.find_by_id(params[:id])
   end
 
@@ -61,11 +61,17 @@ class ItemsController < ApplicationController
   end
 
   def update
+
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
-    @item.update_attributes(item_params)
-    redirect_to user_path_url(@user)
-    flash[:success]=@item.title + " was updated"
+
+   if @item.update(edit_item_params)
+     flash[:success] = @item.title + " was updated succesfully."
+     redirect_to user_path_url(@user)
+   else
+     flash[:error] = "There was an error updating your " + @item.title +". Please try again."
+     redirect_to user_path_url(@user)
+   end
   end
 
   def destroy
@@ -80,6 +86,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :description,:condition,:image,:category, :group)
+  end
+
+  def edit_item_params
+    params.require(:item).permit(:title, :description,:condition,:image)
   end
 
   def item_params_group

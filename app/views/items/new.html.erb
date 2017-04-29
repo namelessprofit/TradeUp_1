@@ -13,6 +13,8 @@
       <br/>
       <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
       <br/>
+      <%= f.text_area :description, class: "form-control", placeholder: "Provide details", autofocus: true %>
+      <br/>
       <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
       <br/>
       <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %>

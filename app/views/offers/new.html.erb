@@ -7,7 +7,7 @@
 <br />
 <h1>Choose an item to trade</h1>
 <%if @items.empty?%>
-  <h3>No items, go to your profile and create some!</h3>
+  <h3>You don't have any items. Post one for trade <%= link_to 'here.', new_item_path_url %></h3>
   <h3><%= link_to 'Profile', user_path_url(current_user.id.to_s)%></h3>
 <%else%>
   <%@items.each do |mitem|%>

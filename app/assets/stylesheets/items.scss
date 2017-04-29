@@ -1,11 +1,7 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .item-image{
-  height:200px;
-  width:200px;
+  max-width:200px;
   box-shadow: 5px 5px 5px #888888;
+}
 
 .group-item-image {
   height: 300px;
