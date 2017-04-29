@@ -8,34 +8,22 @@
   <%=form_for @user, html: { multipart: true }, :url => "/users/update/"+(@user.id.to_s), :method => 'patch' do |f| %>
     <div class="container" align="center" id="newUserForm">
       <div class="form-group">
-        <div class="col self align center">
-            <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
-        </div>
+        <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
       </div>
       <div class="form-group">
-          <div class="col self align center">
-              <%= f.text_field :location, class: "form-control", placeholder: "Zipcode" %>
-          </div>
+        <%= f.text_field :location, class: "form-control", placeholder: "Zipcode" %>
       </div>
       <div class="form-group">
-          <div class="col self align center">
-              <%= f.text_field :username, class: "form-control", placeholder: "Username", autofocus: true %>
-          </div>
+        <%= f.text_field :username, class: "form-control", placeholder: "Username", autofocus: true %>
       </div>
       <div class="form-group">
-          <div class="col self align center">
-              <%= f.color_field :background_color, class: "form-control", placeholder: "Background Color", autofocus: true %>
-          </div>
+        <%= f.color_field :background_color, class: "form-control", placeholder: "Background Color", autofocus: true %>
       </div>
       <div class="form-group">
-          <div class="col self align center">
-              <%= f.file_field :image, class: "form-control", placeholder: "Profile picture", autofocus: true %>
-          </div>
+        <%= f.file_field :image, class: "form-control", placeholder: "Profile picture", autofocus: true %>
       </div>
       <div class="form-group">
-          <div class="col self align center">
-              <%= f.submit "Save Profile Changes", class: 'btn btn-warning btn-sm' %>
-          </div>
+        <%= f.submit "Save Profile Changes", class: 'btn btn-warning btn-sm' %>
       </div>
     </div>
   <% end %>
