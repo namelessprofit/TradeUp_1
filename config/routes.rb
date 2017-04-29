@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/learnmore', to: "pages#learnmore", as: 'learnmore_path'
 
-
-
   get '/items', to: 'items#index', as: 'items_path'
   get '/items/edit/:id', to: 'items#edit', as: 'edit_item_path'
   get '/items/group/:group/:category', to: 'items#group', as:'group_item_path'
