@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
   end
-
+  
   def edit
     @item = Item.find_by_id(params[:id])
   end
