@@ -35,8 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 gem 'area'
+<<<<<<< HEAD
+=======
 gem "jquery-slick-rails"
 
+>>>>>>> de8ebce92b97d4062f14aa780bd4b5520f979b92
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

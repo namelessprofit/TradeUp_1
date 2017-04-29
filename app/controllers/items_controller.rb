@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
 
     @item = Item.find_by_id(params[:id])
   end
-
+  
   def edit
     @item = Item.find_by_id(params[:id])
   end
