@@ -1,25 +1,29 @@
-<div class="col-xs-12 text-center" id="profileBanner" style="background-color: <%=@user.background_color%>">
-  <% if (@user.image) %>
-    <%= image_tag @user.image, :id => "profilePic" %>
-  <% end %>
+<%= render 'partials/userBanner' %>
+<div class="col-xs-12" style="margin-top: 45px">
 </div>
-
-<div class="container">
-      <%=form_for @user, html: { multipart: true }, :url => "/users/update/"+(@user.id.to_s), :method => 'patch' do |f| %>
-      <%= f.label :username%>
-      <%= f.text_field :username, class: "form-control"%>
-      <br />
-      <%= f.label :email%>
-      <%= f.text_field :email, class: "form-control"%>
-      <br />
-      <%= f.label :location%>
-      <%= f.text_field :location, class: "form-control" %>
-      <br />
-      <%= f.label :Background_Color%>
-      <%= f.color_field :background_color, class: "form-control", type: "color"%>
-      <br />
-      <%= f.label :image%>
-      <%= f.file_field :image%>
-      <%= f.submit "Submit"%>
-    <%end %>
-  </div>
+<h1 align="center">Edit Your Profile</h1>
+<br />
+<p align="center">Add a fun background color and profile image below!</p>
+<br />
+  <%=form_for @user, html: { multipart: true }, :url => "/users/update/"+(@user.id.to_s), :method => 'patch' do |f| %>
+    <div class="container" align="center" id="newUserForm">
+      <div class="form-group">
+        <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :location, class: "form-control", placeholder: "Zipcode" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :username, class: "form-control", placeholder: "Username", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.color_field :background_color, class: "form-control", placeholder: "Background Color", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.file_field :image, class: "form-control", placeholder: "Profile picture", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Save Profile Changes", class: 'btn btn-warning btn-sm' %>
+      </div>
+    </div>
+  <% end %>

@@ -37,6 +37,10 @@ input:-webkit-autofill:active {
    position: relative;
  }
 
+.blue {
+  background-color: #6196c2;
+  margin-left: .5vw;
+}
  #lowerNav {
    background-color: #2dcc36;
    height: 40px;

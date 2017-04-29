@@ -45,7 +45,7 @@
     <% @items.each do |item| %>
       <div>
         <h4><%= item.title %></h4>
-        <img class="item-image" src="<%= item.image %>" alt="<%= item.title %>">
+        <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
         <h5><%= item.description %></h5>
         <h4 class = "item-trash-link"><%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="cart glyphicon glyphicon-trash"</span><%end%></h4>
         <h4 class="link"><%= link_to edit_item_path_url(item), :method=>'get' do %><span class="cart glyphicon glyphicon-pencil"</span><% end %></h4>
