@@ -6,6 +6,7 @@
  *= require pages
  *= require users
  *= require sessions
+ *= require favorites
  */
 
 div {
