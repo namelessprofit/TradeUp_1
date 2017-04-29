@@ -1,27 +1,76 @@
-<h1>group page</h1>
-<%@items.each do |item| %>
-<%=link_to '/items/show/'+(item.id.to_s) do%>
-<img class="item-image" src="<%= item.image%>" alt="item image">
-<%end%>
-<br />
-<%@found = Item.find_by_id(item.id)%>
-<%if logged_in?%>
-  <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
-  <h3><%=link_to post_favorites_path_url(item_id: item.id), :method=>'post' do%>
-    <span class="cart glyphicon glyphicon-heart-empty "</span>
-      <%end%></h3>
-  <%else%>
-  <h3><%=link_to delete_favorites_path_url(item_id: item.id), :method=>'delete' do%>
-    <span class="cart glyphicon glyphicon-heart"</span>
-      <%end%></h3>
-  <%end%>
-<%end%>
-<br /><%=item.title%>
-<br />
-<%=item.description%>
-<br />
-<p>condition:<%=item.condition%></p>
-<p>User:<%=item.user.username%></p>
-<br />
-<hr />
-<%end%>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-6">
+      <%@items.each do |item| %>
+      <%=link_to '/items/show/'+(item.id.to_s) do%>
+      <img class="group-item-image" src="<%= item.image%>" alt="item image">
+      <%end%>
+      <br/>
+      <%@found = Item.find_by_id(item.id)%>
+      <%if logged_in?%>
+      <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
+      <h3><%=link_to post_favorites_path_url(item_id: item.id), :method=>'post' do%>
+      <span class="cart glyphicon glyphicon-heart-empty " </span> <%end%></h3>
+      <%else%>
+      <h3><%=link_to delete_favorites_path_url(item_id: item.id), :method=>'delete' do%>
+      <span class="cart glyphicon glyphicon-heart" </span> <%end%></h3>
+      <%end%>
+      <%end%>
+      <div class="itemInfo">
+        <br/><%=item.title%>
+        <br/>
+        <%=item.description%>
+        <br/>
+        <p>condition:<%=item.condition%></p>
+        <p>User:<%=item.user.username%></p>
+        <br/>
+        <%end%>
+      </div>
+    </div>
+    <div class="col-xs-6" align="center">
+      <div class="row">
+        <div class="col-xs-12">
+          <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+        </div>
+
+        <div class="col-xs-12">
+          <hr>
+          <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="col-xs-12" align="center">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+    </div>
+  </div>
+<div class="second-row">
+<br/>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("filler.jpeg", :alt => "rss feed") %>
+    </div>
+  </div>
+</div>
+<br/>
+</div>
+
+<%= render 'partials/footer' %>

@@ -30,12 +30,12 @@ class ItemsController < ApplicationController
     puts @category
     puts @group
     @items = Item.where(group: @group).
-                  where(category: @category)
+    where(category: @category)
   end
 
   def show
     @favorites = Favorite.all
-    @user = User.find_by_id(current_user.id.to_s)
+    @user = User.find_by_id(params[:id])
     @item = Item.find_by_id(params[:id])
   end
 
