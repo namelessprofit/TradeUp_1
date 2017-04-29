@@ -1,19 +1,43 @@
 <%= render 'partials/userBanner' %>
-<div class="col-xs-12">
-  <div class="row">
-    <div class="col-xs-6">
-      <h2><%= @user.username %> <%=link_to edit_user_path_url(@user) do%><span class="cart glyphicon glyphicon-pencil"</span><%end%></h2>
-        <h3><%= @user.location.to_s.to_region %> </h2>
-    </div>
-    <div class="col-xs-6" id="profileNav">
-      <ul class="pull-right">
-        <li><%= link_to 'My Favorites', favorites_path_url(@user)%></li>
-        <li><%= link_to 'My Sent Offers', offers_path_url(@user)%></li>
-        <li><%= link_to 'My Incoming Offers', incoming_offers_path_url(@user)%></li>
-      </ul>
-    </div>
-  </div>
-</div>
+
+<%if @user.id == current_user.id%>
+  <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
+  <h3><%= link_to 'View my Requested Trades', offers_path_url(@user)%></h3>
+  <h3><%= link_to 'View my Incoming Trades', incoming_offers_path_url(@user)%></h3>
+  <h3><%= link_to 'View my Trade History', history_offers_path_url(@user)%></h3>
+
+  <br /><br />
+  <h4><%=link_to edit_user_path_url(@user) do%>
+    <span class="cart glyphicon glyphicon-pencil"</span>
+  <%end%></h4>
+<%end%>
+<img class="item-image" src="<%= @user.image%>" alt="item image">
+<h4>Username:<%=@user.username%></h4>
+<h4>Email:<%=@user.email%></h4>
+<h4>Location:<%= @user.location.to_s.to_region %></h4>
+<%@stars =(@user.rating / @user.rating_count).floor%>
+<h4>Rating:<%=@stars%></h4>
+<%if logged_in? && @user.id != current_user.id%>
+<% @check = false %>
+    <%if cookies[:rated]%>
+    <% @rated = cookies[:rated].split('.')%>
+  <% @rated.each do |id|%>
+    <%if id == @user.id.to_s%>
+    <%@check = true %>
+    <%end%>
+  <%end%>
+  <%end%>
+  <%if @check == false%>
+  <p>Rate this user </p>
+      <%=form_for @user, :url => "/users/updateRating/"+(@user.id.to_s) do |f| %>
+        <%=f.label :rating%>
+        <%= f.number_field :rating, :value => 0, :max => 5, :min => 0%>
+        <%= f.submit "Go" %>
+      <%end%>
+    <%else%>
+    <p>You have already left a review for this user</p>
+    <%end%>
+<%end%>
 
 <div class="col-xs-12 text-center">
   <h2>My Items</h2>
