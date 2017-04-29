@@ -19,8 +19,6 @@
       <br/>
       <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %>
       <br/>
-      <%= f.text_area :title, class: "form-control", placeholder: "Description", autofocus: true %>
-      <br/>
       <%= f.submit "Submit for Trade", class: 'btn btn-warning btn-md center-block', align:"right" %>
       <%end%>
     </div>
