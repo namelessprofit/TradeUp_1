@@ -27,11 +27,8 @@ class ItemsController < ApplicationController
       @user = User.find_by_id(current_user.id.to_s)
     end
     @favorites = Favorite.all
-    puts"WERE IN GROUP METHOD"
     @group = params[:group]
     @category = params[:category]
-    puts @category
-    puts @group
     @items = Item.where(group: @group).
     where(category: @category)
   end
@@ -70,6 +67,7 @@ class ItemsController < ApplicationController
      redirect_to user_path_url(@user)
    else
      flash[:error] = "There was an error updating your " + @item.title + ". Please try again."
+
      redirect_to user_path_url(@user)
    end
   end

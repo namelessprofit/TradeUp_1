@@ -51,7 +51,7 @@
   <div class="slick ">
     <% @items.each do |item| %>
         <h4><%= item.title %></h4>
-        <img class="item-image" src="<%= item.image %>" alt="<%= item.title %>">
+        <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
         <h5><%= item.description %></h5>
         <%if logged_in? && @user.id == current_user.id%>
           <h4 class = "item-trash-link"><%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %>

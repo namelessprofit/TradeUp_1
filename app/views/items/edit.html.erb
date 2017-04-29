@@ -1,5 +1,5 @@
 <h1 align="center">Edit your trade item!</h1>
-<%=form_for @item, html: { multipart: true }, :url => "/items/update/"+(@item.id.to_s) do |f| %>
+<%= form_for @item, html: { multipart: true }, :url => "/items/update/"+(@item.id.to_s) do |f| %>
 <div class="container" id="newItemForm">
   <div class="form-group">
     <div class="col align-self-center">
