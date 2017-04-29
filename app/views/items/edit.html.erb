@@ -1,22 +1,20 @@
-<h1>Edit your item trade!</h1>
-<%=form_for @item, :url => "/items/update/"+(@item.id.to_s) do |f| %>
-<%=f.label :title%>
-<%= f.text_area :title%>
-<br />
-<%=f.label :description%>
-<%= f.text_area :description%>
-<br />
-<%=f.label :condition%>
-<%= f.number_field :condition%>
-<br />
-<%=f.label :image%>
-<%= f.text_area :image%>
-<br />
-<%=f.label :group%>
-<%= f.number_field :group%>
-<br />
-<%=f.label :category%>
-<%= f.number_field :category%>
-<br />
-<%= f.submit "Create" %>
-<%end%>
+<h1 align="center">Edit your trade item!</h1>
+<%= form_for @item, html: { multipart: true }, :url => "/items/update/"+(@item.id.to_s) do |f| %>
+<div class="container" id="newItemForm">
+  <div class="form-group">
+    <div class="col align-self-center">
+      <h3>Your <strong><%= @item.group %></strong> is locked in the <strong><%= @item.category %></strong> category type.</h3>
+      <br/><br />
+      <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+      <br/>
+      <%= f.text_area :description, class: "form-control", placeholder: "Provide details", autofocus: true %>
+      <br/>
+      <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
+      <br/>
+      <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %>
+      <br/>
+      <%= f.submit "Save Changes", class: 'btn btn-success btn-md center-block', align:"right" %>
+      <%end%>
+    </div>
+  </div>
+</div>

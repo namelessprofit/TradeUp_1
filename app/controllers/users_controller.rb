@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new(user_params_create)
-      puts"HEYYYYY"
       puts @user
       if @user.save
         flash[:success] = "Welcome!"
@@ -19,6 +18,8 @@ class UsersController < ApplicationController
     end
 
     def show
+      @offers = Offer.all
+      @currUser = User.find_by_id(current_user.id.to_s)
       @user = User.find_by_id(params[:id])
       @items = @user.items
     end
@@ -29,17 +30,24 @@ class UsersController < ApplicationController
 
     def update
       @user = User.find_by_id(params[:id])
-      puts "USER PARAMS"
-      puts user_params_edit[:location]
-      puts @user.location
        if (@user.update(user_params_edit))
-        flash[:success] = "Profile Updated"
         redirect_to user_path_url(@user)
       else
         flash[:error] = @user.errors.full_messages
         redirect_to edit_user_path_url(@user)
-
     end
+  end
+
+  def updateRating
+    @user = User.find_by_id(params[:id])
+    puts "UPDATE RATINGS "
+    puts user_params_update[:rating]
+    @user.rating += user_params_update[:rating].to_i
+    @user.rating_count += 1
+    @user.save
+    cookies[:rated] = '.' if cookies[:rated].nil?
+    cookies[:rated] += @user.id.to_s + '.'
+    redirect_to :back
   end
 
     def destroy
@@ -54,6 +62,10 @@ class UsersController < ApplicationController
     end
 
     def user_params_edit
-      params.require(:user).permit(:location, :image, :background_color, :email, :username)
+      params.require(:user).permit(:location, :image, :background_color, :email, :username, :rating)
+    end
+
+    def user_params_update
+      params.require(:user).permit(:rating)
     end
 end

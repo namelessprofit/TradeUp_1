@@ -17,13 +17,13 @@ class User < ApplicationRecord
   validates :password, presence: true,
   length: { minimum: 3, maximum: 25 }, on: :create
 
-  has_attached_file :image, styles: { medium: "260x260#", thumb: "150x150#"}
+  has_attached_file :image, styles: { medium: "260x260#", thumb: "150x150#"}, :default_url => ":style/UserDefault.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
 
   before_save :default_values
   def default_values
     self.background_color ||= '#e6e6e6'
-    self.image ||= 'http://www.revera.co.nz/media/1044/placeholder-person.jpg'
   end
 
   has_secure_password

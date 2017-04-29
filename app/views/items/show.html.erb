@@ -18,6 +18,7 @@
       <%=link_to "Make an Offer", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get', class: "btn btn-success" %>
     </div>
 
+<<<<<<< HEAD
       <div class="col-md-6">
         <h5 id="title"><%=@item.title%></h5>
         <h5><%=@item.description%></h5>
@@ -32,3 +33,32 @@
     </div>
 </div>
 <h3 id="relItems">Related Items:</h3>
+=======
+<%@found = Item.find_by_id(@item.id)%>
+<%if logged_in?%>
+  <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
+  <h3><%=link_to post_favorites_path_url(item_id: @item.id), :method=>'post' do%>
+    <span class="cart glyphicon glyphicon-heart-empty "</span>
+      <%end%></h3>
+  <%else%>
+  <h3><%=link_to delete_favorites_path_url(item_id: @item.id), :method=>'delete' do%>
+    <span class="cart glyphicon glyphicon-heart"</span>
+      <%end%></h3>
+  <%end%>
+<h5>title:<%=@item.title%></h5>
+<%end%>
+<h5>descrip:<%=@item.description%></h5>
+<h5>condition:<%=@item.condition%> </h5>
+<h5>cateogry:<%=@item.category%> </h5>
+<h5>group:<%=@item.group%> </h5>
+<h5>User: <%=link_to @item.user.username, user_path_url(@item.user)%></h5>
+<%if logged_in?%>
+  <%if (@offers.where(:initiator_id => @user.id.to_s).where(:requested_item_id => @item.id.to_s).empty?)%>
+  <h3><%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%></h3>
+  <%else%>
+  <h4>You have already requested a trade for this item</h4>
+  <%end%>
+  <%else%>
+  <h3>Log in to make a trade!</h3>
+<%end%>
+>>>>>>> de8ebce92b97d4062f14aa780bd4b5520f979b92

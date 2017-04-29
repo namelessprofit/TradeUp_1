@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @services = Item.servicecategories.map { |key, value| [key.humanize, key] }
+    @experiences = Item.experiencecategories.map { |key, value| [key.humanize, key] }
+    @items = Item.itemcategories.map { |key, value| [key.humanize, key] }
   end
 
   def create
@@ -24,18 +27,29 @@ class ItemsController < ApplicationController
       @user = User.find_by_id(current_user.id.to_s)
     end
     @favorites = Favorite.all
-    puts"WERE IN GROUP METHOD"
     @group = params[:group]
     @category = params[:category]
-    puts @category
-    puts @group
     @items = Item.where(group: @group).
-                  where(category: @category)
+    where(category: @category)
+  end
+
+  def groupie
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+    end
+    @favorites = Favorite.all
+
+    @group = params[:group]
+    @items = Item.where(group: @group)
   end
 
   def show
-    @favorites = Favorite.all
-    @user = User.find_by_id(current_user.id.to_s)
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+      @offers = Offer.all
+      @favorites = Favorite.all
+    end
+
     @item = Item.find_by_id(params[:id])
   end
   
@@ -44,11 +58,17 @@ class ItemsController < ApplicationController
   end
 
   def update
+
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
-    @item.update_attributes(item_params)
-    redirect_to user_path_url(@user)
-    flash[:success]=@item.title + " was updated"
+
+   if @item.update(edit_item_params)
+     flash[:success] = @item.title + " was updated succesfully."
+     redirect_to user_path_url(@user)
+   else
+     flash[:error] = "There was an error updating your " + @item.group + ". Please try again."
+     redirect_to user_path_url(@user)
+   end
   end
 
   def destroy
@@ -63,6 +83,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :description,:condition,:image,:category, :group)
+  end
+
+  def edit_item_params
+    params.require(:item).permit(:title, :description,:condition,:image)
   end
 
   def item_params_group
