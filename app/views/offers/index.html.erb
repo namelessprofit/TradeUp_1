@@ -1,0 +1,13 @@
+<h2>Here are your requested Trades</h2>
+<% @offers.each do |offer|%>
+<% @item = Item.find_by_id(offer.requested_item_id)%>
+<% @myitem = Item.find_by_id(offer.offered_item_id)%>
+<% @user = User.find_by_id(offer.receiver_id.to_s)%>
+<h4>Person you asked: <%= @user.username%></h4>
+<img class="item-image" src="<%= @user.image%>" alt="item image">
+<h4>Item you asked for: <%= @item.title %></h4>
+<img class="item-image" src="<%= @item.image%>" alt="item image">
+<h4>Item you want to trade: <%= @myitem.title%></h4>
+<img class="item-image" src="<%= @myitem.image%>" alt="item image">
+<br /><hr />
+<%end%>

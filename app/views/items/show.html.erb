@@ -12,12 +12,19 @@
     <span class="cart glyphicon glyphicon-heart"</span>
       <%end%></h3>
   <%end%>
-<%end%>
 <h5>title:<%=@item.title%></h5>
+<%end%>
 <h5>descrip:<%=@item.description%></h5>
 <h5>condition:<%=@item.condition%> </h5>
 <h5>cateogry:<%=@item.category%> </h5>
 <h5>group:<%=@item.group%> </h5>
-<h5>User: <%=@item.user.username%></h5>
-
-<%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%>
+<h5>User: <%=link_to @item.user.username, user_path_url(@item.user)%></h5>
+<%if logged_in?%>
+  <%if (@offers.where(:initiator_id => @user.id.to_s).where(:requested_item_id => @item.id.to_s).empty?)%>
+  <h3><%=link_to "Make A Trade", new_offer_path_url(item_id: @item.id), :controller => 'offers', :method =>'get'%></h3>
+  <%else%>
+  <h4>You have already requested a trade for this item</h4>
+  <%end%>
+  <%else%>
+  <h3>Log in to make a trade!</h3>
+<%end%>

@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @services = Item.servicecategories.map { |key, value| [key.humanize, key] }
+    @experiences = Item.experiencecategories.map { |key, value| [key.humanize, key] }
+    @items = Item.itemcategories.map { |key, value| [key.humanize, key] }
   end
 
   def create
@@ -33,9 +36,23 @@ class ItemsController < ApplicationController
     where(category: @category)
   end
 
-  def show
+  def groupie
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+    end
     @favorites = Favorite.all
-    @user = User.find_by_id(params[:id])
+
+    @group = params[:group]
+    @items = Item.where(group: @group)
+  end
+
+  def show
+    if(logged_in?)
+      @user = User.find_by_id(current_user.id.to_s)
+      @offers = Offer.all
+      @favorites = Favorite.all
+    end
+    
     @item = Item.find_by_id(params[:id])
   end
 
