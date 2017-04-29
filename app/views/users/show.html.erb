@@ -14,27 +14,20 @@
     </div>
   </div>
 </div>
+
 <div class="col-xs-12 text-center">
-  <h2>My Offers</h2>
-
-
+  <h2>My Trade History</h2>
   <div class="slick">
-    <div>CONTENT 1</div>
-    <div>222222</div>
-    <div>CONTENT 3</div>
-  </div>
-
-
-  <div class="row">
     <% @items.each do |item| %>
-      <img class="item-image" src="<%= item.image %>" alt="item image">
-      <h5>title:<%=item.title%></h5>
-      <h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%><span class="cart glyphicon glyphicon-trash"</span><%end%></h4>
-      <h4 class="link"><%=link_to edit_item_path_url(item),:method=>'get' do%><span class="cart glyphicon glyphicon-pencil"</span><% end %></h4>
+      <div>
+        <%= image_tag item.image.url(:thumbnail) %>
+        <h5>title:<%=item.title%></h5>
+        <h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%><span class="cart glyphicon glyphicon-trash"</span><%end%></h4>
+        <h4 class="link"><%=link_to edit_item_path_url(item),:method=>'get' do%><span class="cart glyphicon glyphicon-pencil"</span><% end %></h4>
+      </div>
     <%end%>
   </div>
 </div>
-
 <br />
 
 <%@items.each do |item|%>
