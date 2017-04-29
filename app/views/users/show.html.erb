@@ -1,4 +1,5 @@
 <%= render 'partials/userBanner' %>
+<div class = "container">
 
 <%if @user.id == current_user.id%>
   <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
@@ -11,21 +12,24 @@
     <span class="cart glyphicon glyphicon-pencil"</span>
   <%end%></h4>
 <%end%>
-<img class="item-image" src="<%= @user.image%>" alt="item image">
 <h4>Username:<%=@user.username%></h4>
 <h4>Email:<%=@user.email%></h4>
 <h4>Location:<%= @user.location.to_s.to_region %></h4>
+<%if @user.rating%>
 <%@stars =(@user.rating / @user.rating_count).floor%>
 <h4>Rating:<%=@stars%></h4>
+<%else%>
+<h4>Rating: No ratings yet</h4>
+<%end%>
 <%if logged_in? && @user.id != current_user.id%>
 <% @check = false %>
     <%if cookies[:rated]%>
-    <% @rated = cookies[:rated].split('.')%>
-  <% @rated.each do |id|%>
-    <%if id == @user.id.to_s%>
-    <%@check = true %>
+      <% @rated = cookies[:rated].split('.')%>
+    <% @rated.each do |id|%>
+      <%if id == @user.id.to_s%>
+      <%@check = true %>
+      <%end%>
     <%end%>
-  <%end%>
   <%end%>
   <%if @check == false%>
   <p>Rate this user </p>
@@ -34,44 +38,39 @@
         <%= f.number_field :rating, :value => 0, :max => 5, :min => 0%>
         <%= f.submit "Go" %>
       <%end%>
-    <%else%>
+  <%else%>
     <p>You have already left a review for this user</p>
-    <%end%>
+  <%end%>
 <%end%>
 
-<div class="col-xs-12 text-center">
-  <h2>My Items</h2>
-  <div class="slick">
+<h2> Items </h2>
+  <%if logged_in? && @user.id == current_user.id%>
+  <%= link_to new_item_path_url, :method=>'get' do %>
+    <span class="cart glyphicon glyphicon-plus"</span><%end%>
+  <%end%>
+  <div class="slick ">
     <% @items.each do |item| %>
-      <div>
         <h4><%= item.title %></h4>
         <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
         <h5><%= item.description %></h5>
-        <h4 class = "item-trash-link"><%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="cart glyphicon glyphicon-trash"</span><%end%></h4>
-        <h4 class="link"><%= link_to edit_item_path_url(item), :method=>'get' do %><span class="cart glyphicon glyphicon-pencil"</span><% end %></h4>
-      </div>
-    <%end%>
-  </div>
-</div>
-<br />
-
-
-
+        <%if logged_in? && @user.id == current_user.id%>
+          <h4 class = "item-trash-link"><%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %>
+          <span class="cart glyphicon glyphicon-trash"</span>
+          <%end%></h4>
+          <h4 class="link"><%= link_to edit_item_path_url(item), :method=>'get' do %>
+          <span class="cart glyphicon glyphicon-pencil"</span>
+          <% end %></h4>
+        <%end%>
 <%if logged_in? && @user.id != current_user.id%>
   <%if (@offers.where(:initiator_id => @currUser.id.to_s).where(:requested_item_id => item.id.to_s).empty?)%>
   <h3><%=link_to "Make A Trade", new_offer_path_url(item_id: item.id), :controller => 'offers', :method =>'get'%></h3>
   <%else%>
   <h4>You have already requested a trade for this item</h4>
   <%end%>
-
-<%if @user.id == current_user.id%>
-<h4 class = "item-trash-link"><%=link_to "/items/destroy/"+(item.id.to_s),:method=>'delete' do%>
-  <span class="cart glyphicon glyphicon-trash"</span>
-<%end%></h4>
-<h4 class = "link"><%=link_to edit_item_path_url(item),:method=>'get' do%>
-  <span class="cart glyphicon glyphicon-pencil"</span>
-<%end%></h4>
-<br /><br />
+  <br />
 <%end%>
 <%end%>
+</div>
 <br /><br /><br /><br />
+
+</div>

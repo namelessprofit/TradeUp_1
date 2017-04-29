@@ -66,7 +66,8 @@ class ItemsController < ApplicationController
      flash[:success] = @item.title + " was updated succesfully."
      redirect_to user_path_url(@user)
    else
-     flash[:error] = "There was an error updating your " + @item.group + ". Please try again."
+     flash[:error] = "There was an error updating your " + @item.title + ". Please try again."
+
      redirect_to user_path_url(@user)
    end
   end
