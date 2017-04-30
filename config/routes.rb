@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get '/historyoffers/users/:id', to: "offers#history", as: 'history_offers_path'
   get '/users/:id/offers/:id', to: 'offers#show', as: 'offer_path'
   patch '/offers/:id', to: 'offers#update', as: 'update_offer_path'
+  delete 'offers/:id', to: 'offers#delete', as: 'delete_offer_path'
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'

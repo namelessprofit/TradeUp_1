@@ -62,9 +62,11 @@ class OffersController < ApplicationController
             @myItem.user = @temp
             @myItem.save
             @theirItem.save
-        @old = Offer.where(initiator_id: current_user.id.to_s).where(offered_item_id: @offer.requested_item_id)
-        @old.delete_all
             @offer.save
+            @myOld = Offer.where(initiator_id: current_user.id.to_s).where(offered_item_id: @offer.requested_item_id)
+            @otherOld = Offer.where(requested_item_id: @offer.requested_item_id).where(is_completed: false)
+            @otherOld.delete_all
+            @myOld.delete_all
             flash[:success] = "Trade success,checkout your new item"
             redirect_to user_path_url(@user)
           else
@@ -72,6 +74,14 @@ class OffersController < ApplicationController
             flash[:success] = "Trade rejected,browse more"
             redirect_to user_path_url(@user)
           end
+      end
+
+      def delete
+        @user = User.find_by_id(current_user.id.to_s)
+        @offer = Offer.find_by_id(params[:id])
+        @offer.destroy
+        flash[:success] = "Trade deleted"
+        redirect_to offers_path_url(@user)
       end
 
 
