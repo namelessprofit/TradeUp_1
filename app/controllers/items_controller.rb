@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     end
   end
 
-def group
+def category
   puts "WERE IN GROUP!"
   puts params[:group]
   puts params[:category]
@@ -60,7 +60,7 @@ def group
 end
 
 
-  def groupie
+  def group
     if(logged_in?)
       @user = User.find_by_id(current_user.id.to_s)
     end
