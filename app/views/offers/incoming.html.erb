@@ -1,19 +1,50 @@
-<h2>Here are your Incoming Trades for you to approve</h2>
-<br /><br />
-<% @offers.each do |offer|%>
-  <%if offer.is_completed == false%>
-    <% @myitem = Item.find_by_id(offer.requested_item_id)%>
-    <% @item = Item.find_by_id(offer.offered_item_id)%>
-    <% @user = User.find_by_id(offer.initiator_id.to_s)%>
-    <h4>Person that asked you: <%= @user.username%></h4>
-    <img class="item-image" src="<%= @user.image%>" alt="item image">
-    <h4>Item they are offering: <%= @item.title %></h4>
-    <img class="item-image" src="<%= @item.image%>" alt="item image">
-    <h4>Item of yours that they want: <%= @myitem.title%></h4>
-    <img class="item-image" src="<%= @myitem.image%>" alt="item image"><br />
-    <%=link_to 'Accept', update_offer_path_url(offer, :is_accepted => true, :is_completed => true), :method => 'patch'%>
-    <br /><br />
-    <%=link_to 'Decline', update_offer_path_url(offer), :method => 'patch', params: {:is_accepted => false, :is_completed => true}%>
-  <%end%>
-  <hr />
+
+<h2 class="text-center">Incoming Trades</h2>
+<div class="row">
+  <div class="col-xs-4">
+    <h3 class="text-center">Person that requested trade</h3>
+  </div>
+  <div class="col-xs-4">
+    <h3 class="text-center">Item they want</h3>
+  </div>
+  <div class="col-xs-4">
+    <h3 class="text-center">Item they have offered</h3>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <hr/>
+  <% @offers.each do |offer|%>
+  <% @myitem = Item.find_by_id(offer.requested_item_id)%>
+  <% @item = Item.find_by_id(offer.offered_item_id)%>
+  <% @user = User.find_by_id(offer.initiator_id.to_s)%>
+
+  <div class="col-xs-4 text-center">
+    <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
+    <h4><%= @user.username%></h4>
+
+  </div>
+  <div class="col-xs-4 text-center">
+    <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
+    <h4><%= @myitem.title %></h4>
+
+  </div>
+  <div class="col-xs-4 text-center">
+    <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
+    <h4><%= @item.title%></h4>
+
+  </div>
+</div>
+<br />
+<div class = "row">
+<div class = "col-xs-6 text-center">
+<%=button_to 'Accept', update_offer_path_url(offer, :is_accepted => true, :is_completed => true), :method => 'patch', class: 'accept-btn'%>
+</div>
+<div class = "col-xs-6 text-center" style="margin-left:10px">
+<%=button_to 'Decline', update_offer_path_url(offer), :method => 'patch', params: {:is_accepted => false, :is_completed => true}, class: 'decline-btn'%>
+</div>
+</div>
+<hr />
+
 <%end%>
