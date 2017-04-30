@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   get '/items', to: 'items#index', as: 'items_path'
   get '/items/edit/:id', to: 'items#edit', as: 'edit_item_path'
-  get '/items/group/:group/:category', to: 'items#group', as:'group_item_path'
-  get '/items/groupie/:group', to: 'items#groupie', as:'groupie_item_path'
+  get '/items/category/:group/:category', to: 'items#category', as:'category_item_path'
+  get '/items/group/:group', to: 'items#group', as:'group_item_path'
   get '/items/new', to: 'items#new', as: 'new_item_path'
   get '/items/show/:id', to: 'items#show', as: 'item_path'
   post '/items', to: 'items#create'
