@@ -38,15 +38,27 @@ class ItemsController < ApplicationController
     end
   end
 
-  def group
-    if(logged_in?)
-      @user = User.find_by_id(current_user.id.to_s)
-    end
-    @favorites = Favorite.all
-    @group = params[:group]
-    @category = params[:category]
-    @items = Item.where(group: @group).where(category: @category)
+def group
+  puts "WERE IN GROUP!"
+  puts params[:group]
+  puts params[:category]
+  if(logged_in?)
+    @user = User.find_by_id(current_user.id.to_s)
   end
+  @favorites = Favorite.all
+  @group = params[:group]
+  if (@group == 'service')
+    @servicecategory = params[:category]
+    @items = Item.where(group: @group).where(servicecategory: @servicecategory)
+  elsif (@group == 'experience')
+    @expcategory = params[:category]
+    @items = Item.where(group: @group).where(experiencecategory: @expcategory)
+  elsif (@group == 'item')
+    @itemcategory = params[:category]
+    @items = Item.where(group: @group).where(itemcategory: @itemcategory)
+  end
+end
+
 
   def groupie
     if(logged_in?)
