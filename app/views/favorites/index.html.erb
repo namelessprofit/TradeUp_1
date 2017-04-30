@@ -19,7 +19,8 @@
       <br />
       <%=fav.item.condition%>
       <br />
-      <%=fav.user.username%>
+      <%=link_to fav.item.user.username,user_path_url(fav.item.user)%>
+
       <br /><hr />
         </div>
       <%end%>
