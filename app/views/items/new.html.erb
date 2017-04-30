@@ -52,13 +52,12 @@
       <br/>
       <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
       <br/>
-       <!-- <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %> -->
       <h5>Select condition:<select id="condition" name="item[condition]">
-      <option value=1>New</option>
-      <option value=2>Good</option>
-      <option value=3>Refurbished</option>
-      <option value=4>Used</option>
-      <option value=5>Other</option>
+      <option value=0>New</option>
+      <option value=1>Good</option>
+      <option value=2>Refurbished</option>
+      <option value=3>Used</option>
+      <option value=4>Other</option>
     </select></h5>
       <br/>
 
