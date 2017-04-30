@@ -11,9 +11,9 @@ class PagesController < ApplicationController
     @experiencescount = @experiences.count
     @items = Item.where(:group => 3)
     @itemscount = @items.count
-    @randomexperience = @experiences[rand(1 .. (@experiencescount-1))]
-    @randomservice = @services[rand(1 .. (@servicescount-1))]
-    @randomitem = @items[rand(1 .. (@itemscount-1))]
+    # @randomexperience = @experiences[rand(1 .. (@experiencescount-1))]
+    # @randomservice = @services[rand(1 .. (@servicescount-1))]
+    # @randomitem = @items[rand(1 .. (@itemscount-1))]
   end
 
   def learnmore

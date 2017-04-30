@@ -5,25 +5,54 @@
     <div class="col align-self-center">
       <!-- <%= f.select :group, Item.groups.map { |key, value| [key.humanize, key] }, { :prompt => "Select listing type" }, :id => "listingType", class: "form-control" %> -->
       <h5>Select group:<select id="listingType" name="item[group]">
-      <option value=1>Service</option>
-      <option value=2>Experience</option>
-      <option value=3>Item</option>
+      <option value=0>Item</option>
+      <option value=1>Experience</option>
+      <option value=2>Service</option>
+      <br />
     </select></h5>
-      <select id="category" name="item[category]">
-      <option value=1>Music</option>
-      <option value=2>Travel</option>
-      <option value=3>Outdoors</option>
-      <option value=4>Sports</option>
-      <option value=5>Miscellaneous</option>
-      </select>
-    
+    <h5>Select service category:<select id="servicecategory" name="item[servicecategory]">
+      <option value=-1>Service Category</option>
+      <option value=0>General Labor</option>
+      <option value=1>Construction</option>
+      <option value=2>Web</option>
+      <option value=3>Childcare</option>
+      <option value=4>Food</option>
+      <option value=5>Health</option>
+      <option value=6>Miscellaneous</option>
+    </select></h5>
+    <br />
+      <h5>Select experience category:<select id="experiencecategory" name="item[experiencecategory]">
+      <option value=-1>Experience Category</option>
+      <option value=0>Music</option>
+      <option value=1>Travel</option>
+      <option value=2>Outdoors</option>
+      <option value=3>Sports</option>
+      <option value=4>Miscellaneous</option>
+    </select></h5>
+      <br />
+      <br />
+      <h5>Select Item Category:<select id="itemcategory" name="item[itemcategory]">
+      <option value=-1>Item Category</option>
+      <option value=0>Electronics</option>
+      <option value=1>Furniture</option>
+      <option value=2>Fashion</option>
+      <option value=3>Auto</option>
+      <option value=4>Real Estate</option>
+      <option value=5>Collectibles</option>
+      <option value=6>Toys</option>
+      <option value=7>Music</option>
+      <option value=8>Business/Industrial</option>
+      <option value=9>Home/Garden</option>
+      <option value=10>Miscellaneous</option>
+    </select></h5>
+      <br />
       <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
       <br/>
       <%= f.text_area :description, class: "form-control", placeholder: "Provide details", autofocus: true %>
       <br/>
       <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
       <br/>
-       <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %>
+       <!-- <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %> -->
       <h5>Select condition:<select id="condition" name="item[condition]">
       <option value=1>New</option>
       <option value=2>Good</option>
