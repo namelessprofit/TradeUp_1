@@ -3,8 +3,9 @@
 <h5>title:<%=@item.title%></h5>
 <h5>descrip:<%=@item.description%></h5>
 <h5>condition:<%=@item.condition%> </h5>
-<h5>User: <%=@item.user.username%></h5>
+<h5>User: <%=link_to @item.user.username,user_path_url(@item.user)%></h5>
 <br />
+<%if @items%>
 <h1>Choose an item to trade</h1>
 <%if @items.empty?%>
   <h3>You don't have any items. Post one for trade <%= link_to 'here.', new_item_path_url %></h3>
@@ -19,5 +20,8 @@
   <h5>condition:<%=mitem.condition%> </h5>
   <h5>User: <%=mitem.user.username%></h5>
   <%end%>
+<%end%>
+<%else%>
+<h1>Create an account to start trading!</h1>
 <%end%>
 <br /><br />

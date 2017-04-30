@@ -23,9 +23,11 @@ class OffersController < ApplicationController
       puts "WERE IN NEW"
       puts params[:item_id.to_s]
       @item = Item.find_by_id(params[:item_id.to_s])
+      if(logged_in?)
       @user = User.find_by_id(current_user.id.to_s)
-      @offer = Offer.new
       @items = Item.where(user: @user)
+      end
+      @offer = Offer.new
     end
 
     def show
