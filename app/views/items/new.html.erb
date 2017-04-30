@@ -3,22 +3,36 @@
 <div class="container" id="newItemForm">
   <div class="form-group">
     <div class="col align-self-center">
-      <%= f.select :group, Item.groups.map { |key, value| [key.humanize, key] }, { :prompt => "Select listing type" }, :id => "listingType", class: "form-control" %>
-      <br/>
-      <%= f.select :category, Item.experiencecategories.map { |key, value| [key.humanize, key] }, { :prompt => "Category for Experience" }, :id => "experienceCategory", class:"form-control" %>
-      <br/>
-      <%= f.select :category, Item.servicecategories.map { |key, value| [key.humanize, key] }, { :prompt => "Category for Service" }, :id => "serviceCategory", class:"form-control" %>
-      <br/>
-      <%= f.select :category, Item.itemcategories.map { |key, value| [key.humanize, key] }, { :prompt => "Category for Item" }, :id => "itemCategory", class:"form-control" %>
-      <br/>
+      <!-- <%= f.select :group, Item.groups.map { |key, value| [key.humanize, key] }, { :prompt => "Select listing type" }, :id => "listingType", class: "form-control" %> -->
+      <h5>Select group:<select id="listingType" name="item[group]">
+      <option value=1>Service</option>
+      <option value=2>Experience</option>
+      <option value=3>Item</option>
+    </select></h5>
+      <select id="category" name="item[category]">
+      <option value=1>Music</option>
+      <option value=2>Travel</option>
+      <option value=3>Outdoors</option>
+      <option value=4>Sports</option>
+      <option value=5>Miscellaneous</option>
+      </select>
+    
       <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
       <br/>
       <%= f.text_area :description, class: "form-control", placeholder: "Provide details", autofocus: true %>
       <br/>
       <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
       <br/>
-      <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %>
+       <%= f.select :condition, Item.conditions.map { |key, value| [key.humanize, key] }, { :prompt => "Condition" }, :include_blank => true, class:"form-control" %>
+      <h5>Select condition:<select id="condition" name="item[condition]">
+      <option value=1>New</option>
+      <option value=2>Good</option>
+      <option value=3>Refurbished</option>
+      <option value=4>Used</option>
+      <option value=5>Other</option>
+    </select></h5>
       <br/>
+
       <%= f.submit "Submit for Trade", class: 'btn btn-warning btn-md center-block', align:"right" %>
       <%end%>
     </div>

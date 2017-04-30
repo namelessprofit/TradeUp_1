@@ -74,6 +74,14 @@ class OffersController < ApplicationController
           end
       end
 
+      def delete
+        @user = User.find_by_id(current_user.id.to_s)
+        @offer = Offer.find_by_id(params[:id])
+        @offer.destroy
+        flash[:success] = "Trade deleted"
+        redirect_to offers_path_url(@user)
+      end
+
 
     private
     def offer_params
