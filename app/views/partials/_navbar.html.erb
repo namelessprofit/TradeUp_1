@@ -20,8 +20,8 @@
       <div class="col-xs-6">
         <ul>
 
+          <li><%= link_to 'Trade an Item', new_item_path_url, class: 'tradeBtn' %></li>
           <%if (logged_in?)%>
-            <li><%= link_to 'Trade an Item', new_item_path_url, class: 'tradeBtn' %></li>
             <li><%= link_to 'View Profile', user_path_url(current_user), class: 'profileBtn' %></li>
           <%end%>
         </ul>

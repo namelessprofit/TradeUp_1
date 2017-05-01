@@ -4,7 +4,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    if (logged_in?)
+      render :new
+      @item = Item.new
+    else
+      flash[:error] = 'Please sign in to post an item for trade.'
+      redirect_to signup_path
+    end
   end
 
 
@@ -77,10 +83,8 @@ end
   end
 
   def update
-
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
-
    if @item.update(edit_item_params)
      flash[:success] = @item.title + " was updated succesfully."
      redirect_to user_path_url(@user)
