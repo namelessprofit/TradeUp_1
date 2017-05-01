@@ -2,42 +2,46 @@
 <div class = "container">
 <%if logged_in?%>
 <%if @user.id == current_user.id%>
-<div class = "row text-center">
-  <div class = "col-xs-3">
-    <br />
-    <h3><%= link_to 'Favorites', favorites_path_url(@user)%></h3>
+
+<div class="row text-center">
+  <div class="col-xs-6">
+      <p class="lead"><%= link_to 'Favorites', favorites_path_url(@user)%></p>
+      <p class="lead"><%= link_to 'Trade History', history_offers_path_url(@user)%></p>
   </div>
-  <div class = "col-xs-3">
-    <br />
-  <h3><%= link_to 'Requested Trades', offers_path_url(@user)%></h3>
-</div>
-<br />
-<div class = "col-xs-3">
-  <br />
-  <h3><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%></h3>
-</div>
-<br />
-<div class = "col-xs-3">
-  <br />
-  <h3><%= link_to 'Trade History', history_offers_path_url(@user)%></h3>
-</div>
+  <div class="col-xs-6">
+    <p class="lead"><%= link_to 'Requested Trades', offers_path_url(@user)%></p>
+    <p class="lead"><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%></p>
+  </div>
 </div>
 
+
   <br />
-  <h4><%=link_to edit_user_path_url(@user) do%>
+  <h4 class ="text-center"><%=link_to edit_user_path_url(@user) do%>
     <span class="cart glyphicon glyphicon-pencil"</span>
   <%end%></h4>
+  <%else%>
+<h1>Trade with them!</h1>
 <%end%>
 <%end%>
-<h4>Username: <%=@user.username%></h4>
+<div class="row text-center">
+  <div class="col-xs-4">
+    <h4>Username: <%=@user.username%></h4>
+  </div>
+  <div class="col-xs-4">
 <h4>Email: <%=@user.email%></h4>
+</div>
+<div class="col-xs-4">
 <h4>Location: <%= @user.location.to_s.to_region %></h4>
-<%if @user.rating%>
-<%@stars =(@user.rating / @user.rating_count).floor%>
-<h4>Rating: <%=@stars%></h4>
-<%else%>
-<h4>Rating: No ratings yet</h4>
-<%end%>
+</div>
+<div class = "col-xs-12 text center">
+  <%if @user.rating%>
+  <%@stars =(@user.rating / @user.rating_count).floor%>
+  <h4>Rating: <%=@stars%></h4>
+  <%else%>
+  <h4>Rating: No ratings yet</h4>
+  <%end%>
+</div>
+</div>
 <%if logged_in? && @user.id != current_user.id%>
 <% @check = false %>
     <%if cookies[:rated]%>
