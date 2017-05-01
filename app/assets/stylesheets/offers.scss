@@ -1,3 +1,59 @@
-// Place all the styles related to the offers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#box1 {
+  background-color: #a0a0a0;
+  height: 200px;
+}
+#box2 {
+  background-color: #777777;
+  height: 200px;
+}
+#box3 {
+  background-color: #5f5f5f;
+  height: 200px;
+}
+#box4 {
+  background-color: #484848;
+  height: 200px;
+}
+
+.step {
+  margin-top: 50px;
+}
+
+.picContainer {
+  position: relative;
+  width: 200px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(70, 122, 183, 0.6);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+.picContainer:hover .overlay {
+  width: 100%;
+}
+
+.text {
+  white-space: nowrap;
+  font-size: 20px;
+  color: white !important;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
