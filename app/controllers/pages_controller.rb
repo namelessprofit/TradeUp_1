@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  
   def home
     if session[:user_id]
       @user = User.find(session[:user_id])
@@ -19,7 +20,7 @@ class PagesController < ApplicationController
   def learnmore
   end
 
-  def contacts
+  def contact_us
   end
 
   def page_not_found

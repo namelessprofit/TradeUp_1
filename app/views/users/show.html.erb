@@ -48,7 +48,7 @@
 
 <%= render 'partials/user_ratings' %>
 
-<h2 class ="text-center"> Items
+<h2 class ="text-center">
 
   <%if logged_in? && @user.id == current_user.id%>
     <% if @user.items.length > 0 %>
