@@ -2,23 +2,39 @@
 <div class = "container">
 <%if logged_in?%>
 <%if @user.id == current_user.id%>
-  <h3><%= link_to 'View my Favorites', favorites_path_url(@user)%></h3>
-  <h3><%= link_to 'View my Requested Trades', offers_path_url(@user)%></h3>
-  <h3><%= link_to 'View my Incoming Trades', incoming_offers_path_url(@user)%></h3>
-  <h3><%= link_to 'View my Trade History', history_offers_path_url(@user)%></h3>
+<div class = "row text-center">
+  <div class = "col-xs-3">
+    <br />
+    <h3><%= link_to 'Favorites', favorites_path_url(@user)%></h3>
+  </div>
+  <div class = "col-xs-3">
+    <br />
+  <h3><%= link_to 'Requested Trades', offers_path_url(@user)%></h3>
+</div>
+<br />
+<div class = "col-xs-3">
+  <br />
+  <h3><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%></h3>
+</div>
+<br />
+<div class = "col-xs-3">
+  <br />
+  <h3><%= link_to 'Trade History', history_offers_path_url(@user)%></h3>
+</div>
+</div>
 
-  <br /><br />
+  <br />
   <h4><%=link_to edit_user_path_url(@user) do%>
     <span class="cart glyphicon glyphicon-pencil"</span>
   <%end%></h4>
 <%end%>
 <%end%>
-<h4>Username:<%=@user.username%></h4>
-<h4>Email:<%=@user.email%></h4>
-<h4>Location:<%= @user.location.to_s.to_region %></h4>
+<h4>Username: <%=@user.username%></h4>
+<h4>Email: <%=@user.email%></h4>
+<h4>Location: <%= @user.location.to_s.to_region %></h4>
 <%if @user.rating%>
 <%@stars =(@user.rating / @user.rating_count).floor%>
-<h4>Rating:<%=@stars%></h4>
+<h4>Rating: <%=@stars%></h4>
 <%else%>
 <h4>Rating: No ratings yet</h4>
 <%end%>
@@ -44,26 +60,29 @@
   <%end%>
 <%end%>
 
-<h2> Items </h2>
+<h2 class ="text-center"> Items
   <%if logged_in? && @user.id == current_user.id%>
   <%= link_to new_item_path_url, :method=>'get' do %>
-    <span class="cart glyphicon glyphicon-plus"</span><%end%>
+    <span class="cart glyphicon glyphicon-plus"</span><%end%> </h2>
   <%end%>
-  <div class="slick ">
+  <div class="row ">
     <% @items.each do |item| %>
-        <h4><%= item.title %></h4>
+    <div class = "col-xs-6 text-center">
+        <h3><%= item.title %></h3>
         <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
-        <h5><%= item.description %></h5>
-        <%if logged_in? && @user.id == current_user.id%>
-          <h4 class = "item-trash-link"><%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %>
-          <span class="cart glyphicon glyphicon-trash"</span>
-          <%end%></h4>
-          <h4 class="link"><%= link_to edit_item_path_url(item), :method=>'get' do %>
+        <h4><%if logged_in? && @user.id == current_user.id%>
+        <%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %>
+        <span class="cart glyphicon glyphicon-trash"</span>
+          <%end%>
+          <%= link_to edit_item_path_url(item), :method=>'get' do %>
           <span class="cart glyphicon glyphicon-pencil"</span>
-          <% end %></h4>
+            <% end %></h4>
+        <h4><%= item.description %></h4>
+        <h4><%= item.condition%></h4>
         <%end%>
-
-<%end%>
+        <hr />
+      </div>
+    <%end%>
 </div>
 <br /><br /><br /><br />
 
