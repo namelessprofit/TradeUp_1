@@ -15,7 +15,7 @@
     <br />
     <h4 class="text-center">
       <%=link_to edit_user_path_url(@user) do%>
-        <span class="cart glyphicon glyphicon-pencil"</span>
+        <span class="cart glyphicon glyphicon-pencil"></span>
       <%end%>
     </h4>
   <% end %>
@@ -44,10 +44,11 @@
 
 <%= render 'partials/user_ratings' %>
 
-<h2 class ="text-center">
+<h2 class ="text-center"> Items
+
   <%if logged_in? && @user.id == current_user.id%>
     <% if @user.items.length > 0 %>
-      My Items <%= link_to new_item_path_url, :method=>'get' do %> <span class="cart glyphicon glyphicon-plus"</span><%end%>
+      My Items <%= link_to new_item_path_url, :method=>'get' do %> <span class="cart glyphicon glyphicon-plus"></span><%end%>
       <%= render 'partials/user_items' %>
     <% else %>
       <%= link_to new_item_path_url, :method=>'get', :class=>'btn btn-primary' do %>Post your first trade item now<%end%>
@@ -65,3 +66,4 @@
 
 <br>
 <br>
+<%= render 'partials/footer' %>

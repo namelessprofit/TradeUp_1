@@ -1,6 +1,6 @@
 <h1 align="center">Edit your trade item!</h1>
 <%= form_for @item, html: { multipart: true }, :url => "/items/update/"+(@item.id.to_s) do |f| %>
-<div class="container" id="newItemForm">
+<div class="container" id="newItemForm-1">
   <div class="form-group">
     <div class="col align-self-center">
       <h3 class="text-center">This <strong><u><%= @item.group %></u></strong> listing is locked in the <strong><u><%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %></strong></u> category type.</h3>
@@ -18,3 +18,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'partials/footer' %>
