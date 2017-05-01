@@ -1,0 +1,17 @@
+<div class="row ">
+  <% @items.each do |item| %>
+    <div class = "col-xs-6 text-center">
+      <h3><%= item.title %></h3>
+      <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
+      <h4>
+        <%if logged_in? && @user.id == current_user.id%>
+          <%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="cart glyphicon glyphicon-trash"</span><%end%>
+          <%= link_to edit_item_path_url(item), :method=>'get' do %><span class="cart glyphicon glyphicon-pencil"</span><% end %>
+          <%= item.description %>
+          <%= item.condition %>
+        <%end%>
+      </h4>
+      <hr>
+    </div>
+  <% end %>
+</div>
