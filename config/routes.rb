@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+
   get '/learnmore', to: 'pages#learnmore', as: 'learnmore_path'
   get '/contacts', to: 'pages#contacts'
 
@@ -39,5 +40,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   post '/signup' => 'users#create'
+
+  #error handling for pages that do not exist
+  get "*path" => 'pages#page_not_found'
 
 end
