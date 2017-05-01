@@ -3,7 +3,7 @@
 <div class="container" id="newItemForm-1">
   <div class="form-group">
     <div class="col align-self-center">
-      <h3 align="center">Your <strong><%= @item.group %></strong> is locked in the <strong><%= @item.experiencecategory %></strong> category type.</h3>
+      <h3 class="text-center">This <strong><u><%= @item.group %></u></strong> listing is locked in the <strong><u><%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %></strong></u> category type.</h3>
       <br/><br />
       <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
       <br/>

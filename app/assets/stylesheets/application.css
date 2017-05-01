@@ -7,17 +7,17 @@
  *= require users
  *= require sessions
  *= require favorites
+ *= require offers
  */
-
-/*div {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}*/
 
 a {
   text-decoration: none !important;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color:black !important;
 }
 
 ul {
@@ -111,8 +111,4 @@ input:-webkit-autofill:active {
  nav a {
   color: white;
   font-size: 16px;
- }
-
- a :hover {
-   color: grey;
  }
