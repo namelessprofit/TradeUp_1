@@ -24,6 +24,11 @@ ul {
   list-style-type: none;
 }
 
+html, body {
+    margin: 0;
+  min-height: 100% !important;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -32,8 +37,8 @@ input:-webkit-autofill:active {
 }
 
  #mainNav {
-   background-color: #e6e6e6;
-   height: 100px;
+   background-color: #6c7980;
+   height: 90px;
    position: relative;
  }
 
@@ -42,7 +47,7 @@ input:-webkit-autofill:active {
   margin-left: .5vw;
 }
  #lowerNav {
-   background-color: #2dcc36;
+   background-color: #2996cc;
    height: 40px;
    position: relative;
    text-align: right;
@@ -52,7 +57,7 @@ input:-webkit-autofill:active {
  }
 
 #lowerNav a:hover {
-  color: #f1f1f1;
+  color: #6c7980;
 }
 
  .tradeBtn {
@@ -66,7 +71,7 @@ input:-webkit-autofill:active {
  }
 
  #logo {
-   height: 130px;
+   height: 110px;
    position: absolute;
    z-index: 99;
    margin-top: 10px;
@@ -104,6 +109,6 @@ input:-webkit-autofill:active {
 }
 
  nav a {
-  color: black;
+  color: white;
   font-size: 16px;
  }
