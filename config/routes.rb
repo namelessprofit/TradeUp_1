@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/learnmore', to: 'pages#learnmore', as: 'learnmore_path'
-  get '/contacts', to: 'pages#contacts'
+  get '/contact-us', to: 'pages#contact-us'
   get '/about', to: 'pages#about'
 
   get '/items', to: 'items#index', as: 'items_path'

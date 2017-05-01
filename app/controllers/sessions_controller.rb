@@ -8,7 +8,7 @@
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
         flash[:success]= "Welcome!"
-        redirect_to '/'
+        redirect_to user_path_url(@user)
       else
         flash[:error]= "An error has occurred. Please try again."
         render 'new'

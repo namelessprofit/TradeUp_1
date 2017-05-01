@@ -18,8 +18,10 @@
         <span class="cart glyphicon glyphicon-pencil"></span>
       <%end%>
     </h4>
+
   <% else %>
-    <h1>Trade with them!</h1>
+    <h1 align="center">Trade with them!</h1>
+
   <% end %>
   <div class="col-xs-12">
     <div class="row text-center">
@@ -34,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class = "col-xs-12 text-center">
+  <div class = "col-xs-12" align="center">
     <% if @user.rating %>
       <% @stars =(@user.rating / @user.rating_count).floor %>
       <h4>Rating: <%= @stars %></h4>
