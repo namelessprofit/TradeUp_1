@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require new_item
+
+function addSuccess() {
+  $( ".inner" ).append( "<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>");
+}
