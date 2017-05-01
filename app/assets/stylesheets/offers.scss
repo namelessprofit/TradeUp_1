@@ -14,7 +14,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #008CBA;
+  background-color: rgba(70, 122, 183, 0.6);
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -27,8 +27,8 @@
 
 .text {
   white-space: nowrap;
-  color: white !important;
   font-size: 20px;
+  color: white !important;
   position: absolute;
   overflow: hidden;
   top: 50%;
