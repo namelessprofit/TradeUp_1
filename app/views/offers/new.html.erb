@@ -1,27 +1,45 @@
-<h1>Item you want</h1>
-<img class="item-image" src="<%= @item.image%>" alt="item image">
-<h5>title:<%=@item.title%></h5>
-<h5>descrip:<%=@item.description%></h5>
-<h5>condition:<%=@item.condition%> </h5>
-<h5>User: <%=link_to @item.user.username,user_path_url(@item.user)%></h5>
-<br />
-<%if @items%>
-<h1>Choose an item to trade</h1>
-<%if @items.empty?%>
-  <h3>You don't have any items. Post one for trade <%= link_to 'here.', new_item_path_url %></h3>
-  <h3><%= link_to 'Profile', user_path_url(current_user.id.to_s)%></h3>
-<%else%>
-  <%@items.each do |mitem|%>
-      <%=link_to create_offer_path_url(:requested_item_id => @item.id.to_s, :offered_item_id => mitem.id.to_s, :receiver_id => @item.user.id.to_s, :initiator_id => mitem.user.id.to_s), :method => 'post' do %>
-      <img class="item-image" src="<%= mitem.image%>" alt="item image">
-      <%end%>
-  <h5>title:<%=mitem.title%></h5>
-  <h5>descrip:<%=mitem.description%></h5>
-  <h5>condition:<%=mitem.condition%> </h5>
-  <h5>User: <%=mitem.user.username%></h5>
-  <%end%>
-<%end%>
-<%else%>
-<h1>Create an account to start trading!</h1>
-<%end%>
+<div class="container">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-md-6 col-xs-12" style="border: 1px solid black; border-radius: 10px">
+        <h1>Item you want:</h1>
+        <img class="item-image" src="<%= @item.image %>" alt="item image">
+        <h5><%= @item.title %></h5>
+        <h5><%= @item.description %></h5>
+        <h5>Condition:<%=@item.condition%> </h5>
+        <h5>Listed by: <%=link_to @item.user.username,user_path_url(@item.user)%></h5>
+        <br />
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <%if @items%>
+        <h1>Choose an item to trade</h1>
+        <%if @items.empty?%>
+          <h3>You don't have any items. Post one for trade <%= link_to 'here.', new_item_path_url %></h3>
+          <h3><%= link_to 'Profile', user_path_url(current_user.id.to_s)%></h3>
+        <%else%>
+          <% @items.each do |mitem| %>
+
+          <div class="picContainer">
+            <img class="item-image" src="<%= mitem.image%>" alt="item image">
+            <div class="overlay">
+              <%=link_to create_offer_path_url(:requested_item_id => @item.id.to_s, :offered_item_id => mitem.id.to_s, :receiver_id => @item.user.id.to_s, :initiator_id => mitem.user.id.to_s), :method => 'post' do %>
+                <div class="text">Trade this!</div>
+              <% end %>
+            </div>
+          </div>
+
+          <h5>title:<%=mitem.title%></h5>
+          <h5>descrip:<%=mitem.description%></h5>
+          <h5>condition:<%=mitem.condition%> </h5>
+          <h5>User: <%=mitem.user.username%></h5>
+          <%end%>
+        <%end%>
+        <%else%>
+        <h1>Create an account to start trading!</h1>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
 <br /><br />
