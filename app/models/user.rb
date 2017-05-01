@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :password, presence: true,
   length: { minimum: 3, maximum: 25 }, on: :create
 
-  has_attached_file :image, styles: { medium: "260x260#", thumb: "150x150#"}, :default_url => ":style/UserDefault.jpg"
+  has_attached_file :image, styles: { medium: "260x260#", thumb: "150x150#"}, default_url: "http://i.imgur.com/7knxf6x.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 

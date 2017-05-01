@@ -41,9 +41,17 @@ class UsersController < ApplicationController
 
   def updateRating
     @user = User.find_by_id(params[:id])
+    if(@user.rating)
     @user.rating += user_params_update[:rating].to_i
     @user.rating_count += 1
     @user.save
+  else
+    @user.rating = 0
+    @user.rating += user_params_update[:rating].to_i
+    @user.rating_count = 0
+    @user.rating_count += 1
+    @user.save
+  end
     cookies[:rated] = '.' if cookies[:rated].nil?
     cookies[:rated] += @user.id.to_s + '.'
     redirect_to :back

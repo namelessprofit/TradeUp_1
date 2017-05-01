@@ -1,0 +1,21 @@
+<% if logged_in? && @user.id != current_user.id %>
+  <% @check = false %>
+  <%if cookies[:rated]%>
+    <% @rated = cookies[:rated].split('.')%>
+    <% @rated.each do |id|%>
+      <%if id == @user.id.to_s%>
+        <% @check = true %>
+      <%end%>
+    <%end%>
+  <%end%>
+  <%if @check == false%>
+    <p>Rate this user </p>
+    <%= form_for @user, :url => "/users/updateRating/"+(@user.id.to_s) do |f| %>
+      <%= f.label :rating %>
+      <%= f.number_field :rating, :value => 0, :max => 5, :min => 0 %>
+      <%= f.submit "Go" %>
+    <% end %>
+  <% else %>
+    <p>You have already left a review for this user</p>
+  <%end%>
+<%end%>
