@@ -1,88 +1,98 @@
-<h1 class="text-center">Trade history</h1>
-<h2 class="text-center">Recieved offers</h3>
+<% if @recOffers.length > 0 && @sentOffers.length > 0 %>
+  <h1 class="text-center">Trade history</h1>
+  <h2 class="text-center">Recieved offers</h3>
 
-<div class="row">
-  <div class="col-xs-4">
-    <h3 class="text-center">Person who asked you</h3>
+  <div class="row">
+    <div class="col-xs-4">
+      <h3 class="text-center">Person who asked you</h3>
+    </div>
+    <div class="col-xs-4">
+      <h3 class="text-center">Item they wanted</h3>
+    </div>
+    <div class="col-xs-4">
+      <h3 class="text-center">Item they offered</h3>
+    </div>
   </div>
-  <div class="col-xs-4">
-    <h3 class="text-center">Item they wanted</h3>
+
+  <% @recOffers.each do |offer|%>
+  <% @myitem = Item.find_by_id(offer.requested_item_id)%>
+  <% @item = Item.find_by_id(offer.offered_item_id)%>
+  <% @user = User.find_by_id(offer.initiator_id.to_s)%>
+
+  <div class="col-xs-4 text-center">
+    <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
+    <h4><%= @user.username%></h4>
+
   </div>
-  <div class="col-xs-4">
-    <h3 class="text-center">Item they offered</h3>
+  <div class="col-xs-4 text-center">
+    <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
+    <h4><%= @myitem.title %></h4>
+
   </div>
-</div>
+  <div class="col-xs-4 text-center">
+    <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
+    <h4><%= @item.title%></h4>
 
-<% @recOffers.each do |offer|%>
-<% @myitem = Item.find_by_id(offer.requested_item_id)%>
-<% @item = Item.find_by_id(offer.offered_item_id)%>
-<% @user = User.find_by_id(offer.initiator_id.to_s)%>
-
-<div class="col-xs-4 text-center">
-  <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
-  <h4><%= @user.username%></h4>
-
-</div>
-<div class="col-xs-4 text-center">
-  <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
-  <h4><%= @myitem.title %></h4>
-
-</div>
-<div class="col-xs-4 text-center">
-  <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
-  <h4><%= @item.title%></h4>
-
-</div>
-<h4>Deal sent out on <%=offer.created_at.strftime("%d %b. %Y")%></h4>
-<h4>Deal answered on <%=offer.updated_at.strftime("%d %b. %Y")%></h4>
-<h4>The deal was <%if(offer.is_accepted == true)%>
-   accepted</h4>
-   <%else%>
-  rejected</h4>
+  </div>
+  <h4>Deal sent out on <%=offer.created_at.strftime("%d %b. %Y")%></h4>
+  <h4>Deal answered on <%=offer.updated_at.strftime("%d %b. %Y")%></h4>
+  <h4>The deal was <%if(offer.is_accepted == true)%>
+     accepted</h4>
+     <%else%>
+    rejected</h4>
+    <%end%>
+  <br /><hr />
   <%end%>
-<br /><hr />
-<%end%>
 
 
-<h2 class="text-center">Sent offers</h3>
-<div class="row">
-  <div class="col-xs-4">
-    <h3 class="text-center">Person you asked</h3>
+  <h2 class="text-center">Sent offers</h3>
+  <div class="row">
+    <div class="col-xs-4">
+      <h3 class="text-center">Person you asked</h3>
+    </div>
+    <div class="col-xs-4">
+      <h3 class="text-center">Item you offered</h3>
+    </div>
+    <div class="col-xs-4">
+      <h3 class="text-center">Item you wanted</h3>
+    </div>
   </div>
-  <div class="col-xs-4">
-    <h3 class="text-center">Item you offered</h3>
+
+  <% @sentOffers.each do |offer|%>
+  <% @item = Item.find_by_id(offer.requested_item_id)%>
+  <% @myitem = Item.find_by_id(offer.offered_item_id)%>
+  <% @user = User.find_by_id(offer.initiator_id.to_s)%>
+
+  <div class="col-xs-4 text-center">
+    <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
+    <h4><%= @user.username%></h4>
+
   </div>
-  <div class="col-xs-4">
-    <h3 class="text-center">Item you wanted</h3>
+  <div class="col-xs-4 text-center">
+    <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
+    <h4><%= @myitem.title %></h4>
+
   </div>
-</div>
+  <div class="col-xs-4 text-center">
+    <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
+    <h4><%= @item.title%></h4>
 
-<% @sentOffers.each do |offer|%>
-<% @item = Item.find_by_id(offer.requested_item_id)%>
-<% @myitem = Item.find_by_id(offer.offered_item_id)%>
-<% @user = User.find_by_id(offer.initiator_id.to_s)%>
-
-<div class="col-xs-4 text-center">
-  <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
-  <h4><%= @user.username%></h4>
-
-</div>
-<div class="col-xs-4 text-center">
-  <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
-  <h4><%= @myitem.title %></h4>
-
-</div>
-<div class="col-xs-4 text-center">
-  <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
-  <h4><%= @item.title%></h4>
-
-</div>
-<h4>Deal sent out on <%=offer.created_at.strftime("%d %b. %Y")%></h4>
-<h4>Deal answered on <%=offer.updated_at.strftime("%d %b. %Y")%></h4>
-<h4>The deal was <%if(offer.is_accepted == true)%>
-   accepted</h4>
-   <%else%>
-  rejected</h4>
+  </div>
+  <h4>Deal sent out on <%=offer.created_at.strftime("%d %b. %Y")%></h4>
+  <h4>Deal answered on <%=offer.updated_at.strftime("%d %b. %Y")%></h4>
+  <h4>The deal was <%if(offer.is_accepted == true)%>
+     accepted</h4>
+     <%else%>
+    rejected</h4>
+    <%end%>
+  <br /><hr />
   <%end%>
-<br /><hr />
-<%end%>
+  <%else%>
+    <div class="col-xs-12 text-center">
+      <br>
+      <br>
+      <br>
+      <h3>You haven't traded any items!</h3>
+      <h4>Explore items, services, and experiences for trade to begin or go back to your <%= link_to "profile.", user_path_url(current_user) %></h4>
+    </div>
+  <%end%>

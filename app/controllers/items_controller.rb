@@ -4,17 +4,17 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    # @services = Item.servicecategories.map { |key, value| [key.humanize, key] }
-    # @experiences = Item.experiencecategories.map { |key, value| [key.humanize, key] }
-    # @items = Item.itemcategories.map { |key, value| [key.humanize, key] }
+    if (logged_in?)
+      render :new
+      @item = Item.new
+    else
+      flash[:error] = 'Please sign in to post an item for trade.'
+      redirect_to signup_path
+    end
   end
 
 
   def create
-    puts"CREATE THIS ITEM"
-    puts item_params[:itemcategory]
-    puts item_params[:group]
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.new()
     @item.title = item_params[:title]
@@ -39,9 +39,6 @@ class ItemsController < ApplicationController
   end
 
 def category
-  puts "WERE IN GROUP!"
-  puts params[:group]
-  puts params[:category]
   if(logged_in?)
     @user = User.find_by_id(current_user.id.to_s)
   end
@@ -94,10 +91,8 @@ end
   end
 
   def update
-
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
-
    if @item.update(edit_item_params)
      flash[:success] = @item.title + " was updated succesfully."
      redirect_to user_path_url(@user)

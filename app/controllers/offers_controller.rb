@@ -1,27 +1,24 @@
 class OffersController < ApplicationController
 
+    #requested trades
     def index
       @user = current_user.id
-      puts "WERE IN INDEX!"
       @offers = Offer.where(:initiator_id => @user)
     end
 
+    #incoming trades
     def incoming
       @user = current_user.id
-      puts "WERE IN INCOMING!"
       @offers = Offer.where(:receiver_id => @user)
     end
 
     def history
       @user = current_user.id
-      puts "WERE IN INCOMING!"
       @recOffers = Offer.where(:receiver_id => @user).where(:is_completed => true)
       @sentOffers = Offer.where(:initiator_id => @user).where(:is_completed => true)
     end
 
     def new
-      puts "WERE IN NEW"
-      puts params[:item_id.to_s]
       @item = Item.find_by_id(params[:item_id.to_s])
       if(logged_in?)
       @user = User.find_by_id(current_user.id.to_s)
@@ -50,8 +47,6 @@ class OffersController < ApplicationController
     def update
       @user = User.find_by_id(current_user.id.to_s)
       @offer = Offer.find_by_id(params[:id])
-      puts "WERE IN UPDATE"
-      puts params[:is_accepted]
       @offer.is_accepted = params[:is_accepted]
       @offer.is_completed = params[:is_completed]
           if (params[:is_accepted] == 'true')
