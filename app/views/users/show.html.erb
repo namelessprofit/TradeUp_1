@@ -54,7 +54,7 @@
       <%= render 'partials/user_items' %>
     <% else %>
       <%= link_to new_item_path_url, :method=>'get', :class=>'btn btn-primary' do %>Post your first trade item now<%end%>
-    <% end >
+    <% end %>
   <% else %>
     <% if @user.items.length > 0 %>
       All User Items
@@ -68,3 +68,4 @@
 
 <br>
 <br>
+<%= render 'partials/footer' %>
