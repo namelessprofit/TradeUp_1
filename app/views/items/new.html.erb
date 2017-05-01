@@ -7,11 +7,10 @@
     <div class="container" id="newItemForm">
       <div class="form-group">
           <label>Listing Type</label>
-          <select id="listingType" class="form-control" name="item[group]">
-            <option value=-1></option>
-            <option value=0>Item</option>
+          <select id="listingType" class="form-control" name="item[group]" onchange="location.reload()" selected = "2">
+            <option value=0>Service</option>
             <option value=1>Experience</option>
-            <option value=2>Service</option>
+            <option value=2>Item</option>
             <br />
           </select>
           <br>
@@ -36,7 +35,6 @@
             <option value=3>Sports</option>
             <option value=4>Miscellaneous</option>
           </select>
-          <br />
           <br />
           <label>Item Category</label>
           <select id="itemcategory" class="form-control" name="item[itemcategory]">
@@ -65,7 +63,6 @@
           <br/>
           <label>Item Condition</label>
           <select id="condition" class="form-control" name="item[condition]">
-            <option value=-1></option>
             <option value=0>New</option>
             <option value=1>Good</option>
             <option value=2>Refurbished</option>
