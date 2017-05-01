@@ -2,32 +2,32 @@
 <%= form_for @user,  :url => signup_path(@user), html: {method: :post} do |f| %>
   <div class="container" align="center" id="newUserForm">
     <div class="form-group">
-      <div class="col self align center">
+      <div>
         <%= f.text_field :username, class: "form-control", placeholder: "Username", autofocus: true %>
       </div>
     </div>
     <div class="form-group">
-      <div class="col self align center">
+      <div>
           <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
       </div>
     </div>
     <div class="form-group">
-        <div class="col self align center">
+        <div>
             <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
         </div>
     </div>
     <div class="form-group">
-        <div class="col sm align center">
+        <div>
             <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
         </div>
     </div>
     <div class="form-group">
-      <div class="col self align center">
+      <div>
         <%= f.text_field :location, class: "form-control", placeholder: "Zipcode" %>
       </div>
     </div>
     <div class="form-group">
-        <div class="col self align center">
+        <div>
             <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
         </div>
     </div>
