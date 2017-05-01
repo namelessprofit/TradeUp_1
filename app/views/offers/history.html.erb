@@ -1,25 +1,5 @@
 <h1 class="text-center">Trade history</h1>
 <h2 class="text-center">Recieved offers</h3>
-<!-- <% @recOffers.each do |offer|%>
-<% @myitem = Item.find_by_id(offer.requested_item_id)%>
-<% @item = Item.find_by_id(offer.offered_item_id)%>
-<% @user = User.find_by_id(offer.initiator_id.to_s)%>
-<h4>Person who asked you: <%= @user.username%></h4>
-<img class="item-image" src="<%= @user.image%>" alt="item image">
-<h4>Item you asked for: <%= @item.title %></h4>
-<img class="item-image" src="<%= @item.image%>" alt="item image">
-<h4>Item you wanted to trade: <%= @myitem.title%></h4>
-<img class="item-image" src="<%= @myitem.image%>" alt="item image">
-<h4>Deal sent out on <%=offer.created_at.strftime("%d %b. %Y")%></h4>
-<h4>Deal answered on <%=offer.updated_at.strftime("%d %b. %Y")%></h4>
-<h4>The deal was <%if(offer.is_accepted == true)%>
-   accepted</h4>
-   <%else%>
-  rejected</h4>
-  <%end%>
-<br /><hr />
-<%end%>
-<br /><br /> -->
 
 <div class="row">
   <div class="col-xs-4">
@@ -65,27 +45,6 @@
 
 
 <h2 class="text-center">Sent offers</h3>
-<!-- <% @sentOffers.each do |offer|%>
-<% @item = Item.find_by_id(offer.requested_item_id)%>
-<% @myitem = Item.find_by_id(offer.offered_item_id)%>
-<% @user = User.find_by_id(offer.receiver_id.to_s)%>
-<h4>Person you asked: <%= @user.username%></h4>
-<img class="item-image" src="<%= @user.image%>" alt="item image">
-<h4>Item you asked for: <%= @item.title %></h4>
-<img class="item-image" src="<%= @item.image%>" alt="item image">
-<h4>Item you wanted to trade: <%= @myitem.title%></h4>
-<img class="item-image" src="<%= @myitem.image%>" alt="item image">
-<h4>Deal sent out on <%=offer.created_at.strftime("%d %b. %Y")%></h4>
-<h4>Deal answered on <%=offer.updated_at.strftime("%d %b. %Y")%></h4>
-<h4>The deal was <%if(offer.is_accepted == true)%>
-   accepted</h4>
-   <%else%>
-  rejected</h4>
-  <%end%>
-<br /><hr />
-<%end%> -->
-
-
 <div class="row">
   <div class="col-xs-4">
     <h3 class="text-center">Person you asked</h3>
