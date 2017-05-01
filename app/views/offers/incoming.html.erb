@@ -16,6 +16,7 @@
 <div class="row">
   <hr/>
   <% @offers.each do |offer|%>
+<%if (offer.is_completed == false)%>
   <% @myitem = Item.find_by_id(offer.requested_item_id)%>
   <% @item = Item.find_by_id(offer.offered_item_id)%>
   <% @user = User.find_by_id(offer.initiator_id.to_s)%>
@@ -46,5 +47,5 @@
 </div>
 </div>
 <hr />
-
+<%end%>
 <%end%>

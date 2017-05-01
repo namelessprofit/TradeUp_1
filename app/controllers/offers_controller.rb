@@ -70,7 +70,8 @@ class OffersController < ApplicationController
             flash[:success] = "Trade success,checkout your new item"
             redirect_to user_path_url(@user)
           else
-            @offer.save
+            @offer.delete
+            @offer
             flash[:success] = "Trade rejected,browse more"
             redirect_to user_path_url(@user)
           end
