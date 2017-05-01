@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :location, presence: true,
   numericality: true,
-  length: { minimum: 5, maximum: 5 }
+  length: { minimum: 5 }
 
   validates :password, presence: true,
   length: { minimum: 3, maximum: 25 }, on: :create
