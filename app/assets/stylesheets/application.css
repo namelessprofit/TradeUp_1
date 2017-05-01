@@ -20,11 +20,6 @@ a {
   text-decoration: none !important;
 }
 
-a:hover, a:visited, a:link, a:active
-{
-    text-decoration: none;
-    color:black !important;
-}
 ul {
   list-style-type: none;
 }
@@ -57,7 +52,7 @@ input:-webkit-autofill:active {
  }
 
 #lowerNav a:hover {
-  color: #f1f1f1;
+  color: #6c7980;
 }
 
  .tradeBtn {
