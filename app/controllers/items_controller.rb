@@ -12,9 +12,6 @@ class ItemsController < ApplicationController
 
 
   def create
-    puts"CREATE THIS ITEM"
-    puts item_params[:itemcategory]
-    puts item_params[:group]
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.new()
     @item.title = item_params[:title]
@@ -39,9 +36,6 @@ class ItemsController < ApplicationController
   end
 
 def category
-  puts "WERE IN GROUP!"
-  puts params[:group]
-  puts params[:category]
   if(logged_in?)
     @user = User.find_by_id(current_user.id.to_s)
   end
