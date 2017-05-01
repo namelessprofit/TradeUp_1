@@ -1,5 +1,9 @@
-<h1>Welcome to groupie page</h1>
+<h1 class="text-center">All that is available in the <%=@group%>s</h1>
+<br />
+<div class = "row text-center">
 <%@items.each do |item| %>
+<div class = "col-xs-4">
+  <h3><%=item.title%></h3>
 <%=link_to '/items/show/'+(item.id.to_s) do%>
 <img class="item-image" src="<%= item.image%>" alt="item image">
 <%end%>
@@ -16,8 +20,6 @@
       <%end%></h3>
   <%end%>
 <%end%>
-<br /><%=item.title%>
-<br />
 <%=item.description%>
 <br />
 <p>condition:<%=item.condition%></p>
@@ -25,4 +27,6 @@
 
 <br />
 <hr />
+</div>
 <%end%>
+</div>

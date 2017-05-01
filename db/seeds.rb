@@ -37,6 +37,7 @@ p 'made the USERS!'
 #
 Item.delete_all
 Item.create(items_data = [
+
   {:title => FFaker::Product.product, :description =>FFaker::DizzleIpsum.sentence, :is_available=> true, :group => "item", :itemcategory => "auto", :user_id => 1, :image => "http://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9beHK4x3L-8mX69Pbfqns6v7oXCgLWTph852P5lkBqRc/Views/25452_D5000_34r.png"},
   {:title => FFaker::Product.product, :description =>FFaker::DizzleIpsum.sentence, :is_available=> true, :group => "item", :itemcategory => "furniture", :user_id => 2, :image => "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/campaign_images/webdr03/31/13/are-these-mind-blowing-products-real-1-13846-1391193694-12_big.jpg"},
   {:title => FFaker::Product.product, :description =>FFaker::DizzleIpsum.sentence, :is_available=> true, :group => "item", :itemcategory => "auto", :user_id => 3, :image => "http://i.imgur.com/DRVkkhB.jpg"},

@@ -46,6 +46,7 @@ def category
     @user = User.find_by_id(current_user.id.to_s)
   end
   @favorites = Favorite.all
+  @category = params[:category]
   @group = params[:group]
   if (@group == 'service')
     @servicecategory = params[:category]
@@ -77,8 +78,15 @@ end
       @favorites = Favorite.all
       @currUser = User.find(current_user.id.to_s)
     end
-
     @item = Item.find_by_id(params[:id])
+    @category = @item.experiencecategory || @item.servicecategory || @item.itemcategory
+    if(@item.experiencecategory)
+    @relatedItems = Item.where(experiencecategory: @category)
+  elsif(@item.servicecategory)
+    @relatedItems = Item.where(servicecategory: @category)
+  elsif(@item.itemcategory)
+    @relatedItems = Item.where(itemcategory: @category)
+   end
   end
 
   def edit
