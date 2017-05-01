@@ -19,4 +19,7 @@ class PagesController < ApplicationController
   def learnmore
   end
 
+  def contacts
+  end
+
 end
