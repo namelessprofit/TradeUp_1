@@ -1,13 +1,13 @@
 
 <h1 align="center">Create a new trade listing!</h1>
-<br>
-<hr>
-<br>
+<div class="container" >
+<div class="col-md-12">
   <%= form_for Item.new, html: { multipart: true }  do |f|%>
-    <div class="container" id="newItemForm">
-      <div class="form-group">
+    <div class="container" >
+      <div class="form-group" id="newItemForm">
           <label>Listing Type</label>
-          <select id="listingType" class="form-control" name="item[group]" onchange="location.reload()" selected = "2">
+
+          <select id="listingType" class="form-control" name="item[group]">
             <option value=0>Service</option>
             <option value=1>Experience</option>
             <option value=2>Item</option>
@@ -74,6 +74,8 @@
       </div>
     </div>
   <% end %>
-<br>
-<br>
-<br>
+
+</div>
+</div>
+
+<%= render 'partials/footer' %>

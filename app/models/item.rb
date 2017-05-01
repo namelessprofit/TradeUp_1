@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
 
 
-  has_attached_file :image, styles: { large: "400x400>", medium: "300x300>", thumb: "150x150#"}
+  has_attached_file :image, styles: { large: "400x400>", medium: "300x300>", thumb: "150x150#"}, default_url: "http://www.homeatwoodlands.com.sg/wp-content/uploads/2014/02/placeholder-1200x900.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   enum group: [:service, :experience, :item ]
