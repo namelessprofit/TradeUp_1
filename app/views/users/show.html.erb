@@ -1,68 +1,50 @@
 <%= render 'partials/userBanner' %>
+
 <div class = "container">
-<%if logged_in?%>
-<%if @user.id == current_user.id%>
-
-<div class="row text-center">
-  <div class="col-xs-6">
-      <p class="lead"><%= link_to 'Favorites', favorites_path_url(@user)%></p>
-      <p class="lead"><%= link_to 'Trade History', history_offers_path_url(@user)%></p>
-  </div>
-  <div class="col-xs-6">
-    <p class="lead"><%= link_to 'Requested Trades', offers_path_url(@user)%></p>
-    <p class="lead"><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%></p>
-  </div>
-</div>
-
-
-  <br />
-  <h4 class ="text-center"><%=link_to edit_user_path_url(@user) do%>
-    <span class="cart glyphicon glyphicon-pencil"</span>
-  <%end%></h4>
-  <%else%>
-<h1>Trade with them!</h1>
-<%end%>
-<%end%>
-<div class="row text-center">
-  <div class="col-xs-4">
-    <h4>Username: <%=@user.username%></h4>
-  </div>
-  <div class="col-xs-4">
-<h4>Email: <%=@user.email%></h4>
-</div>
-<div class="col-xs-4">
-<h4>Location: <%= @user.location.to_s.to_region %></h4>
-</div>
-<div class = "col-xs-12 text center">
-  <%if @user.rating%>
-  <%@stars =(@user.rating / @user.rating_count).floor%>
-  <h4>Rating: <%=@stars%></h4>
-  <%else%>
-  <h4>Rating: No ratings yet</h4>
-  <%end%>
-</div>
-</div>
-<%if logged_in? && @user.id != current_user.id%>
-<% @check = false %>
-    <%if cookies[:rated]%>
-      <% @rated = cookies[:rated].split('.')%>
-    <% @rated.each do |id|%>
-      <%if id == @user.id.to_s%>
-      <%@check = true %>
+  <% if logged_in? && @user.id == current_user.id %>
+    <div class="row text-center">
+      <div class="col-xs-6">
+          <p class="lead"><%= link_to 'Favorites', favorites_path_url(@user)%></p>
+          <p class="lead"><%= link_to 'Trade History', history_offers_path_url(@user)%></p>
+      </div>
+      <div class="col-xs-6">
+        <p class="lead"><%= link_to 'Requested Trades', offers_path_url(@user)%></p>
+        <p class="lead"><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%></p>
+      </div>
+    </div>
+    <br />
+    <h4 class="text-center">
+      <%=link_to edit_user_path_url(@user) do%>
+        <span class="cart glyphicon glyphicon-pencil"</span>
       <%end%>
+    </h4>
+  <% else %>
+    <h1>Trade with them!</h1>
+  <% end %>
+  <div class="col-xs-12">
+    <div class="row text-center">
+      <div class="col-xs-4">
+        <h4>Username: <%=@user.username%></h4>
+      </div>
+      <div class="col-xs-4">
+        <h4>Email: <%=@user.email%></h4>
+      </div>
+      <div class="col-xs-4">
+        <h4>Location: <%= @user.location.to_s.to_region %></h4>
+      </div>
+    </div>
+  </div>
+  <div class = "col-xs-12 text-center">
+    <% if @user.rating %>
+      <% @stars =(@user.rating / @user.rating_count).floor %>
+      <h4>Rating: <%= @stars %></h4>
+    <%else%>
+      <h4>Rating: No ratings yet</h4>
     <%end%>
-  <%end%>
-  <%if @check == false%>
-  <p>Rate this user </p>
-      <%=form_for @user, :url => "/users/updateRating/"+(@user.id.to_s) do |f| %>
-        <%=f.label :rating%>
-        <%= f.number_field :rating, :value => 0, :max => 5, :min => 0%>
-        <%= f.submit "Go" %>
-      <%end%>
-  <%else%>
-    <p>You have already left a review for this user</p>
-  <%end%>
-<%end%>
+  </div>
+</div>
+
+<%= render 'partials/user_ratings' %>
 
 <h2 class ="text-center">
   <%if logged_in? && @user.id == current_user.id%>
@@ -85,5 +67,3 @@
 
 <br>
 <br>
-
-</div>
