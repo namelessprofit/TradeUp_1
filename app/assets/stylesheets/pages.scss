@@ -2,31 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h2, h3, p, a {
-  font-family: 'Arimo', sans-serif !important;
+legend {
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+a,
+h2,
+h3,
+p {
+  font-family: 'Quicksand', sans-serif;
+}
+
+#home {
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 150px;
 }
 
 #upperFooter {
   background-color: #e6e6e6;
   height: 30px;
 }
-.accept-btn{
+
+.accept-btn {
   margin-left: 220px;
-  background-color:green;
+  background-color: green;
   border-radius: 10px;
 }
 
-.decline-btn{
-  margin-right:200px;
-  background-color:red;
+.decline-btn {
+  margin-right: 200px;
+  background-color: red;
   border-radius: 10px;
 }
-
 
 #lowerFooter {
-  background-color: #f5cc7b;
+  background-color: #1b2126;
   height: 80px;
-  color: #5d5b5b;
+  color: #6c7980;
 }
 
 #lowerFooter a {
@@ -40,22 +55,22 @@ h2, h3, p, a {
 
 .myAlert {
   padding: 15px;
-  margin-top:19px;
+  margin-top: 19px;
   border: 1px solid transparent;
   border-radius: 3px;
 }
 
 h1 {
   font-size: 3.5em !important;
-  font-family: 'Anaheim', sans-serif !important;
+  font-family: 'Quicksand', sans-serif !important;
 }
 
 #how-it-works {
-    height: 30vw !important;
-    width: 50vw !important;
-    margin-left: 10vw !important;
-    border-radius: 10px;
-    padding-top: 75px;
+  height: 30vw !important;
+  width: 50vw !important;
+  margin-left: 10vw !important;
+  border-radius: 10px;
+  padding-top: 75px;
 }
 
 .contacts-images {
@@ -65,4 +80,10 @@ h1 {
 
 #ContactUsContainer {
   margin-top: 10vw;
+}
+
+img {
+height:275px;
+
+
 }
