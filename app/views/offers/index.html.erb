@@ -1,4 +1,6 @@
-<h2 class="text-center">Requested Trades</h2>
+<h1 class="text-center">Requested Trades</h1>
+
+<% if @offers.length > 0 %>
 <div class="row">
   <div class="col-xs-4">
     <h3 class="text-center">Person you asked</h3>
@@ -14,30 +16,35 @@
 <br/>
 <div class="row">
   <hr/>
-  <%if @offers%>
   <% @offers.each do |offer|%>
-  <% @item = Item.find_by_id(offer.requested_item_id)%>
-  <% @myitem = Item.find_by_id(offer.offered_item_id)%>
-  <% @user = User.find_by_id(offer.receiver_id.to_s)%>
-  <h3><%=link_to delete_offer_path_url(offer), :method=>'delete' do%>
-  <span class="cart glyphicon glyphicon-remove" </span> <%end%></h3>
-  <div class="col-xs-4 text-center">
-    <a href="/users/<%= @item.user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
-    <h4><%= @user.username%></h4>
-    <hr/>
-  </div>
-  <div class="col-xs-4 text-center">
-    <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
-    <h4><%= @item.title %></h4>
-    <hr/>
-  </div>
-  <div class="col-xs-4 text-center">
-    <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
-    <h4><%= @myitem.title%></h4>
-    <hr/>
-  </div>
+    <% @item = Item.find_by_id(offer.requested_item_id)%>
+    <% @myitem = Item.find_by_id(offer.offered_item_id)%>
+    <% @user = User.find_by_id(offer.receiver_id.to_s)%>
+    <h3><%=link_to delete_offer_path_url(offer), :method=>'delete' do%>
+    <span class="cart glyphicon glyphicon-remove" </span> <%end%></h3>
+    <div class="col-xs-4 text-center">
+      <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
+      <h4><%= @user.username%></h4>
+      <hr/>
+    </div>
+    <div class="col-xs-4 text-center">
+      <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
+      <h4><%= @item.title %></h4>
+      <hr/>
+    </div>
+    <div class="col-xs-4 text-center">
+      <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
+      <h4><%= @myitem.title%></h4>
+      <hr/>
+    </div>
+  <%end%>
 </div>
-<%end%>
 <%else%>
-<h2 class ="text-center">No trades sent out</h2>
+  <div class="col-xs-12 text-center">
+    <br>
+    <br>
+    <br>
+    <h3>You haven't sent any trade requests!</h3>
+    <h4>Explore items, services, and experiences for trade to begin or go back to your <%= link_to "profile.", user_path_url(current_user) %></h4>
+  </div>
 <%end%>

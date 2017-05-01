@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def create
       @user = User.new(user_params_create)
-      puts @user
       if @user.save
         flash[:success] = "Welcome!"
         redirect_to '/'
@@ -19,8 +18,8 @@ class UsersController < ApplicationController
 
     def show
       @offers = Offer.all
-      if(current_user)
-      @currUser = User.find_by_id(current_user.id.to_s)
+      if (current_user)
+        @currUser = User.find_by_id(current_user.id.to_s)
       end
       @user = User.find_by_id(params[:id])
       @items = @user.items
@@ -42,11 +41,17 @@ class UsersController < ApplicationController
 
   def updateRating
     @user = User.find_by_id(params[:id])
-    puts "UPDATE RATINGS "
-    puts user_params_update[:rating]
+    if(@user.rating)
     @user.rating += user_params_update[:rating].to_i
     @user.rating_count += 1
     @user.save
+  else
+    @user.rating = 0
+    @user.rating += user_params_update[:rating].to_i
+    @user.rating_count = 0
+    @user.rating_count += 1
+    @user.save
+  end
     cookies[:rated] = '.' if cookies[:rated].nil?
     cookies[:rated] += @user.id.to_s + '.'
     redirect_to :back

@@ -1,0 +1,12 @@
+<%if @relatedItems %>
+  <h3 id="relItems">Related <%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %> Items:</h3>
+  <div class="row">
+    <% @relatedItems.take(4).each do |item| %>
+      <div class = "col-xs-3 text-center">
+        <br />
+        <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
+        <h4><%=item.title%></h4>
+      </div>
+    <% end %>
+  </div>
+<%end%>

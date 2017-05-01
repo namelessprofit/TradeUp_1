@@ -1,51 +1,57 @@
-
-<h2 class="text-center">Incoming Trades</h2>
-<div class="row">
-  <div class="col-xs-4">
-    <h3 class="text-center">Person that requested trade</h3>
+<h1 class="text-center">Incoming Trades</h1>
+<% if @offers.length > 0 %>
+  <div class="row">
+    <div class="col-xs-4">
+      <h3 class="text-center">Person that requested trade</h3>
+    </div>
+    <div class="col-xs-4">
+      <h3 class="text-center">Item they want</h3>
+    </div>
+    <div class="col-xs-4">
+      <h3 class="text-center">Item they have offered</h3>
+    </div>
   </div>
-  <div class="col-xs-4">
-    <h3 class="text-center">Item they want</h3>
-  </div>
-  <div class="col-xs-4">
-    <h3 class="text-center">Item they have offered</h3>
-  </div>
-</div>
 
 <br/>
-<div class="row">
-  <hr/>
-  <% @offers.each do |offer|%>
-<%if (offer.is_completed == false)%>
-  <% @myitem = Item.find_by_id(offer.requested_item_id)%>
-  <% @item = Item.find_by_id(offer.offered_item_id)%>
-  <% @user = User.find_by_id(offer.initiator_id.to_s)%>
 
-  <div class="col-xs-4 text-center">
-    <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
-    <h4><%= @user.username%></h4>
-
+  <% @offers.each do |offer| %>
+    <%if (offer.is_completed == false)%>
+      <div class="row">
+        <hr/>
+        <% @myitem = Item.find_by_id(offer.requested_item_id)%>
+        <% @item = Item.find_by_id(offer.offered_item_id)%>
+        <% @user = User.find_by_id(offer.initiator_id.to_s)%>
+        <div class="col-xs-4 text-center">
+          <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
+          <h4><%= @user.username%></h4>
+        </div>
+        <div class="col-xs-4 text-center">
+          <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
+          <h4><%= @myitem.title %></h4>
+        </div>
+        <div class="col-xs-4 text-center">
+          <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
+          <h4><%= @item.title%></h4>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <%=button_to 'Accept', update_offer_path_url(offer, :is_accepted => true, :is_completed => true), :method => 'patch', class: 'accept-btn'%>
+        </div>
+        <div class="col-xs-6 text-center" style="margin-left:10px">
+          <%=button_to 'Decline', update_offer_path_url(offer), :method => 'patch', params: {:is_accepted => false, :is_completed => true}, class: 'decline-btn'%>
+        </div>
+      </div>
+      <hr />
+      <%end%>
+   <%end%>
+<%else%>
+  <div class="col-xs-12 text-center">
+     <br>
+     <br>
+     <br>
+     <h3>You don't have any incoming trades!</h3>
+     <h4>Explore items, services, and experiences for trade to begin or go back to your <%= link_to "profile.", user_path_url(current_user) %></h4>
   </div>
-  <div class="col-xs-4 text-center">
-    <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
-    <h4><%= @myitem.title %></h4>
-
-  </div>
-  <div class="col-xs-4 text-center">
-    <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
-    <h4><%= @item.title%></h4>
-
-  </div>
-</div>
-<br />
-<div class = "row">
-<div class = "col-xs-6 text-center">
-<%=button_to 'Accept', update_offer_path_url(offer, :is_accepted => true, :is_completed => true), :method => 'patch', class: 'accept-btn'%>
-</div>
-<div class = "col-xs-6 text-center" style="margin-left:10px">
-<%=button_to 'Decline', update_offer_path_url(offer), :method => 'patch', params: {:is_accepted => false, :is_completed => true}, class: 'decline-btn'%>
-</div>
-</div>
-<hr />
-<%end%>
-<%end%>
+ <%end%>
