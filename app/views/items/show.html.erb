@@ -42,3 +42,13 @@
     </div>
 </div>
 <h3 id="relItems">Related Items:</h3>
+<div class="row">
+<%@relatedItems.take(4).each do |item|%>
+<div class = "col-xs-3 text-center">
+<h3><%=item.title%></h3>
+<br />
+<a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
+</div>
+<%end%>
+</div>
+<br /><br />
