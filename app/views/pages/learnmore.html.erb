@@ -1,52 +1,40 @@
-<h1 align="center" style="padding-top: 35px">The Red Paperclip</h1>
-<div id="how-it-works" class="content-section-a">
-  <div class="container">
-    <div class="col-md-6 col-md-offset-3"></div>
-    <div class="row">
-      <div class="col-sm-6 pull-right"  align="center">
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 align="center" style="margin-bottom:65px;">The Red Paperclip</h1>
+      <div class="col-xs-6">
+        <p class="lead">In 2005, Kyle MacDonald sat at his desk staring at red paperclip when he had an idea. "I wonder if I could trade this on the internet for something cool?" He posted the paperclip on CraigsList and embarked on a journey that took him
+          across the country until he ultimately had bartered his way into a new home. The journey took over a year and 14 trades, but his story is pretty cool. We wanted to create a space where everyone could have an opportunity to have a similar experience.
+          Check out his TedTalk to hear his story and start your journey today!</p>
+      </div>
+      <div class="col-xs-6">
         <%= video_tag "tradevideo.mp4", :size => "500x240", :controls => true %>
       </div>
-
-      <div class="col-sm-6">
-        <p class="lead">
-
-          In 2005, Kyle MacDonald sat at his desk staring at red paperclip when he had an idea. "I wonder if I could trade this on the internet for something cool?" He posted the paperclip on CraigsList and embarked on a journey that took him
-          across the country until he ultimately had bartered his way into a new home. The journey took over a year and 14 trades, but his story is pretty cool. We wanted to create a space where everyone could have an opportunity to have a similar experience.
-          Check out his TedTalk to hear his story and start your journey today!
-
-        </p>
-      </div>
     </div>
-    <%= link_to "Trade an Item", new_item_path_url, class: "btn btn-primary" %>
   </div>
 </div>
-
-
 <hr>
 
-
-<h1 align="center">Getting Started Is Easy!</h1>
-<div id="how-it-works" class="content-section-b">
-  <div class="container">
-    <div class="col-md-5 col-md-offset-3"></div>
-    <div class="row">
-
-      <div class="col-sm-5 pull-right" align="center">
-          <ul>
-            <li  class="lead"><span style="color: red"><strong>3.  </strong></span>Search Listed Items</li>
-            <li class="lead"><span style="color: red"><strong>4.  </strong></span>Make an offer!</li>
-
-          </ul>
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 align="center" style="margin-bottom:65px;">Geting Started is Easy!</h1>
+      <div class="col-xs-6">
+        <ul>
+          <li class="lead">1. Create a Profile</li><br>
+          <li class="lead">2. Upload an Item</li>
+        </ul>
       </div>
 
-      <div class="col-sm-5" align="center">
+      <div class="col-xs-6">
         <ul>
-          <li align="center" class="lead"><span style="color: red"><strong>1.  </strong></span>Create a profile</li>
-          <li align="center" class="lead"><span style="color: red"><strong>2.  </strong></span>Upload an Item</li>
+          <li class="lead">3. Search Listed Items</li><br>
+          <li class="lead">4. Suggest a Trade!</li>
         </ul>
-      </p>
+      </div>
     </div>
+    <%= link_to "Sign Up", signup_path, class: "btn btn-primary", id: "sign_up"%>
   </div>
 </div>
-</div>
+
 <%= render 'partials/footer' %>
