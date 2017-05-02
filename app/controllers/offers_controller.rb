@@ -3,7 +3,7 @@ class OffersController < ApplicationController
     #requested trades
     def index
       @user = current_user.id
-      @offers = Offer.where(:initiator_id => @user)
+      @offers = Offer.where(:initiator_id => @user).where(:is_completed => false)
     end
 
     #incoming trades
@@ -62,13 +62,16 @@ class OffersController < ApplicationController
             @offer.save
             @myOld = Offer.where(initiator_id: current_user.id.to_s).where(offered_item_id: @offer.requested_item_id)
             @otherOld = Offer.where(requested_item_id: @offer.requested_item_id).where(is_completed: false)
-            @otherOld.delete_all
-            @myOld.delete_all
+            if(@otherOld.present?)
+              @otherOld.destroy
+            end
+            if(@myOld.present?)
+              @myOld.destroy
+            end
             flash[:success] = "Trade was a success! Connect with the user to pick up your item."
             redirect_to user_path_url(@user)
           else
             @offer.delete
-            @offer
             flash[:success] = "Trade was successfully rejected."
             redirect_to user_path_url(@user)
           end
