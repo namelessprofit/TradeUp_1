@@ -26,9 +26,13 @@
         <span class="cart glyphicon glyphicon-pencil"></span>
       <%end%>
     </h4>
-
   <% end %>
   <div class="col-xs-12">
+    <%if logged_in? && @user.id != current_user.id%>
+      <br>
+      <br>
+      <br>
+    <% end %>
     <div class="row text-center">
       <div class="col-xs-4">
         <h4>Username: <%=@user.username%></h4>

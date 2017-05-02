@@ -23,13 +23,13 @@
     <%end%>
   <%end%>
   <%if @check == false%>
-    <p>Rate this user </p>
-    <%= form_for @user, :url => "/users/updateRating/"+(@user.id.to_s) do |f| %>
-      <%= f.label :rating %>
-      <%= f.number_field :rating, :value => 0, :max => 5, :min => 0 %>
-      <%= f.submit "Go" %>
-    <% end %>
-  <% else %>
-    <p align="center">You have already left a review for this user</p>
+    <div class="col-xs-12 text-center">
+      <%= form_for @user, :class => 'form-group', :url => "/users/updateRating/"+(@user.id.to_s) do |f| %>
+        <%= f.label :rating %>
+        <%= f.number_field :rating, :value => 0, :max => 5, :min => 1, :class=>"mx-sm-3" %>
+        <%= f.submit "Go", :class => "text-muted btn-primary btn-xs" %>
+      <% end %>
+      <br>
+    </div>
   <%end%>
 <%end%>

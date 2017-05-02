@@ -5,10 +5,9 @@
       <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
       <h4>
         <%if logged_in? && @user.id == current_user.id%>
-          <%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="cart glyphicon glyphicon-trash"</span><%end%>
-          <%= link_to edit_item_path_url(item), :method=>'get' do %><span class="cart glyphicon glyphicon-pencil"</span><% end %>
-          <%= item.description %>
-          <%= item.condition %>
+          <%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="glyphicon glyphicon-remove" style="color:red"></span><%end%>
+          <%= link_to edit_item_path_url(item), :method=>'get' do %><span class="cart glyphicon glyphicon-pencil"></span><% end %>
+          <p><%= item.description %></p>
         <%end%>
       </h4>
       <hr>

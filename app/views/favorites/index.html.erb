@@ -1,5 +1,7 @@
+<br>
 <%= render 'partials/userBanner' %>
 <% if @favorites.length > 0 %>
+<h1>My Favorites</h1>
   <div class="col-xs-12" align="center">
    <div class="row" id="favContainer">
        <% @favorites.each do |fav|%>
@@ -8,17 +10,13 @@
         <img class="item-image" src="<%= fav.item.image%>" alt="item image">
         <%end%>
         <h3><%=link_to delete_favorites_path_url(item_id: fav.item.id), :method=>'delete' do%>
-          <span class="cart glyphicon glyphicon-heart"</span>
+          <span class="cart glyphicon glyphicon-heart" style="color: red"</span>
         <%end%>
 
         <br />
-        <%=fav.item.title%>
-        <br />
-        <%=fav.item.description%>
-        <br />
-        <%=fav.item.condition%>
-        <br />
-        <%=link_to fav.item.user.username,user_path_url(fav.item.user)%>
+        <h3><%=fav.item.title%></h3>
+        <p><%=fav.item.description%></p>
+        <p>Posted by: <b><%=link_to fav.item.user.username,user_path_url(fav.item.user)%></b></p>
 
         <br /><hr />
           </div>

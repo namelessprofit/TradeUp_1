@@ -1,7 +1,6 @@
 /*
 
  *= require_tree .
- *= require_self
  *= require sweetalert2
  *= require pages
  *= require users
@@ -10,8 +9,7 @@
  *= require offers
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+
 a {
   text-decoration: none !important;
 }

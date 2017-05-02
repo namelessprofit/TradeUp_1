@@ -1,5 +1,5 @@
 <%if @relatedItems %>
-  <h3 id="relItems">Related <%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %> Items:</h3>
+  <h3 id="relItems">Related listings <i class="glyphicon glyphicon-triangle-bottom"></i></h3>
   <div class="row">
     <% @relatedItems.take(4).each do |item| %>
       <div class = "col-xs-3 text-center">
