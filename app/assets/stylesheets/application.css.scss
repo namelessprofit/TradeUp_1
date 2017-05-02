@@ -1,6 +1,4 @@
 /*
- *= require_tree .
- *= require_self
  *= require slick
  *= require slick-theme
  *= require pages
@@ -10,6 +8,8 @@
  *= require offers
  */
 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 a {
   text-decoration: none !important;
 }
