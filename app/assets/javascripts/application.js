@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require turbolinks
 //= require sweetalert2
 //= require_tree .
@@ -24,3 +25,4 @@ function sweet() {
     'success'
   );
 }
+>>>>>>> d457de469c2c5b5457895dfbb43a8985550dcacd

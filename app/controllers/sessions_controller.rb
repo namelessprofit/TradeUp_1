@@ -14,8 +14,9 @@
     end
 
     def destroy
-      session[:user_id] = nil
-      redirect_to '/'
+      session.delete(:user_id)
+      redirect_to root_path
+
     end
 
   end
