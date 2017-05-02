@@ -1,4 +1,4 @@
-<h1 class ="text-center"><%= @category.humanize %></h1>
+<h1 class ="text-center"><%= @category.to_s.humanize %></h1>
 <br />
 <div class="col-xs-12">
   <div class="row text-center">
@@ -7,7 +7,7 @@
         <div class="col-xs-4">
           <h3><%=item.title%></h3>
           <%= link_to '/items/show/'+(item.id.to_s) do %>
-            <img class="item-image" src="<%= item.image%>" alt="item image">
+            <%= image_tag item.image.url(:medium), :class => "item-image", :alt => item.title %>
           <% end %>
           <br/>
           <%@found = Item.find_by_id(item.id)%>
@@ -28,7 +28,9 @@
           <% end %>
           <br/>
           <p><%=item.description%></p>
-          <p>Condition: <%= item.condition.to_s.humanize %></p>
+          <% if item.description %>
+            <p>Condition: <%= item.condition.to_s.humanize %></p>
+          <% end %>
           <p>Listed by: <strong><%= link_to item.user.username,user_path_url(item.user) %></strong></p>
           <br/>
           <hr />

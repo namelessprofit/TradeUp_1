@@ -4,7 +4,7 @@
   <div id="Rshadow">
   <div class="row" align="center">
     <div class="col-md-6">
-      <img class="item-image" src="<%= @item.image %>" alt="item image">
+      <%= image_tag @item.image.url(:medium), :class => "item-image", :alt => @item.title %>
       <% @found = Item.find_by_id(@item.id) %>
       <% if logged_in? && @user.id == @currUser.id.to_s %>
         <% if (@favorites.where(:user => @user).where(:item => @found).empty?) %>
@@ -37,11 +37,13 @@
       <br>
       <h4><%= @item.description %></h4>
       <br/>
-      <h5 style="display: inline-block;">Condition: <%= @item.condition.to_s.humanize %></h5>
+      <% if @item.condition %>
+        <h5 style="display: inline-block;">Condition: <%= @item.condition.to_s.humanize %></h5>
       <br />
+      <% end %>
       <h5 style="display: inline-block;">Location: <%= @item.user.location.to_s.to_region %></h5>
       <br/>
-      <h5 style="display: inline-block;">Category: <%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %> </h5>
+      <h5 style="display: inline-block;">Category: <%= @item.experiencecategory.to_s.humanize || @item.servicecategory.to_s.humanize || @item.itemcategory.to_s.humanize %> </h5>
       <br />
       <h5 style="display: inline-block;">Listed by: <strong><%=link_to @item.user.username,user_path_url(@item.user)%></strong></h5>
     </div>

@@ -51,16 +51,26 @@
 <h2 class ="text-center">
   <%if logged_in? && @user.id == current_user.id%>
     <% if @user.items.length > 0 %>
-      My Items <%= link_to new_item_path_url, :method=>'get' do %> <span class="cart glyphicon glyphicon-plus"></span><%end%>
-      <%= render 'partials/user_items' %>
+      <div class="col-xs-12">
+        <hr>
+        My Items <%= link_to new_item_path_url, :method=>'get' do %> <span class="cart glyphicon glyphicon-plus"></span><%end%>
+        <br>
+        <hr>
+        <br>
+        <%= render 'partials/user_items' %>
+      </div>
     <% else %>
       <%= link_to new_item_path_url, :method=>'get', :class=>'btn btn-primary' do %>Post your first trade item now<%end%>
     <% end %>
   <% else %>
     <% if @user.items.length > 0 %>
-      All User Items
-      <br>
-      <%= render 'partials/user_items' %>
+      <div class="col-xs-12">
+        <hr>
+        All User Items
+        <hr>
+        <br>
+        <%= render 'partials/user_items' %>
+      </div>
     <% else %>
       No posted items by this user
     <% end %>
