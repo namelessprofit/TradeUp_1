@@ -1,5 +1,5 @@
-<div class = "col-xs-12" align="center">
-  <% if @user.rating %>
+<% if @user.rating %>
+  <div class = "col-xs-12" style="margin-top: -150px" align="center">
     <% @stars = (@user.rating / @user.rating_count).floor %>
     <h4>
       <% @stars.times do %>
@@ -7,6 +7,7 @@
       <% end %>
     </h4>
   <%else%>
+  <div class = "col-xs-12" align="center">
     <h4>Rating: No ratings yet</h4>
   <%end%>
 </div>

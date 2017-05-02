@@ -1,8 +1,10 @@
 <div class="row">
   <% @items.each do |item| %>
-    <div class = "col-xs-6 text-center">
+    <div class = "col-xs-4 text-center">
       <h3><%= item.title %></h3>
-      <a href="/items/show/<%= item.id %>"><img class="item-image" src="<%= item.image %>" alt="<%= item.title %>"></a>
+      <a href="/items/show/<%= item.id %>">
+        <%= image_tag item.image.url(:medium), :class => "item-image", :alt => item.title %>
+      </a>
       <h4>
         <%if logged_in? && @user.id == current_user.id%>
           <%= link_to "/items/destroy/"+(item.id.to_s), :method=>'delete' do %><span class="glyphicon glyphicon-remove" style="color:red"></span><%end%>
@@ -10,7 +12,6 @@
           <p><%= item.description %></p>
         <%end%>
       </h4>
-      <hr>
     </div>
   <% end %>
 </div>

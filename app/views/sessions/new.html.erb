@@ -1,27 +1,29 @@
-
-<div class="container" align="center" id="signInForm">
-
-  <h1>Welcome Back!</h1>
-    <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: '/login') do |f| %>
-
-  <div class="form-group">
-    <div class="col align-self-center">
-      <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
-    </div>
+<% if !logged_in? %>
+  <div class="container" align="center" id="signInForm">
+      <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: '/login') do |f| %>
+        <h1>Welcome Back!</h1>
+          <div class="form-group">
+            <div class="col align-self-center">
+              <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col align-self-center">
+              <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
+            </div>
+          </div>
+          <a href="/signup">Don't have an account?</a><br/>
+        <%= f.submit "Log In", class: 'btn btn-primary btn-md' %>
+    <% end %>
   </div>
+<% else %>
+<br>
+<br>
+<h2 align="center">
+  You're already signed in!
+  If you'd like, you can <%= link_to 'log out', logout_path, method: :delete %>.
 
-  <div class="form-group">
-    <div class="col align-self-center">
-      <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
-    </div>
-  </div>
-
-  <a href="/signup">Don't have an account?</a><br/>
-
-  <%= f.submit "Log In", class: 'btn btn-primary btn-md' %>
-
-  <% end %>
-
-</div>
+</h2>
+<% end %>
 
 <%= render 'partials/footer' %>
