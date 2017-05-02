@@ -1,69 +1,69 @@
-<nav class="nav" id="mainNav">
+<nav id="mainNav" class="nav navbar-default" role="navigation">
   <div class="row">
-    <div class="col-lg-3">
-      <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/eLLPQa3.png"></a>
-    </div>
-    <div class="col-lg-9">
-      <ul class="nav_padding_right">
-        <% if logged_in? %>
-        <li><i class="glyphicon glyphicon-user"></i> <%= link_to current_user.username, user_path_url(current_user) %></li>
-        <li><%= link_to 'Log Out', logout_path(session), :method => :delete %></li>
-        <% else %>
-          <li><%= link_to 'Log In', login_path %></li>
-          <li><%= link_to 'Sign Up', signup_path %></li>
-        <% end %>
-      </ul>
-    </div>
+
+  <div class="col-lg-4">
+    <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/eLLPQa3.png"></a>
   </div>
+  <div class="col-lg-8">
+    <ul class="nav_padding_right">
+      <% if logged_in? %>
+      <li><i class="glyphicon glyphicon-user"></i> <%= link_to current_user.username, user_path_url(current_user) %></li>
+      <li><%= link_to 'Log Out', logout_path, method: :delete, style: 'font-size: 18px' %></li>
+      <% else %>
+        <li><%= link_to 'Log In', login_path %></li>
+        <li><%= link_to 'Sign Up', signup_path %></li>
+      <% end %>
+    </ul>
+    <br>
+  </div>
+</div>
   <div id="lowerNav">
     <div class="row">
-      <div class="col-xs-6">
-        <ul>
-
-          <li><%= link_to 'Trade an Item', new_item_path_url, class: 'tradeBtn' %></li>
-
-        </ul>
-      </div>
-      <div class="col-xs-6">
-        <li class="dropdown nav_padding_left">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-          <ul class="dropdown-menu pull-right">
-            <li><%=link_to 'General Labor', '/items/category/service/labor', controller: "items"%></li>
-            <li><%=link_to 'Construction', '/items/category/service/construction', controller: "items"%></li>
-            <li><%=link_to 'Web', '/items/category/service/web', controller: "items"%></li>
-            <li><%=link_to 'ChildCare', '/items/category/service/childcare', controller: "items"%></li>
-            <li><%=link_to 'Food', '/items/category/service/food', controller: "items"%></li>
-            <li><%=link_to 'Health', '/items/category/service/health', controller: "items"%></li>
-            <li><%=link_to 'Miscellaneous', '/items/category/service/not_listed', controller: "items"%></li>
-          </ul>
-        </li>
-        <li class="dropdown nav_padding_left">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Experiences <span class="caret"></span></a>
-          <ul class="dropdown-menu pull-right">
-            <li><%=link_to 'Music', '/items/category/experience/music', controller: "items"%></li>
-            <li><%=link_to 'Travel', '/items/category/experience/travel', controller: "items"%></li>
-            <li><%=link_to 'Outdoors', '/items/category/experience/outdoors', controller: "items"%></li>
-            <li><%=link_to 'Sports', '/items/category/experience/sports', controller: "items"%></li>
-            <li><%=link_to 'Miscellaneous', '/items/category/experience/misc', controller: "items"%></li>
-          </ul>
-        </li>
-        <li class="dropdown nav_padding_left">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Items <span class="caret"></span></a>
-          <ul class="dropdown-menu pull-right">
-            <li><%=link_to 'Electronics', '/items/category/item/electronics', controller: "items"%></li>
-            <li><%=link_to 'Furniture', '/items/category/item/furniture', controller: "items"%></li>
-            <li><%=link_to 'Fashion', '/items/category/item/fashion', controller: "items"%></li>
-            <li><%=link_to 'Auto', '/items/category/item/auto', controller: "items"%></li>
-            <li><%=link_to 'Real Estate', '/items/category/item/real_estate', controller: "items"%></li>
-            <li><%=link_to 'Collectibles', '/items/category/item/collectibles', controller: "items"%></li>
-            <li><%=link_to 'Sporting Goods', '/items/category/item/sporting_goods', controller: "items"%></li>
-            <li><%=link_to 'Toys', '/items/category/item/toys', controller: "items"%></li>
-            <li><%=link_to 'Business/ Industrial', '/items/category/item/business_or_industrial', controller: "items"%></li>
-            <li><%=link_to 'Home/ Garden', '/items/category/item/home_and_garden', controller: "items"%></li>
-            <li><%=link_to 'Miscellaneous', '/items/category/item/miscellaneous', controller: "items"%></li>
-          </ul>
-        </li>
-      </div>
+    <div class="col-xs-6">
+      <ul>
+        <li><%= link_to 'Post a Listing', new_item_path_url, class: 'tradeBtn' %></li>
+      </ul>
     </div>
+    <div class="col-xs-6">
+      <li class="dropdown nav_padding_left">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+        <ul class="dropdown-menu pull-right">
+          <li><%=link_to 'General Labor', '/items/category/service/labor', controller: "items"%></li>
+          <li><%=link_to 'Construction', '/items/category/service/construction', controller: "items"%></li>
+          <li><%=link_to 'Web', '/items/category/service/web', controller: "items"%></li>
+          <li><%=link_to 'Childcare', '/items/category/service/childcare', controller: "items"%></li>
+          <li><%=link_to 'Food', '/items/category/service/food', controller: "items"%></li>
+          <li><%=link_to 'Health', '/items/category/service/health', controller: "items"%></li>
+          <li><%=link_to 'Miscellaneous', '/items/category/service/not_listed', controller: "items"%></li>
+        </ul>
+      </li>
+      <li class="dropdown nav_padding_left">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Experiences <span class="caret"></span></a>
+        <ul class="dropdown-menu pull-right">
+          <li><%=link_to 'Music', '/items/category/experience/music', controller: "items"%></li>
+          <li><%=link_to 'Travel', '/items/category/experience/travel', controller: "items"%></li>
+          <li><%=link_to 'Outdoors', '/items/category/experience/outdoors', controller: "items"%></li>
+          <li><%=link_to 'Sports', '/items/category/experience/sports', controller: "items"%></li>
+          <li><%=link_to 'Miscellaneous', '/items/category/experience/misc', controller: "items"%></li>
+        </ul>
+      </li>
+      <li class="dropdown nav_padding_left">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Items <span class="caret"></span></a>
+        <ul class="dropdown-menu pull-right">
+          <li><%=link_to 'Electronics', '/items/category/item/electronics', controller: "items"%></li>
+          <li><%=link_to 'Furniture', '/items/category/item/furniture', controller: "items"%></li>
+          <li><%=link_to 'Fashion', '/items/category/item/fashion', controller: "items"%></li>
+          <li><%=link_to 'Auto', '/items/category/item/auto', controller: "items"%></li>
+          <li><%=link_to 'Real Estate', '/items/category/item/real_estate', controller: "items"%></li>
+          <li><%=link_to 'Collectibles', '/items/category/item/collectibles', controller: "items"%></li>
+          <li><%=link_to 'Sporting Goods', '/items/category/item/sporting_goods', controller: "items"%></li>
+          <li><%=link_to 'Toys', '/items/category/item/toys', controller: "items"%></li>
+          <li><%=link_to 'Business/ Industrial', '/items/category/item/business_or_industrial', controller: "items"%></li>
+          <li><%=link_to 'Home/ Garden', '/items/category/item/home_and_garden', controller: "items"%></li>
+          <li><%=link_to 'Miscellaneous', '/items/category/item/miscellaneous', controller: "items"%></li>
+        </ul>
+      </li>
+    </div>
+  </div>
   </div>
 </nav>

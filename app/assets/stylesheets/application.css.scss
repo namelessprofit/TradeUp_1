@@ -1,6 +1,8 @@
 /*
- *= require slick
- *= require slick-theme
+
+ *= require_tree .
+ *= require_self
+ *= require sweetalert2
  *= require pages
  *= require users
  *= require sessions
@@ -16,11 +18,6 @@ a {
 
 ul {
   list-style-type: none;
-}
-
-html, body {
-  margin: 0;
-  min-height: 100% !important;
 }
 
 input:-webkit-autofill,
@@ -44,7 +41,6 @@ input:-webkit-autofill:active {
  #mainNav {
    background-color: #6c7980;
    height: 90px;
-   position: relative;
  }
 
 .blue {
@@ -54,11 +50,7 @@ input:-webkit-autofill:active {
  #lowerNav {
    background-color: #2996cc;
    height: 40px;
-   position: relative;
    text-align: right;
-   margin-top: 2.9vw;
-   padding: 8px;
-   padding-right: 2vw;
  }
 
 #lowerNav a:hover {
@@ -67,7 +59,7 @@ input:-webkit-autofill:active {
 
  .tradeBtn {
    float: left;
-   margin-left: 6vw;
+   margin-left: 7vw;
    font-weight: bold;
  }
  .profileBtn {
@@ -81,10 +73,10 @@ input:-webkit-autofill:active {
  }
  #logo {
    height: 90px;
-   position: absolute;
    z-index: 99;
    margin-top: 10px;
    margin-left: 20px;
+   position: absolute;
    -webkit-filter: drop-shadow(3px 3px 3px #222);
    filter: drop-shadow(3px 3px 3px #222);
  }
@@ -100,12 +92,6 @@ input:-webkit-autofill:active {
 
  #mainNav li {
    display: inline;
- }
-
- .welcome_message {
-   text-align: right;
-   position: absolute;
-   margin-left: 150px;;
  }
 
 .nav_padding_left {
