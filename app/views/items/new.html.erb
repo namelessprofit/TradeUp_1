@@ -1,4 +1,3 @@
-
 <h1 align="center">Create a new trade listing!</h1>
 <div class="container" >
 <div class="col-md-12">
@@ -6,8 +5,8 @@
     <div class="container" >
       <div class="form-group" id="newItemForm">
           <label>Listing Type</label>
+
           <select id="listingType" class="form-control" name="item[group]">
-            <option value=-1></option>
             <option value=0>Service</option>
             <option value=1>Experience</option>
             <option value=2>Item</option>
@@ -15,6 +14,7 @@
           </select>
           <br>
           <label>Service Category</label>
+          <p style="color:red">* please only select from one category</p>
           <select id="servicecategory" class="form-control" name="item[servicecategory]">
             <option value=-1></option>
             <option value=0>General Labor</option>
@@ -27,6 +27,7 @@
           </select>
           <br>
           <label>Experience Category</label>
+          <p style="color:red">* please only select from one category</p>
           <select id="experiencecategory" class="form-control" name="item[experiencecategory]">
             <option value=-1></option>
             <option value=0>Music</option>
@@ -36,8 +37,8 @@
             <option value=4>Miscellaneous</option>
           </select>
           <br />
-          <br />
           <label>Item Category</label>
+          <p style="color:red">* please only select from one category</p>
           <select id="itemcategory" class="form-control" name="item[itemcategory]">
             <option value=-1></option>
             <option value=0>Electronics</option>
@@ -64,7 +65,6 @@
           <br/>
           <label>Item Condition</label>
           <select id="condition" class="form-control" name="item[condition]">
-            <option value=-1></option>
             <option value=0>New</option>
             <option value=1>Good</option>
             <option value=2>Refurbished</option>

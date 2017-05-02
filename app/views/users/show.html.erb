@@ -1,3 +1,4 @@
+<br>
 <%= render 'partials/userBanner' %>
 
 <div class = "container">
@@ -9,7 +10,14 @@
       </div>
       <div class="col-xs-6">
         <p class="lead"><%= link_to 'Requested Trades', offers_path_url(@user)%></p>
-        <p class="lead"><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%></p>
+        <p class="lead" style ="color:red"><%= link_to 'Incoming Trades', incoming_offers_path_url(@user)%>
+          <% @count = 0%>
+        <% @IncomingOffers.each do |offer|%>
+          <% @count+=1%>
+          <% end%>
+      <% if @count >= 1%>
+        <%= @count%></p>
+      <%end%>
       </div>
     </div>
     <br />
@@ -48,7 +56,7 @@
 
 <%= render 'partials/user_ratings' %>
 
-<h2 class ="text-center"> Items
+<h2 class ="text-center">
 
   <%if logged_in? && @user.id == current_user.id%>
     <% if @user.items.length > 0 %>

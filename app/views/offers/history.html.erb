@@ -1,4 +1,4 @@
-<% if @recOffers.length > 0 && @sentOffers.length > 0 %>
+<% if @recOffers || @sentOffers %>
   <h1 class="text-center">Trade history</h1>
   <h2 class="text-center">Recieved offers</h3>
 
@@ -61,7 +61,7 @@
   <% @sentOffers.each do |offer|%>
   <% @item = Item.find_by_id(offer.requested_item_id)%>
   <% @myitem = Item.find_by_id(offer.offered_item_id)%>
-  <% @user = User.find_by_id(offer.initiator_id.to_s)%>
+  <% @user = User.find_by_id(offer.receiver_id.to_s)%>
 
   <div class="col-xs-4 text-center">
     <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
