@@ -74,7 +74,11 @@ input:-webkit-autofill:active {
    float: left;
    margin-left: 2vw;
  }
-
+ .item-image{
+   width:200px;
+   height:200px;
+   box-shadow: 2px 2px 2px 2px #888888;
+ }
  #logo {
    height: 90px;
    position: absolute;
