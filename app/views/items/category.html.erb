@@ -28,7 +28,7 @@
           <% end %>
           <br/>
           <p><%=item.description%></p>
-          <p>Condition:<%= item.condition %></p>
+          <p>Condition: <%= item.condition.to_s.humanize %></p>
           <p>Listed by: <strong><%= link_to item.user.username,user_path_url(item.user) %></strong></p>
           <br/>
           <hr />

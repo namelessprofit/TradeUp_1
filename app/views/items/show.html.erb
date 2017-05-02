@@ -37,7 +37,7 @@
       <br>
       <h4><%= @item.description %></h4>
       <br/>
-      <h5 style="display: inline-block;">Condition: <%= @item.condition.humanize %></h5>
+      <h5 style="display: inline-block;">Condition: <%= @item.condition.to_s.humanize %></h5>
       <br />
       <h5 style="display: inline-block;">Location: <%= @item.user.location.to_s.to_region %></h5>
       <br/>
