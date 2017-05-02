@@ -1,4 +1,7 @@
-<div id="Rshadow">
+<br>
+<br>
+<div class="container">
+  <div id="Rshadow">
   <div class="row" align="center">
     <div class="col-md-6">
       <img class="item-image" src="<%= @item.image %>" alt="item image">
@@ -36,16 +39,16 @@
       <br/>
       <h5 style="display: inline-block;">Condition: <%= @item.condition %></h5>
       <br />
-      <h5 style="display: inline-block;">Location: <%= @item.user.location.to_s.to_region %></h5>
+      <h5 style="display: inline-block;">Location: <%= @item.user.location.to_s %></h5>
       <br/>
       <h5 style="display: inline-block;">Category: <%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %> </h5>
       <br />
-      <h5 style="display: inline-block;">User: <%=link_to @item.user.username,user_path_url(@item.user)%></h5>
+      <h5 style="display: inline-block;">Listed by: <strong><%=link_to @item.user.username,user_path_url(@item.user)%></strong></h5>
     </div>
   </div>
 </div>
-
 <%= render 'partials/relatedItems' %>
+</div>
 
 <br>
 <br>

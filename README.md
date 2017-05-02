@@ -5,6 +5,9 @@
 
 TradeUP is based on the story of a Canadian blogger named [Kyle MacDonald](https://en.wikipedia.org/wiki/One_red_paperclip) who bartered his way from a single red paperclip to a house in a series of fourteen online trades over the course of a year. This story inspired our group to build a Craigslist-style trading app that encourages users to continue trading up to see the limitless possibilities that they can get.
 
+<img src="http://i.imgur.com/RFd2Q4T.png" width="100%">
+
+
 ## User Story
 
 1. A user can sign up, log in, customize their profile, and post an item, experience, or service to trade.
@@ -46,9 +49,7 @@ We originally moved forward with the following wireframes in an orange & green c
 #### Item show page
 <img src="http://i.imgur.com/FuUAYr7.png" width="70%">
 
-However, the General Assembly UX designers made a few suggestions that we took to heart, and instead, our app ended up looking like this:
-
-<img src="http://i.imgur.com/RFd2Q4T.png" width="100%">
+However, the General Assembly UX designers made a few suggestions that we took to heart, and instead, our app ended up looking cleaner, more intuitive, and with a better color scheme.
 
 
 ## Features to be added later
