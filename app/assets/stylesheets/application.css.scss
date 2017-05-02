@@ -5,7 +5,6 @@
  *= require pages
  *= require users
  *= require sessions
- *= require favorites
  *= require offers
  */
 
@@ -36,6 +35,7 @@ input:-webkit-autofill:active {
   background-position: center;
   height: 500px;
 }
+
  #mainNav {
    background-color: #6c7980;
    height: 90px;
@@ -45,6 +45,7 @@ input:-webkit-autofill:active {
   background-color: #6196c2;
   margin-left: .5vw;
 }
+
  #lowerNav {
    background-color: #2996cc;
    height: 40px;
@@ -60,15 +61,18 @@ input:-webkit-autofill:active {
    margin-left: 7vw;
    font-weight: bold;
  }
+
  .profileBtn {
    float: left;
    margin-left: 2vw;
  }
+
  .item-image{
    width:200px;
    height:200px;
    box-shadow: 2px 2px 2px 2px #888888;
  }
+
  #logo {
    height: 70px;
    z-index: 99;

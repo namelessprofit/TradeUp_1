@@ -16,9 +16,8 @@
 //= require turbolinks
 //= require sweetalert2
 //= require_tree .
-//= require new_item
 
-  function sweet () {
+  function makeSweetAlert () {
     swal({
       title: "Thanks for reaching out!",
       text: "Someone will get back to you shortly.",
