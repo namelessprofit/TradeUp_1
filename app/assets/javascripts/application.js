@@ -18,11 +18,14 @@
 //= require_tree .
 //= require new_item
 
-function sweet() {
-  swal(
-    'Thank you for reaching out!',
-    'Someone will get back to you shortly.',
-    'success'
-  );
-}
->>>>>>> d457de469c2c5b5457895dfbb43a8985550dcacd
+  function sweet () {
+    swal({
+      title: "Error",
+      text: "wrong user or password",
+      type: "success"
+    },
+    function(){
+      location.reload();
+    });
+  }
+
