@@ -20,7 +20,7 @@
 
   function sweet () {
     swal({
-      title: "Thanks for reachig out!",
+      title: "Thanks for reaching out!",
       text: "Someone will get back to you shortly.",
       type: "success"
     });
