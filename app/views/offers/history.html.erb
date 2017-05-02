@@ -35,16 +35,22 @@
           <br />
         </div>
         <div class="col-xs-3 text-center">
+          <%if(@user.present?)%>
           <a href="/users/<%= @user.id.to_s %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
           <h4><%= @user.username%></h4>
+          <%end%>
         </div>
         <div class="col-xs-3 text-center">
+          <%if(@myitem.present?)%>
           <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
           <h4><%= @myitem.title %></h4>
+          <%end%>
         </div>
         <div class="col-xs-3 text-center">
+          <%if(@item.present?)%>
           <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
           <h4><%= @item.title%></h4>
+          <%end%>
         </div>
       </div>
       <hr>
@@ -84,16 +90,22 @@
       <%end%>
   </div>
   <div class="col-xs-3 text-center">
+    <%if(@user.present?)%>
     <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
     <h4><%= @user.username%></h4>
+    <%end%>
   </div>
   <div class="col-xs-3 text-center">
+    <%if(@myitem.present?)%>
     <a href="/items/show/<%= @myitem.id %>"><img class="item-image" src="<%= @myitem.image %>" alt="<%= @myitem.title %>"></a>
     <h4><%= @myitem.title %></h4>
+    <%end%>
   </div>
   <div class="col-xs-3 text-center">
+    <%if(@item.present?)%>
     <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
     <h4><%= @item.title%></h4>
+    <%end%>
   </div>
   <br>
   <br />
