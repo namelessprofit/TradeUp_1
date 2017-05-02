@@ -32,11 +32,10 @@
           rejected</h4>
           <%end%>
         <br /><hr />
-        <%end%>
       </div>
     </div>
     <div class="col-xs-3 text-center">
-      <a href="/users/<%= @user.id %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
+      <a href="/users/<%= @user.id.to_s %>"><img class="item-image" src="<%= @user.image%>" alt="@item.user.username image"></a>
       <h4><%= @user.username%></h4>
     </div>
     <div class="col-xs-3 text-center">
@@ -47,6 +46,7 @@
       <a href="/items/show/<%= @item.id %>"><img class="item-image" src="<%= @item.image %>" alt="<%= @item.title %>"></a>
       <h4><%= @item.title%></h4>
     </div>
+    <%end%>
 
 
 
