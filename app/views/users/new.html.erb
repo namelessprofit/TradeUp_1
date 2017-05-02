@@ -1,39 +1,49 @@
-<h1 align="center">Start Trading Today!</h1>
-<br>
-<br>
-<%= form_for @user,  :url => signup_path(@user), html: {method: :post} do |f| %>
-  <div class="container" align="center" id="newUserForm">
-    <div class="form-group">
-      <div>
-        <%= f.text_field :username, class: "form-control", placeholder: "Username", autofocus: true %>
+<% if !logged_in? %>
+  <h1 align="center">Start Trading Today!</h1>
+  <br>
+  <br>
+  <%= form_for @user,  :url => signup_path(@user), html: {method: :post} do |f| %>
+    <div class="container" align="center" id="newUserForm">
+      <div class="form-group">
+        <div>
+          <%= f.text_field :username, class: "form-control", placeholder: "Username", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+            <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+          <div>
+              <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
+          </div>
+      </div>
+      <div class="form-group">
+          <div>
+              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+          </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <%= f.text_field :location, class: "form-control", placeholder: "Zipcode" %>
+        </div>
+      </div>
+      <div class="form-group">
+          <div>
+              <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
+          </div>
       </div>
     </div>
-    <div class="form-group">
-      <div>
-          <%= f.text_field :email, class: "form-control", placeholder: "Email", autofocus: true %>
-      </div>
-    </div>
-    <div class="form-group">
-        <div>
-            <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
-        </div>
-    </div>
-    <div class="form-group">
-        <div>
-            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
-        </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <%= f.text_field :location, class: "form-control", placeholder: "Zipcode" %>
-      </div>
-    </div>
-    <div class="form-group">
-        <div>
-            <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
-        </div>
-    </div>
-  </div>
+  <% end %>
+<% else %>
+  <br>
+  <br>
+  <h2 align="center">
+    You're already signed up!
+    If you'd like, you can <%= link_to 'log out', logout_path, method: :delete %>.
+
+  </h2>
 <% end %>
 
 <%= render 'partials/footer' %>
