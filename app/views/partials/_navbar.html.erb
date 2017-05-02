@@ -1,12 +1,13 @@
 <nav id="mainNav" class="nav navbar-default" role="navigation">
   <div class="row">
+
   <div class="col-lg-4">
     <a href="/"><img id="logo" class="img-responsive" src="http://i.imgur.com/eLLPQa3.png"></a>
   </div>
   <div class="col-lg-8">
     <ul class="nav_padding_right">
       <% if logged_in? %>
-      <li><i class="glyphicon glyphicon-user"></i> <%= link_to current_user.username, user_path_url(current_user) %></li>
+      <li><i class="glyphicon glyphicon-user"></i> <%= link_to current_user.username, user_path_url(current_user) %></li>   |    
       <li><%= link_to 'Log Out', logout_path, method: :delete, style: 'font-size: 18px' %></li>
       <% else %>
         <li><%= link_to 'Log In', login_path %></li>

@@ -38,7 +38,7 @@ class OffersController < ApplicationController
       @offer.is_accepted = false
       @offer.is_completed = false
       if @offer.save
-        redirect_to user_path_url(@user)
+        redirect_to offers_path_url(@user)
         flash[:success]="You have succesfully made an offer to "+@receiver.username
       else
         flash[:error] = @offer.errors.full_messages.join(", ")
@@ -64,12 +64,12 @@ class OffersController < ApplicationController
             @otherOld = Offer.where(requested_item_id: @offer.requested_item_id).where(is_completed: false)
             @otherOld.delete_all
             @myOld.delete_all
-            flash[:success] = "Trade success,checkout your new item"
+            flash[:success] = "Trade was a success! Connect with the user to pick up your item."
             redirect_to user_path_url(@user)
           else
             @offer.delete
             @offer
-            flash[:success] = "Trade rejected,browse more"
+            flash[:success] = "Trade was successfully rejected."
             redirect_to user_path_url(@user)
           end
       end

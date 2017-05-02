@@ -106,6 +106,7 @@ end
   def destroy
     @user = User.find_by_id(current_user.id.to_s)
     @item = Item.find_by_id(params[:id])
+    # @offer = Offer.where(requested_item_id: )
     @item.destroy
     redirect_to user_path_url(@user)
     flash[:success]=@item.title + " was deleted"

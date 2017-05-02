@@ -7,13 +7,13 @@
         <% if (@favorites.where(:user => @user).where(:item => @found).empty?) %>
           <h3>
             <%=link_to post_favorites_path_url(item_id: @item.id), :method=>'post' do %>
-              <span class="cart glyphicon glyphicon-heart-empty"</span>
+              <span class="cart glyphicon glyphicon-heart-empty" style="color:red"></span>
             <%end%>
           </h3>
         <%else%>
           <h3>
             <%=link_to delete_favorites_path_url(item_id: @item.id), :method=>'delete' do %>
-              <span class="cart glyphicon glyphicon-heart"</span>
+              <span class="cart glyphicon glyphicon-heart" style="color:red"</span>
             <%end%>
           </h3>
         <%end%>

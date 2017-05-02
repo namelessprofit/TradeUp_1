@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require turbolinks
 //= require sweetalert2
 //= require_tree .
@@ -27,3 +28,4 @@
       location.reload();
     });
   }
+
