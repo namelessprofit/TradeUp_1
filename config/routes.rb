@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user_path'
   patch '/users/update/:id', to: 'users#update', as:'update_user_path'
   patch '/users/updateRating/:id', to: 'users#updateRating', as:'update_user_rating_path'
-
   delete '/users/:id', to: 'users#destroy'
 
   post "/favorites", to: "favorites#create", as:'post_favorites_path'

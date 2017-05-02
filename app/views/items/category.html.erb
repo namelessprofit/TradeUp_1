@@ -1,33 +1,44 @@
-<h1 class ="text-center"><%= @category %></h1>
+<h1 class ="text-center"><%= @category.humanize %></h1>
 <br />
-<div class="row text-center">
-  <% @items.each do |item| %>
-    <div class="col-xs-4">
-      <h3><%=item.title%></h3>
-      <%=link_to '/items/show/'+(item.id.to_s) do%>
-      <img class="item-image" src="<%= item.image%>" alt="item image">
-      <%end%>
-      <br/>
-      <%@found = Item.find_by_id(item.id)%>
-      <%if logged_in?%>
-      <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
-      <h3><%=link_to post_favorites_path_url(item_id: item.id), :method=>'post' do%>
-      <span class="cart glyphicon glyphicon-heart-empty" style="color:red"> </span> <%end%></h3>
-      <%else%>
-      <h3><%=link_to delete_favorites_path_url(item_id: item.id), :method=>'delete' do%>
-      <span class="cart glyphicon glyphicon-heart" style="color:red"></span> <%end%></h3>
-      <%end%>
-      <%end%>
-        <br/>
-        <%=item.description%>
-        <br/>
-        <p>condition:<%=item.condition%></p>
-        <p>User:<%=link_to item.user.username,user_path_url(item.user)%></p>
-        <br/>
-        <hr />
-      </div>
-        <%end%>
-
+<div class="col-xs-12">
+  <div class="row text-center">
+    <% if (@items.length > 0) %>
+      <% @items.each do |item| %>
+        <div class="col-xs-4">
+          <h3><%=item.title%></h3>
+          <%= link_to '/items/show/'+(item.id.to_s) do %>
+            <img class="item-image" src="<%= item.image%>" alt="item image">
+          <% end %>
+          <br/>
+          <%@found = Item.find_by_id(item.id)%>
+          <%if logged_in?%>
+            <%if (@favorites.where(:user => @user).where(:item => @found).empty?)%>
+              <h3>
+                <%=link_to post_favorites_path_url(item_id: item.id), :method=>'post' do%>
+                  <span class="cart glyphicon glyphicon-heart-empty" style="color:red"></span>
+                <% end %>
+              </h3>
+            <% else %>
+              <h3>
+                <%=link_to delete_favorites_path_url(item_id: item.id), :method=>'delete' do%>
+                  <span class="cart glyphicon glyphicon-heart" style="color:red"></span>
+                <% end %>
+              </h3>
+            <% end %>
+          <% end %>
+          <br/>
+          <p><%=item.description%></p>
+          <p>Condition:<%= item.condition %></p>
+          <p>Listed by: <strong><%= link_to item.user.username,user_path_url(item.user) %></strong></p>
+          <br/>
+          <hr />
+        </div>
+      <% end %>
+    <% else %>
+      <h2>There aren't currently any listings in this category.</h2>
+      <%= link_to new_item_path_url, :method=>'get', :class=>'btn btn-primary' do %>Post a Listing Here Now<%end%>
+    <% end %>
   </div>
+</div>
 
 <%= render 'partials/footer' %>

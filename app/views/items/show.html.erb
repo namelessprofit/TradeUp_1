@@ -37,9 +37,9 @@
       <br>
       <h4><%= @item.description %></h4>
       <br/>
-      <h5 style="display: inline-block;">Condition: <%= @item.condition %></h5>
+      <h5 style="display: inline-block;">Condition: <%= @item.condition.humanize %></h5>
       <br />
-      <h5 style="display: inline-block;">Location: <%= @item.user.location.to_s %></h5>
+      <h5 style="display: inline-block;">Location: <%= @item.user.location.to_s.to_region %></h5>
       <br/>
       <h5 style="display: inline-block;">Category: <%= @item.experiencecategory || @item.servicecategory || @item.itemcategory %> </h5>
       <br />
