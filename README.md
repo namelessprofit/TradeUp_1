@@ -5,6 +5,15 @@
 
 TradeUP is based on the story of a Canadian blogger named [Kyle MacDonald](https://en.wikipedia.org/wiki/One_red_paperclip) who bartered his way from a single red paperclip to a house in a series of fourteen online trades over the course of a year. This story inspired our group to build a Craigslist-style trading app that encourages users to continue trading up to see the limitless possibilities that they can get.
 
+## User Story
+
+1. A user can sign up, log in, customize their profile, and post an item, experience, or service to trade.
+2. A user can browse trades by category and save them to their favorites.
+3. A user can initiate a trade by offering up an item, service, or experience they have created previously.
+4. A user can receive trades offers and either request or decline to pursue to it.
+5. If accepted, the initiator and receiver both gain access to each other's personal information to proceed with meeting up and finalizing details.
+6. Users can rate each other post-transaction on a scale of 1-5.
+
 ## Technologies
 - Ruby
 - Rails
@@ -18,13 +27,14 @@ TradeUP is based on the story of a Canadian blogger named [Kyle MacDonald](https
 - Area (A gem to parse city names from zipcodes!)
 - Custom background color on user profile pages
 - Bcrypt (password hasher)
-- SweetAlert2
-
-## Tricky code
-
-
+- SweetAlert2 (for cute alerts!)
 
 ## Model ERD
+
+<img src="http://i.imgur.com/kWgEwLo.png" width="80%">
+
+
+## The Design Evolution
 
 We originally moved forward with the following wireframes in an orange & green color scheme to match the custom logo:
 #### Home page
@@ -40,11 +50,12 @@ However, the General Assembly UX designers made a few suggestions that we took t
 
 <img src="http://i.imgur.com/RFd2Q4T.png" width="100%">
 
-## User Story
 
 ## Features to be added later
-- A messaging system so that users can discuss the trade further with each other.
+- A messaging system so that users can discuss the trade further with each other through the site.
 - Incorporating more UX design ideas, such as additional infographics.
+- Tighten up error handling, better use of SweetAlerts, better authorization for certain offer capabilities.
+
 ## Contributors
 
 - [Megan Wiley](https://www.linkedin.com/in/meganrwiley)
