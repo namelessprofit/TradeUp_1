@@ -4,75 +4,74 @@
   <%= form_for Item.new, html: { multipart: true }  do |f|%>
     <div class="container" >
       <div class="form-group" id="newItemForm">
-          <label>Listing Type</label>
-
-          <select id="listingType" class="form-control" name="item[group]">
-            <option value=0>Service</option>
-            <option value=1>Experience</option>
-            <option value=2>Item</option>
-            <br />
-          </select>
-          <br>
-          <label>Service Category</label>
-          <p style="color:red">* please only select from one category</p>
-          <select id="servicecategory" class="form-control" name="item[servicecategory]">
-            <option value=-1></option>
-            <option value=0>General Labor</option>
-            <option value=1>Construction</option>
-            <option value=2>Web</option>
-            <option value=3>Childcare</option>
-            <option value=4>Food</option>
-            <option value=5>Health</option>
-            <option value=6>Miscellaneous</option>
-          </select>
-          <br>
-          <label>Experience Category</label>
-          <p style="color:red">* please only select from one category</p>
-          <select id="experiencecategory" class="form-control" name="item[experiencecategory]">
-            <option value=-1></option>
-            <option value=0>Music</option>
-            <option value=1>Travel</option>
-            <option value=2>Outdoors</option>
-            <option value=3>Sports</option>
-            <option value=4>Miscellaneous</option>
-          </select>
+        <label>Listing Type</label>
+        <select id="listingType" class="form-control" name="item[group]">
+          <option value=0>Service</option>
+          <option value=1>Experience</option>
+          <option value=2>Item</option>
           <br />
-          <label>Item Category</label>
-          <p style="color:red">* please only select from one category</p>
-          <select id="itemcategory" class="form-control" name="item[itemcategory]">
-            <option value=-1></option>
-            <option value=0>Electronics</option>
-            <option value=1>Furniture</option>
-            <option value=2>Fashion</option>
-            <option value=3>Auto</option>
-            <option value=4>Real Estate</option>
-            <option value=5>Collectibles</option>
-            <option value=6>Toys</option>
-            <option value=7>Music</option>
-            <option value=8>Business/Industrial</option>
-            <option value=9>Home/Garden</option>
-            <option value=10>Miscellaneous</option>
-          </select>
-          <br />
-          <%= f.label :title, 'Listing Title' %><br>
-          <%= f.text_field :title, class: "form-control", autofocus: true %>
-          <br/>
-          <%= f.label :description, 'Description' %><br>
-          <%= f.text_area :description, class: "form-control", autofocus: true %>
-          <br/>
-          <%= f.label :image, 'Listing Image' %><br>
-          <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
-          <br/>
-          <label>Item Condition</label>
-          <select id="condition" class="form-control" name="item[condition]">
-            <option value=0>New</option>
-            <option value=1>Good</option>
-            <option value=2>Refurbished</option>
-            <option value=3>Used</option>
-            <option value=4>Other</option>
-          </select>
-          <br/>
-          <%= f.submit "Submit for Trade", class: 'btn btn-warning btn-md center-block', align:"right" %>
+        </select>
+        <br>
+        <label>Service Category</label>
+        <p style="color:red">* Please only select from this category if you are posting a service.</p>
+        <select id="servicecategory" class="form-control" name="item[servicecategory]">
+          <option value=-1></option>
+          <option value=0>General Labor</option>
+          <option value=1>Construction</option>
+          <option value=2>Web</option>
+          <option value=3>Childcare</option>
+          <option value=4>Food</option>
+          <option value=5>Health</option>
+          <option value=6>Miscellaneous</option>
+        </select>
+        <br>
+        <label>Experience Category</label>
+        <p style="color:red">* Please only select from this category if you are posting an experience.</p>
+        <select id="experiencecategory" class="form-control" name="item[experiencecategory]">
+          <option value=-1></option>
+          <option value=0>Music</option>
+          <option value=1>Travel</option>
+          <option value=2>Outdoors</option>
+          <option value=3>Sports</option>
+          <option value=4>Miscellaneous</option>
+        </select>
+        <br />
+        <label>Item Category</label>
+        <p style="color:red">* Please only select from this category if you are posting an item.</p>
+        <select id="itemcategory" class="form-control" name="item[itemcategory]">
+          <option value=-1></option>
+          <option value=0>Electronics</option>
+          <option value=1>Furniture</option>
+          <option value=2>Fashion</option>
+          <option value=3>Auto</option>
+          <option value=4>Real Estate</option>
+          <option value=5>Collectibles</option>
+          <option value=6>Toys</option>
+          <option value=7>Music</option>
+          <option value=8>Business/Industrial</option>
+          <option value=9>Home/Garden</option>
+          <option value=10>Miscellaneous</option>
+        </select>
+        <br />
+        <%= f.label :title, 'Listing Title' %><br>
+        <%= f.text_field :title, class: "form-control", autofocus: true %>
+        <br/>
+        <%= f.label :description, 'Description' %><br>
+        <%= f.text_area :description, class: "form-control", autofocus: true %>
+        <br/>
+        <%= f.label :image, 'Listing Image' %><br>
+        <%= f.file_field :image, class: "form-control", placeholder: "Image", autofocus: true %>
+        <br/>
+        <label>Item Condition</label>
+        <select id="condition" class="form-control" name="item[condition]">
+          <option value=0>New</option>
+          <option value=1>Good</option>
+          <option value=2>Refurbished</option>
+          <option value=3>Used</option>
+          <option value=4>Other</option>
+        </select>
+        <br/>
+        <%= f.submit "Submit for Trade", class: 'btn btn-primary btn-md center-block', align:"right" %>
       </div>
     </div>
   <% end %>

@@ -6,11 +6,6 @@ require 'ffaker'
 
 p "HELLO IM THE SEED"
 
-Offer.delete_all
-
-Favorite.delete_all
-
-User.delete_all
 User.create(users_data = [
   {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 10, :rating_count => 1, :password => "ljksdfjlka", :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
   {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 2, :rating_count => 2, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
@@ -21,21 +16,11 @@ User.create(users_data = [
   {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 4, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
   {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
   {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 10, :rating_count => 1, :password => "ljksdfjlka", :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 2, :rating_count => 2, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 10, :rating_count => 5, :password => "ljksdfjlka", :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image},
-  {:username => FFaker::InternetSE.login_user_name, :email => FFaker::Internet.email, :location => FFaker::AddressUS.zip_code, :rating => 9, :rating_count => 1, :password => "ljksdfjlka",  :background_color=> "#"+FFaker::Color.hex_code, :image=> FFaker::Avatar.image}
+
 ])
 p 'made the USERS!'
 #
-Item.delete_all
+
 Item.create(items_data = [
 
   {:title => FFaker::Product.product, :description =>FFaker::DizzleIpsum.sentence, :is_available=> true, :group => "item", :itemcategory => "auto", :user_id => 1, :image => "http://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9beHK4x3L-8mX69Pbfqns6v7oXCgLWTph852P5lkBqRc/Views/25452_D5000_34r.png"},
