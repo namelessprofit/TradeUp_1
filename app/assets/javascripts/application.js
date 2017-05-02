@@ -20,12 +20,8 @@
 
   function sweet () {
     swal({
-      title: "Error",
-      text: "wrong user or password",
+      title: "Thanks for reachig out!",
+      text: "Someone will get back to you shortly.",
       type: "success"
-    },
-    function(){
-      location.reload();
     });
   }
-
