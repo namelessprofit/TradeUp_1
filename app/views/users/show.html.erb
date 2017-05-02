@@ -14,10 +14,10 @@
           <% @count = 0%>
         <% @IncomingOffers.each do |offer|%>
           <% @count+=1%>
-          <% end%>
-      <% if @count >= 1%>
-        <%= @count%></p>
-      <%end%>
+        <% end%>
+        <% if @count >= 1%>
+          <%= @count%></p>
+        <%end%>
       </div>
     </div>
     <br />
@@ -41,24 +41,10 @@
       </div>
     </div>
   </div>
-  <div class = "col-xs-12" align="center">
-    <% if @user.rating %>
-      <% @stars = (@user.rating / @user.rating_count).floor %>
-      <h4>
-        <% @stars.times do %>
-          <i class="glyphicon glyphicon-star" style="color:#ffec4d"></i>
-        <% end %>
-      </h4>
-    <%else%>
-      <h4>Rating: No ratings yet</h4>
-    <%end%>
-  </div>
 </div>
-
 <%= render 'partials/user_ratings' %>
 
 <h2 class ="text-center">
-
   <%if logged_in? && @user.id == current_user.id%>
     <% if @user.items.length > 0 %>
       My Items <%= link_to new_item_path_url, :method=>'get' do %> <span class="cart glyphicon glyphicon-plus"></span><%end%>
