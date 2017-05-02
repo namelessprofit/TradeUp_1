@@ -7,7 +7,7 @@
       <ul class="nav_padding_right">
         <% if logged_in? %>
         <li><i class="glyphicon glyphicon-user"></i> <%= link_to current_user.username, user_path_url(current_user) %></li>
-        <li><%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-xs blue', style: 'font-size: 18px' %></li>
+        <li><%= link_to 'Log Out', logout_path(session), :method => :delete %></li>
         <% else %>
           <li><%= link_to 'Log In', login_path %></li>
           <li><%= link_to 'Sign Up', signup_path %></li>
